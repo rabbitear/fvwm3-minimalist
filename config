@@ -1,0 +1,268 @@
+# Minimalist Fvwm Config by Rabbitear
+#
+# Assumed these programs are installed
+# - rxvt-unicode
+# - rofi
+# - xclip
+# - surf
+# - feh
+# - xscreensaver
+# - xcompmgr
+# - stalonetray 
+# - nm-applet
+# - blueman-applet
+# - copyq
+# - xset
+# - xclock
+# - xeyes
+# - ImageMagick
+# - xwd
+
+
+DesktopSize 1x1
+BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
+Style * IconBox 5 120 -5 -5, IconFill Bottom Right
+Style * ResizeOutline
+Style * SloppyFocus, MouseFocusClickRaises
+Style * NoTitle
+
+#Style * Font -adobe-courier-medium-r-normal--10-100-75-75-m-60-ISO8859-
+Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
+
+
+Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
+    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
+Style "WikiJournal" Sticky, !Closable, !Iconifiable, !Title, !Maximizable
+Style "Picture-in-Picture" Sticky, StaysOnTop
+Style "FvwmLogView" Sticky, !Closable
+Style "urxvt" PositionPlacement UnderMouse
+
+
+# StartFunction is executed on startups and restats.
+DestroyFunc StartFunction
+AddToFunc StartFunction
++ I Test (Init)	Desk 0 0
++ I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
++ I PipeRead 'test -d /dev/shm/fvwmicon && echo SetEnv ICON_TMPDIR /dev/shm/fvwmicon || echo SetEnv ICON_TMPDIR $[FVWM_USERDIR]'
++ I Test (X xcompmgr) PipeRead 'pgrep -x "xcompmgr" > /dev/null || echo Exec exec xcompmgr -cCfF -t-5 -l-5 -r4.2 -o.55 -D6'
++ I Test (X xscreensaver) PipeRead 'pgrep -x "xscreensaver" > /dev/null || echo Exec exec xscreensaver -no-splash'
++ I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
++ I Test (X nm-tray) PipeRead 'pgrep -x "nm-tray" > /dev/null || echo Exec exec nm-tray'
++ I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
++ I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
++ I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed \
+	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
++ I Exec exec feh --bg-scale ~/.fvwm/pix/wallpaper.svg
++ I Exec exec xset r rate 175 60
++ I Module FvwmEvent
++ I All (Iconic) Iconify off
+
+# ExitFunction is excuted when exiting or restarting before actually 
+# quitting. Kill modules here
+DestroyFunc ExitFunction
+AddToFunc ExitFunction
++ I Test (ToRestart) KillModule FvwmEvent
+
+
+DestroyModuleConfig FvwmEvent: *
+*FvwmEvent: deiconify DeThumbnail
+
+#Mouse 1 I A Iconify off
+Mouse 1 I A DeiconifyAndRearrange
+
+#######################
+# Thumbnail Functions #
+#######################
+DestroyFunc DeThumbnail
+AddToFunc DeThumbnail
++ I DestroyWindowStyle
++ I Exec 'rm -f $[ICON_TMPDIR]/icon.tmp.$[w.id].png'
++ I Echo "DeThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
+
+DestroyFunc Thumbnail
+AddToFunc Thumbnail
++ I Schedule 800 Raise
++ I Raise
++ I Current (!Shaded, Iconifiable, !Iconic) PipeRead \
+    "xwd -silent -id $[w.id] | nice -n 19 convert -scale 64 -frame 1x1 \
+    -mattecolor black -quality 0 xwd:- \
+    png:$[ICON_TMPDIR]/icon.tmp.$[w.id].png \
+    && sleep 0.2 && echo WindowStyle IconOverride, \
+    Icon $[ICON_TMPDIR]/icon.tmp.$[w.id].png \
+    || echo Nop"
++ I Iconify 
++ I WarpToWindow 15p 15p
++ I Echo "Thumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
+
+DestroyFunc ReThumbnail
+AddToFunc ReThumbnail
++ I Iconify
++ I Function Thumbnail
+
+DestroyFunc DeiconifyAndRearrange
+AddToFunc DeiconifyAndRearrange
++ C Iconify off
++ D Iconify off
++ C All (CurrentPage, Iconic) PlaceAgain Icon
++ I Echo "DeiconifyAndRearrange $[w.id] may happen, ktr."
+
+
+#################################
+# Window Manipulation Functions #
+#################################
+
+DestroyFunc ResizeOrRaiseOrLowerFunc
+AddToFunc ResizeOrRaiseOrIconifyFunc 
++ C Raise
++ M Resize
++ D Function Thumbnail
+
+DestroyFunc MoveOrRaiseOrLowerFunc
+AddToFunc MoveOrRaiseOrLowerFunc
++ I Raise
++ I Current (!Raised) Raise
++ C TestRc (NoMatch) Lower
++ M Move
++ D Maximize 100 100
+
+DestroyFunc WindowUp
+AddToFunc WindowUp
++ I Focus
++ I Raise
++ I WarpToWindow +30p +35p
+
+DestroyFunc EWMHActivateWindowFunc
+AddToFunc EWMHActivateWindowFunc 
++ I DeiconifyAndRearrange
++ I Focus
++ I Raise
++ I WarpToWindow 50 50
+
+
+#####################
+# Program Functions #
+#####################
+DestroyFunc ToggleConsole
+AddToFunc ToggleConsole
++ I All (FvwmConsole) Close
++ I TestRc (NoMatch) Module FvwmConsole -g 30x6+10-10 -fn 8x8 \
+	+sb -terminal xterm -bg limegreen -fg darkgreen
++ I Wait FvwmConsole
++ I Next (FvwmConsole) WarpToWindow +10p +15p
+
+DestroyFunc ToggleNotes
+AddToFunc ToggleNotes
++ I Next (WikiJournal) PipeRead 'test $[w.y] -gt 50 \
+    && echo AnimatedMove keep +2 \
+    || echo AnimatedMove keep -2'
++ I Next (WikiJournal) FlipFocus
++ I Next (WikiJournal) Raise
++ I Next (WikiJournal) WarpToWindow !raise +50p +50p
++ I TestRc (NoMatch) Exec exec urxvt \
+    +sb -geometry 80x11+5-5 \
+    -fade 30 -fadeColor black \
+    -name WikiJournal -title WikiJournal \
+    +uc -sl 0 -b 10 \
+    -e nvim -c WikiJournal
++ I Wait WikiJournal
++ I Next (WikiJournal) WarpToWindow +50p +50p
++ I Echo Toggled Notes
+
+DestroyFunc ToggleQuickTerm
+AddToFunc ToggleQuickTerm
++ I Next (QuickTerm, !Iconic) PipeRead 'test $[w.y] -gt 50 \
+    && echo AnimatedMove keep +2 \
+    || echo AnimatedMove keep -2'
++ I All (QuickTerm, Iconic) Iconify off
++ I Next (QuickTerm) Focus
++ I Next (QuickTerm, !raise) Raise
++ I Next (QuickTerm) MoveToPage prev
++ I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
++ I TestRc (NoMatch) Exec exec urxvt +sb -bc -uc \
+    -name QuickTerm -fade 30 \
+    -geometry 80x13+5+5 
++ I Wait QuickTerm
++ I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
+
+DestroyFunc ToggleFirefox
+AddToFunc ToggleFirefox
++ I Next (Firefox*, Iconic) Iconify off
++ I Next (Firefox*) FlipFocus
++ I Next (Firefox*, !raise) Raise
++ I Next (Firefox*) WarpToWindow +90p +90p
++ I Echo "Raising firefox.. window id of $[w.id]"
++ I TestRc (NoMatch) Exec exec firefox --browser
++ I Wait "Firefox*"
++ I Echo "Starting firefox.. window id of $[w.id]"
++ I ThisWindow (Firefox*) WarpToWindow +50p +50p
+
+DestroyFunc StartSurf
+AddToFunc StartSurf
++ I Exec exec surf -z 1.8 "https://duckduckgo.com/lite"
++ I Wait Surf
++ I Next (Surf) WarpToWindow +150p +130p
+
+################
+# Key Bindings #
+################
+# Iconify, Maximize, Close
+Key Space WFS  4  Function Thumbnail
+Key Space A     4S All (CurrentPage,!Fvwm*B*) Function Thumbnail
+Key I WIFS 	4  Function Thumbnail
+Key I I		4  Iconify off
+ Iconfiy off
+Key Space A 	M  Function Thumbnail
+Key Space I 	M  Iconify off
+Key Space I 	4  Iconify off
+Key M WFS  	4  Maximize 0 100
+Key M WFS  	4S Maximize 100 0
+Key M WFS	4C Maximize 100 100
+Key Q WFSI 	4S Close
+
+# Move from window to window with keys
+Key P A 4   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
+               UseIconName, SelectOnRelease Super_L
+Key N A 4   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
+               UseIconName, SelectOnRelease Super_L
+Key K A 4   Prev (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
+Key J A 4   Next (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp 
+
+# Start programs
+Key W A 4  Exec exec surf -z 1.8 -s "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
+Key W A 4S Exec exec surf -z 1.0 -s -i "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
+Key X A 4  Exec exec rofi -show drun
+Key D A 4  StartSurf
+Key D A 4S Exec exec surf -z 1.3 "https://duckduckgo.com/?kae=t&k1=-1&km=l&kt=e&q=$(xclip -o -selection primary)"
+
+# rofi ddgr search, see ~/.fvwm/bin/ddgr_search.py
+# and https://github.com/gmagno/rofi-ddgr
+Key S A 4  Exec exec rofi \
+            -show ddgrsearch \
+            -lines 5 \
+            -eh 3 \
+            -modi "ddgrsearch:$HOME/.fvwm/bin/ddgr_search.py" \
+            -theme-str 'window {height: 80%; width: 80%;}' 
+
+# Toggle Functions
+Key F      A 4  Function ToggleFirefox
+Key F      A 4S Function ToggleFirefox
+Key Space  A 4M Function ToggleNotes
+Key Return A 4  Function ToggleQuickTerm
+Key C      A 4  Function ToggleConsole
+
+# Globalish keybindings
+Key R A    4S Restart
+Key L A    4S Exec xscreensaver-command -0lock
+Key I WFSI 4S FvwmIdent
+
+
+##################
+# Mouse bindings #
+##################
+Mouse 1 R  A Nop
+Mouse 3 R  A Exec exec urxvt +sb -geometry 80x9 \
+	-fade 30 -fadeColor black -bg grey20 -cr limegreen -bc
+Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
+Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
+
+# End of Fvwm3 config
