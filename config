@@ -2,22 +2,23 @@
 #
 # Assumed these programs are installed
 # - rxvt-unicode
-# - rofi
+# - xset (debian x11-xserver-utls)
+# - xclock (debian x11-apps)
+# - ImageMagick
+# - xwd (debian x11-apps)
 # - xclip
-# - surf
 # - feh
-# - xscreensaver
+# - stalonetray (debian github repo)
+# Optional nice to haves
+# - rofi
+# - surf
 # - xcompmgr
-# - stalonetray 
-# - nm-applet
+# - nm-applet or nm-tray
 # - blueman-applet
 # - copyq
-# - xset
-# - xclock
-# - xeyes
-# - ImageMagick
-# - xwd
-
+# Optional very nice to haves
+# - flameshot
+# - xscreensaver
 
 DesktopSize 1x1
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
@@ -26,8 +27,8 @@ Style * ResizeOutline
 Style * SloppyFocus, MouseFocusClickRaises
 Style * NoTitle
 
-#Style * Font -adobe-courier-medium-r-normal--10-100-75-75-m-60-ISO8859-
 Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
+Style * IconFont "xft:Luxi Mono:Medium:Roman:size=10:encoding=iso8859-1;-adobe-courier-bold-r-normal--10-*"
 
 
 Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
@@ -67,7 +68,6 @@ AddToFunc ExitFunction
 DestroyModuleConfig FvwmEvent: *
 *FvwmEvent: deiconify DeThumbnail
 
-#Mouse 1 I A Iconify off
 Mouse 1 I A DeiconifyAndRearrange
 
 #######################
@@ -206,11 +206,11 @@ AddToFunc StartSurf
 # Key Bindings #
 ################
 # Iconify, Maximize, Close
-Key Space WFS  4  Function Thumbnail
+Key Space WFS   4  Function Thumbnail
 Key Space A     4S All (CurrentPage,!Fvwm*B*) Function Thumbnail
-Key I WIFS 	4  Function Thumbnail
+Key I WFS 	4  Function Thumbnail
 Key I I		4  Iconify off
- Iconfiy off
+Key I I		M  Iconify off
 Key Space A 	M  Function Thumbnail
 Key Space I 	M  Iconify off
 Key Space I 	4  Iconify off
