@@ -59,7 +59,7 @@ URxvt*scrollTtyKeypress: true
 URxvt.secondaryScreen: 1
 URxvt.secondaryScroll: 0
 
-URxvt.perl-ext-common: default,matcher,url-select,selection-to-clipboard,keyboard-select,font-size,-confirm-paste
+URxvt.perl-ext-common: default,matcher,url-select,selection-to-clipboard,keyboard-select,font-size,-confirm-paste,-selection-popup,-option-popup
 
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1

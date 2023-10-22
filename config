@@ -262,7 +262,7 @@ Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
 ##################
 Mouse 1 R  A Nop
 Mouse 3 R  A Exec exec urxvt +sb -geometry 80x9 \
-	-fade 30 -fadeColor black -bg grey20 -cr limegreen -bc
+	-fade 30 -fadeColor black -cr limegreen -bc
 Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
 
