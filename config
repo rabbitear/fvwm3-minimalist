@@ -2,13 +2,13 @@
 #
 # Assumed these programs are installed
 # - rxvt-unicode
+# - ImageMagick
+# - xclip
 # - xset (debian x11-xserver-utls)
 # - xclock (debian x11-apps)
-# - ImageMagick
 # - xwd (debian x11-apps)
-# - xclip
 # - feh
-# - stalonetray (debian github repo)
+# - stalonetray (https://github.com/kolbusa/stalonetray)
 # Optional nice to haves
 # - rofi
 # - surf
@@ -252,7 +252,7 @@ Key C      A 4  Function ToggleConsole
 
 # Globalish keybindings
 Key R A    4S Restart
-Key L A    4S Exec xscreensaver-command -0lock
+Key L A    4S Exec xscreensaver-command -lock
 Key I WFSI 4S FvwmIdent
 Key Y A	   4  Exec exec flameshot gui -p $HOME/Pictures/Screenshots
 Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
