@@ -56,7 +56,7 @@ AddToFunc StartFunction
 + I Exec exec feh --bg-scale ~/.fvwm/pix/wallpaper.png
 + I Exec exec xset r rate 175 60
 + I Module FvwmEvent
-+ I All (Iconic) Iconify off
++ I All (Iconic) ReThumbnail
 
 # ExitFunction is excuted when exiting or restarting before actually 
 # quitting. Kill modules here
@@ -96,8 +96,10 @@ AddToFunc Thumbnail
 
 DestroyFunc ReThumbnail
 AddToFunc ReThumbnail
-+ I Iconify
-+ I Function Thumbnail
++ I Schedule Iconify
++ I Schedule 1000 Raise
++ I Schedule 1000 Function Thumbnail
++ I Echo "ReThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
 
 DestroyFunc DeiconifyAndRearrange
 AddToFunc DeiconifyAndRearrange
@@ -111,10 +113,11 @@ AddToFunc DeiconifyAndRearrange
 # Window Manipulation Functions #
 #################################
 
-DestroyFunc ResizeOrRaiseOrLowerFunc
+DestroyFunc ResizeOrRaiseOrIconifyFunc
 AddToFunc ResizeOrRaiseOrIconifyFunc 
 + C Raise
 + M Resize
++ C Function Thumbnail
 + D Function Thumbnail
 
 DestroyFunc MoveOrRaiseOrLowerFunc
@@ -186,15 +189,17 @@ AddToFunc ToggleQuickTerm
 
 DestroyFunc ToggleFirefox
 AddToFunc ToggleFirefox
-+ I Next (Firefox*, Iconic) Iconify off
-+ I Next (Firefox*) FlipFocus
-+ I Next (Firefox*, !raise) Raise
-+ I Next (Firefox*) WarpToWindow +90p +90p
++ I Next (Navigator|firefox|*Mozzila Firefox) Echo "Tiggered -firefox window-"
++ I Next (Navigator|firefox|*Mozzila Firefox, Iconic) Iconify off
++ I Next (Navigator|firefox|*Mozzila Firefox) FlipFocus
++ I Next (Navigator|firefox|*Mozzila Firefox, !raise) Raise
++ I Next (Navigator|firefox|*Mozzila Firefox) WarpToWindow +90p +90p
 + I Echo "Raising firefox.. window id of $[w.id]"
-+ I TestRc (NoMatch) Exec exec firefox --browser
-+ I Wait "Firefox*"
++ I TestRc (NoMatch) Exec exec firefox
 + I Echo "Starting firefox.. window id of $[w.id]"
-+ I ThisWindow (Firefox*) WarpToWindow +50p +50p
++ I Next (Navigator|firefox|*Mozzila Firefox) WarpToWindow +50p +50p
+
+#+ I Wait "Navigator|firefox|*Mozzila Firefox"
 
 DestroyFunc StartSurf
 AddToFunc StartSurf
@@ -262,7 +267,7 @@ Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
 ##################
 Mouse 1 R  A Nop
 Mouse 3 R  A Exec exec urxvt +sb -geometry 80x9 \
-	-fade 30 -fadeColor black -cr limegreen -bc
+	-fade 30 -fadeColor black -cr limegreen -bc"
 Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
 
