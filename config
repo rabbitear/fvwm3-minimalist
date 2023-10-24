@@ -166,7 +166,7 @@ AddToFunc ToggleNotes
     -fade 30 -fadeColor black \
     -name WikiJournal -title WikiJournal \
     +uc -sl 0 -b 10 \
-    -e nvim -c WikiJournal
+    -e nvim -c WikiJournal && xset r rate 175 60
 + I Wait WikiJournal
 + I Next (WikiJournal) WarpToWindow +50p +50p
 + I Echo Toggled Notes
@@ -252,7 +252,7 @@ Key S A 4  Exec exec rofi \
 Key F      A 4  Function ToggleFirefox
 Key F      A 4S Function ToggleFirefox
 Key Space  A 4M Function ToggleNotes
-Key Return A 4  Function ToggleQuickTerm
+Key Space  A 4C Function ToggleQuickTerm
 Key C      A 4  Function ToggleConsole
 
 # Globalish keybindings
@@ -267,7 +267,7 @@ Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
 ##################
 Mouse 1 R  A Nop
 Mouse 3 R  A Exec exec urxvt +sb -geometry 80x9 \
-	-fade 30 -fadeColor black -cr limegreen -bc"
+	-fade 30 -fadeColor black -cr limegreen -bc
 Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
 
