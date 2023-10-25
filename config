@@ -37,11 +37,17 @@ Style "WikiJournal" Sticky, !Closable, !Iconifiable, !Title, !Maximizable
 Style "Picture-in-Picture" Sticky, StaysOnTop
 Style "FvwmLogView" Sticky, !Closable
 Style "urxvt" PositionPlacement UnderMouse
+Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
+Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
+    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 
 
 # StartFunction is executed on startups and restats.
 DestroyFunc StartFunction
 AddToFunc StartFunction
++ I Echo "====================="
++ I Echo "= Fvwm3 is starting ="
++ I Echo "====================="
 + I Test (Init)	Desk 0 0
 + I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
 + I PipeRead 'test -d /dev/shm/fvwmicon && echo SetEnv ICON_TMPDIR /dev/shm/fvwmicon || echo SetEnv ICON_TMPDIR $[FVWM_USERDIR]'
@@ -51,10 +57,11 @@ AddToFunc StartFunction
 + I Test (X nm-tray) PipeRead 'pgrep -x "nm-tray" > /dev/null || echo Exec exec nm-tray'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
-+ I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed -geometry 80x20+5+5 \
++ I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed -geometry 80x20+5+26 \
 	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
-+ I Exec exec feh --bg-scale ~/.fvwm/pix/wallpaper.png
++ I Exec exec feh --bg-scale ~/.fvwm/pix/wallpaper2.jpg
 + I Exec exec xset r rate 175 60
++ I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
 + I All (Iconic) ReThumbnail
 
@@ -63,6 +70,21 @@ AddToFunc StartFunction
 DestroyFunc ExitFunction
 AddToFunc ExitFunction
 + I Test (ToRestart) KillModule FvwmEvent
++ I Test (ToRestart) KillModule ButtonBox
+
+
+DestroyModuleConfig ButtonBox: *
+*ButtonBox: Geometry 112x16+5+5
+*ButtonBox: BoxSize fixed
+*ButtonBox: Rows 1
+*ButtonBox: Columns 7
+*ButtonBox: Frame 0
+*ButtonBox: Padding 0 0
+*ButtonBox: (1x1, Action ToggleNotes, Swallow(kill) xeyes "Exec exec xeyes")
+*ButtonBox: (6x1, Action ToggleQuickTerm, Swallow(kill) xclock "Exec exec \
+    xclock -digital -render -padding 0 -update 1 -strftime '%H:%M %a %b %d' \
+    -face xft:NotoSansMono-Regular:size=8")
+
 
 
 DestroyModuleConfig FvwmEvent: *
@@ -76,6 +98,7 @@ Mouse 1 I A DeiconifyAndRearrange
 DestroyFunc DeThumbnail
 AddToFunc DeThumbnail
 + I DestroyWindowStyle
++ I UpdateStyles
 + I Exec 'rm -f $[ICON_TMPDIR]/icon.tmp.$[w.id].png'
 + I Echo "DeThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
 
@@ -90,16 +113,21 @@ AddToFunc Thumbnail
     && sleep 0.2 && echo WindowStyle IconOverride, \
     Icon $[ICON_TMPDIR]/icon.tmp.$[w.id].png \
     || echo Nop"
++ I UpdateStyles
++ I RefreshWindow
 + I Iconify 
 + I WarpToWindow 15p 15p
 + I Echo "Thumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
 
 DestroyFunc ReThumbnail
 AddToFunc ReThumbnail
-+ I Schedule Iconify
-+ I Schedule 1000 Raise
-+ I Schedule 1000 Function Thumbnail
++ I Iconify off
++ I FlipFocus
++ I RefreshWindow
++ I Schedule 500 $[w.id] Thumbnail
 + I Echo "ReThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
+
+#+ I Schedule 1000 Raise
 
 DestroyFunc DeiconifyAndRearrange
 AddToFunc DeiconifyAndRearrange
@@ -160,7 +188,7 @@ AddToFunc ToggleNotes
     || echo AnimatedMove keep -2'
 + I Next (WikiJournal) FlipFocus
 + I Next (WikiJournal) Raise
-+ I Next (WikiJournal) WarpToWindow !raise +50p +50p
++ I Next (WikiJournal) WarpToWindow +50p +50p
 + I TestRc (NoMatch) Exec exec urxvt \
     +sb -geometry 80x11+5-5 \
     -fade 30 -fadeColor black \
@@ -262,6 +290,16 @@ Key I WFSI 4S FvwmIdent
 Key Y A	   4  Exec exec flameshot gui -p $HOME/Pictures/Screenshots
 Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
 
+#bindsym XF86AudioRaiseVolume exec "pw-volume change +2.5%; pkill -RTMIN+8 waybar"
+#bindsym XF86AudioLowerVolume exec "pw-volume change -2.5%; pkill -RTMIN+8 waybar"
+#bindsym XF86AudioMute exec "pw-volume mute toggle; pkill -RTMIN+8 waybar"
+
+Key XF86AudioRaiseVolume A N Exec exec amixer -q sset Master 5%+
+Key XF86AudioLowerVolume A N Exec exec amixer -q sset Master 5%-
+Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
+
+
+
 ##################
 # Mouse bindings #
 ##################
@@ -270,5 +308,6 @@ Mouse 3 R  A Exec exec urxvt +sb -geometry 80x9 \
 	-fade 30 -fadeColor black -cr limegreen -bc
 Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
+
 
 # End of Fvwm3 config
