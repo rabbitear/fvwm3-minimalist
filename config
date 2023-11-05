@@ -6,6 +6,7 @@
 # - xclip
 # - xset (debian x11-xserver-utls)
 # - xclock (debian x11-apps)
+# - xeyes
 # - xwd (debian x11-apps)
 # - feh
 # - stalonetray (https://github.com/kolbusa/stalonetray)
@@ -82,7 +83,7 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: Padding 0 0
 *ButtonBox: (1x1, Action ToggleNotes, Swallow(kill) xeyes "Exec exec xeyes")
 *ButtonBox: (6x1, Action ToggleQuickTerm, Swallow(kill) xclock "Exec exec \
-    xclock -digital -render -padding 0 -update 1 -strftime '%H:%M %a %b %d' \
+    xclock -digital -render -padding 0 -update 1 -strftime ' %H:%M %a %b %d' \
     -face xft:NotoSansMono-Regular:size=8")
 
 
