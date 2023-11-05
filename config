@@ -60,7 +60,7 @@ AddToFunc StartFunction
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
 + I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed -geometry 80x20+5+26 \
 	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
-+ I Exec exec feh --bg-scale ~/.fvwm/pix/wallpaper2.jpg
++ I Exec exec feh --bg-scale ~/.fvwm/pix/blackbrick.jpg
 + I Exec exec xset r rate 175 60
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
