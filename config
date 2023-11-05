@@ -157,6 +157,15 @@ AddToFunc MoveOrRaiseOrLowerFunc
 + M Move
 + D Maximize 100 100
 
+DestroyFunc RaiseOrMoveOrResizeFunc
+AddToFunc RaiseOrMoveOrResizeFunc
++ I Raise 
++ C Move
++ M Resize
++ D Maximize 100 100
+
+
+
 DestroyFunc WindowUp
 AddToFunc WindowUp
 + I Focus
@@ -307,8 +316,10 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 Mouse 1 R  A Nop
 Mouse 3 R  A Exec exec urxvt +sb -geometry 80x9 \
 	-fade 30 -fadeColor black -cr limegreen -bc
-Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
+Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
+#Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
+Mouse 3 I  A Iconify off
 
 
 # End of Fvwm3 config
