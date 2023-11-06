@@ -237,7 +237,16 @@ AddToFunc ToggleFirefox
 + I Echo "Starting firefox.. window id of $[w.id]"
 + I Next (Navigator|firefox|*Firefox) WarpToWindow +50p +50p
 
-#+ I Wait "Navigator|firefox|*Mozzila Firefox"
+DestroyFunc ToggleGimp
+AddToFunc ToggleGimp
++ I All (gimp*) Close
++ I TestRc (NoMatch) Exec exec gimp
++ I Wait gimp*
++ I Next (gimp*) Raise
++ I Next (gimp*) FlipFocus 
++ I Next (gimp*) WarpToWindow +30p +35p
+
+
 
 DestroyFunc StartSurf
 AddToFunc StartSurf
@@ -292,6 +301,7 @@ Key F      A 4S Function ToggleFirefox
 Key Space  A 4M Function ToggleNotes
 Key Space  A 4C Function ToggleQuickTerm
 Key C      A 4  Function ToggleConsole
+Key G      A 4  Function ToggleGimp
 
 # Globalish keybindings
 Key R A    4S Restart
@@ -299,10 +309,7 @@ Key L A    4S Exec xscreensaver-command -lock
 Key I WFSI 4S FvwmIdent
 Key Y A	   4  Exec exec flameshot gui -p $HOME/Pictures/Screenshots
 Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
-
-#bindsym XF86AudioRaiseVolume exec "pw-volume change +2.5%; pkill -RTMIN+8 waybar"
-#bindsym XF86AudioLowerVolume exec "pw-volume change -2.5%; pkill -RTMIN+8 waybar"
-#bindsym XF86AudioMute exec "pw-volume mute toggle; pkill -RTMIN+8 waybar"
+Key Z A	   4  Exec exec flameshot full --clipboard
 
 Key XF86AudioRaiseVolume A N Exec exec amixer -q sset Master 5%+
 Key XF86AudioLowerVolume A N Exec exec amixer -q sset Master 5%-
