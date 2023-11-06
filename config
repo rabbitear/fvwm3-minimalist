@@ -219,11 +219,14 @@ AddToFunc ToggleQuickTerm
 + I Next (QuickTerm, !raise) Raise
 + I Next (QuickTerm) MoveToPage prev
 + I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
-+ I TestRc (NoMatch) Exec exec urxvt +sb -bc -uc \
-    -name QuickTerm -fade 30 \
-    -geometry 80x13+5+5 
++ I TestRc (NoMatch) Exec exec alacritty -T QuickTerm
 + I Wait QuickTerm
 + I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
+
+#+ I TestRc (NoMatch) Exec exec urxvt +sb -bc -uc \
+#    -name QuickTerm -fade 30 \
+#    -geometry 80x13+5+5 
+
 
 DestroyFunc ToggleFirefox
 AddToFunc ToggleFirefox
