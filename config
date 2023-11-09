@@ -20,6 +20,7 @@
 # Optional very nice to haves
 # - flameshot
 # - xscreensaver
+# - alacritty
 
 DesktopSize 1x1
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
@@ -327,6 +328,8 @@ Mouse 1 R  A Nop
 Mouse 3 R  A Exec exec urxvt +sb -geometry 80x9 \
 	-fade 30 -fadeColor black -cr limegreen -bc
 Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
+Mouse 1 WFS S Move
+Mouse 1 WFS M Move
 #Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I  A Iconify off
