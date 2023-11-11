@@ -200,15 +200,20 @@ AddToFunc ToggleNotes
 + I Next (WikiJournal) FlipFocus
 + I Next (WikiJournal) Raise
 + I Next (WikiJournal) WarpToWindow +50p +50p
-+ I TestRc (NoMatch) Exec exec urxvt \
-    +sb -geometry 80x11+5-5 \
-    -fade 30 -fadeColor black \
-    -name WikiJournal -title WikiJournal \
-    +uc -sl 0 -b 10 \
-    -e nvim -c WikiJournal && xset r rate 175 60
++ I TestRc (NoMatch) Exec exec st -g 80x11+5+5 -n WikiJournal \
+    -T WikiJournal -f "Agave Nerd Font:size=24" \
+    -e nvim -c WikiJournal
 + I Wait WikiJournal
 + I Next (WikiJournal) WarpToWindow +50p +50p
 + I Echo Toggled Notes
+
+#+ I TestRc (NoMatch) Exec exec urxvt \
+#    +sb -geometry 80x11+5-5 \
+#    -fade 30 -fadeColor black \
+#    -name WikiJournal -title WikiJournal \
+#    +uc -sl 0 -b 10 \
+#    -e nvim -c WikiJournal && xset r rate 175 60
+
 
 DestroyFunc ToggleQuickTerm
 AddToFunc ToggleQuickTerm
@@ -325,8 +330,7 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 # Mouse bindings #
 ##################
 Mouse 1 R  A Nop
-Mouse 3 R  A Exec exec urxvt +sb -geometry 80x9 \
-	-fade 30 -fadeColor black -cr limegreen -bc
+Mouse 3 R  A Exec exec st -f "Iosevka Nerd Font:size=18" -g 80x9
 Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS S Move
 Mouse 1 WFS M Move
