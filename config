@@ -42,6 +42,7 @@ Style "urxvt" PositionPlacement UnderMouse
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
 Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
+Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
 
 
 # StartFunction is executed on startups and restats.
@@ -332,7 +333,7 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 Mouse 1 R  A Nop
 Mouse 3 R  A Exec exec st -f "Iosevka Nerd Font:size=18" -g 80x9
 Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
-Mouse 1 WFS S Move
+Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
 #Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
