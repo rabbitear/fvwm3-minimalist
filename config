@@ -24,10 +24,27 @@
 
 DesktopSize 1x1
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
-Style * IconBox 5 120 -5 -5, IconFill Bottom Right
+#Style * IconBox 5 120 -5 -5, IconFill Bottom Right
+#Style * IconBox 240 0 +5 -5, IconFill Right Bottom
+Style * IconBox -5 26 5 -5, IconFill Top Right 
 Style * ResizeOutline
 Style * SloppyFocus, MouseFocusClickRaises
-Style * NoTitle
+
+#AddToDecor Default
+#+ ButtonStyle 6                   \
+#  Vector 4 50x25@1 85x75@0 15x75@0 50x25@1
+#+ ButtonStyle 6 ToggledActiveUp   \
+#  Vector 4 50x75@0 85x25@1 15x25@0 50x75@0
+#+ ButtonStyle 6 ToggledActiveDown \
+#  Vector 4 50x75@0 85x25@1 15x25@0 50x75@0
+#+ ButtonStyle 6 ToggledInactive   \
+#  Vector 4 50x75@0 85x25@1 15x25@0 50x75@0
+#+ ButtonStyle 6 - MwmDecorShade
+#Mouse 0 6 N WindowShade
+#
+#Style * MiniIcon term.png
+#ButtonStyle 1 MiniIcon
+#ChangeDecor Default
 
 Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
 Style * IconFont "xft:Luxi Mono:Medium:Roman:size=10:encoding=iso8859-1;-adobe-courier-bold-r-normal--10-*"
@@ -55,7 +72,6 @@ AddToFunc StartFunction
 + I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
 + I PipeRead 'test -d /dev/shm/fvwmicon && echo SetEnv ICON_TMPDIR /dev/shm/fvwmicon || echo SetEnv ICON_TMPDIR $[FVWM_USERDIR]'
 + I Test (X xcompmgr) PipeRead 'pgrep -x "xcompmgr" > /dev/null || echo Exec exec xcompmgr -cCfF -t-5 -l-5 -r4.2 -o.55 -D6'
-+ I Test (X xscreensaver) PipeRead 'pgrep -x "xscreensaver" > /dev/null || echo Exec exec xscreensaver -no-splash'
 + I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
 + I Test (X nm-tray) PipeRead 'pgrep -x "nm-tray" > /dev/null || echo Exec exec nm-tray'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
@@ -67,6 +83,11 @@ AddToFunc StartFunction
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
 + I All (Iconic) ReThumbnail
+
+# ktr - taking xscreensaver out, I think it may be causing a crash.
+#       have not proved that.
+#+ I Test (X xscreensaver) PipeRead 'pgrep -x "xscreensaver" > /dev/null || echo Exec exec xscreensaver -no-splash'
+
 
 # ExitFunction is excuted when exiting or restarting before actually 
 # quitting. Kill modules here
@@ -202,7 +223,7 @@ AddToFunc ToggleNotes
 + I Next (WikiJournal) Raise
 + I Next (WikiJournal) WarpToWindow +50p +50p
 + I TestRc (NoMatch) Exec exec st -g 80x11+5+5 -n WikiJournal \
-    -T WikiJournal -f "Agave Nerd Font:size=24" \
+    -T WikiJournal -f "Agave Nerd Font:size=16" \
     -e nvim -c WikiJournal
 + I Wait WikiJournal
 + I Next (WikiJournal) WarpToWindow +50p +50p
@@ -295,7 +316,7 @@ Key W A 4S Exec exec surf -z 1.0 -s -i "https://en.wikipedia.org/wiki/Special:Se
 Key X A 4  Exec exec rofi -show drun
 Key D A 4  StartSurf
 Key D A 4S Exec exec surf -z 1.3 "https://duckduckgo.com/?kae=t&k1=-1&km=l&kt=e&q=$(xclip -o -selection primary)"
-
+Key B A 4  Exec exec rofi -show firefox_bookmarks -modi "~/.fvwm/bin/rofi_firefox_bookmarks.sh"
 # rofi ddgr search, see ~/.fvwm/bin/ddgr_search.py
 # and https://github.com/gmagno/rofi-ddgr
 Key S A 4  Exec exec rofi \
@@ -335,6 +356,7 @@ Mouse 3 R  A Exec exec st -f "Iosevka Nerd Font:size=18" -g 80x9
 Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
+Mouse 1 T   D Function Thumbnail
 #Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I  A Iconify off
