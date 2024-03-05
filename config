@@ -313,10 +313,9 @@ Key J A 4   Next (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
 # Start programs
 Key W A 4  Exec exec surf -z 1.8 -s "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
 Key W A 4S Exec exec surf -z 1.0 -s -i "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
-Key X A 4  Exec exec rofi -show drun
-Key D A 4  StartSurf
+Key D A 4  Exec exec rofi -show drun
 Key D A 4S Exec exec surf -z 1.3 "https://duckduckgo.com/?kae=t&k1=-1&km=l&kt=e&q=$(xclip -o -selection primary)"
-Key B A 4  Exec exec rofi -show firefox_bookmarks -modi "~/.fvwm/bin/rofi_firefox_bookmarks.sh"
+Key B A 4  Exec exec rofi -show firefox_bookmarks -modi "firefox_bookmarks:~/.fvwm/bin/rofi_firefox_bookmarks.sh"
 # rofi ddgr search, see ~/.fvwm/bin/ddgr_search.py
 # and https://github.com/gmagno/rofi-ddgr
 Key S A 4  Exec exec rofi \
@@ -353,13 +352,14 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 ##################
 Mouse 1 R  A Nop
 Mouse 3 R  A Exec exec st -f "Iosevka Nerd Font:size=18" -g 80x9
-Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
+Mouse 1 FS  A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
-Mouse 1 T   D Function Thumbnail
+Mouse 1 T   A MoveOrRaiseOrLowerFunc
+#Mouse 1 T  D Function Thumbnail
 #Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
-Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
-Mouse 3 I  A Iconify off
+Mouse 3 FS  A Function ResizeOrRaiseOrIconifyFunc
+Mouse 3 I   A Iconify off
 
 
 # End of Fvwm3 config
