@@ -30,21 +30,23 @@ Style * IconBox -5 26 5 -5, IconFill Top Right
 Style * ResizeOutline
 Style * SloppyFocus, MouseFocusClickRaises
 
-#AddToDecor Default
-#+ ButtonStyle 6                   \
-#  Vector 4 50x25@1 85x75@0 15x75@0 50x25@1
-#+ ButtonStyle 6 ToggledActiveUp   \
-#  Vector 4 50x75@0 85x25@1 15x25@0 50x75@0
-#+ ButtonStyle 6 ToggledActiveDown \
-#  Vector 4 50x75@0 85x25@1 15x25@0 50x75@0
-#+ ButtonStyle 6 ToggledInactive   \
-#  Vector 4 50x75@0 85x25@1 15x25@0 50x75@0
-#+ ButtonStyle 6 - MwmDecorShade
-#Mouse 0 6 N WindowShade
-#
-#Style * MiniIcon term.png
-#ButtonStyle 1 MiniIcon
-#ChangeDecor Default
+# Took these button styles from fvwm-sgi config 
+# https://github.com/ZoomTen/fvwm2-sgi/blob/master/.fvwm/components/wm_decorations.fvwm2rc
+ButtonStyle 2 Vector 9 0+5px100-6p@3 100-7px100-6p@3 100-7px-0+4p@3 0+5px0+4p@3 0+5px100-5p@3 0+7px100-5p@2 0+8px100-5p@3 100-6px100-5p@3 100-6px-0+6p@3
+ButtonStyle 4 Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3
+ButtonStyle 1 Vector 9 0+4px50+1p@3 100-6px50+1p@3 100-6px50-2p@3 0+4px50-2p@3 0+4px50+2@3 0+5px50+2p@2 0+6px50+2p@2 100-5px50+2p@3 100-5px50@3
+
+Mouse 0 1 N WindowShade
+Mouse 0 4 N Thumbnail
+Mouse 0 2 N Maximize
+
+WindowFont              "-*-helvetica-bold-o-*-*-14-*-*-*-*-*-*"
+TitleStyle LeftJustified
+
+# Generic menu style
+MenuStyle Mwm
+MenuStyle "*" Font -*-helvetica-bold-o-*-*-12-*-*-*-*-*-*
+
 
 Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
 Style * IconFont "xft:Luxi Mono:Medium:Roman:size=10:encoding=iso8859-1;-adobe-courier-bold-r-normal--10-*"
@@ -78,7 +80,7 @@ AddToFunc StartFunction
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
 + I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed -geometry 80x20+5+26 \
 	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
-+ I Exec exec feh --bg-scale ~/.fvwm/pix/blackbrick.jpg
++ I Exec exec feh --bg-scale ~/.fvwm/pix/space-wallpaper1.jpg
 + I Exec exec xset r rate 175 60
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
@@ -187,7 +189,14 @@ AddToFunc RaiseOrMoveOrResizeFunc
 + M Resize
 + D Maximize 100 100
 
+AddToFunc UrgencyFunc
++ I Iconify off 
++ I FlipFocus 
++ Raise 
++ WarpToWindow !raise 5p 5p
 
+AddToFunc UrgencyDoneFunc
++ I Nop 
 
 DestroyFunc WindowUp
 AddToFunc WindowUp
@@ -289,14 +298,14 @@ AddToFunc StartSurf
 # Key Bindings #
 ################
 # Iconify, Maximize, Close
-Key Space WFS   4  Function Thumbnail
-Key Space A     4S All (CurrentPage,!Fvwm*B*) Function Thumbnail
+#Key Space WFS   4  Function Thumbnail
+#Key Space A     4S All (CurrentPage,!Fvwm*B*) Function Thumbnail
 Key I WFS 	4  Function Thumbnail
 Key I I		4  Iconify off
 Key I I		M  Iconify off
-Key Space A 	M  Function Thumbnail
-Key Space I 	M  Iconify off
-Key Space I 	4  Iconify off
+#Key Space A 	M  Function Thumbnail
+#Key Space I 	M  Iconify off
+#Key Space I 	4  Iconify off
 Key M WFS  	4  Maximize 0 100
 Key M WFS  	4S Maximize 100 0
 Key M WFS	4C Maximize 100 100
@@ -328,8 +337,8 @@ Key S A 4  Exec exec rofi \
 # Toggle Functions
 Key F      A 4  Function ToggleFirefox
 Key F      A 4S Function ToggleFirefox
-Key Space  A 4M Function ToggleNotes
-Key Space  A 4C Function ToggleQuickTerm
+#Key Space  A 4M Function ToggleNotes
+#Key Space  A 4C Function ToggleQuickTerm
 Key C      A 4  Function ToggleConsole
 Key G      A 4  Function ToggleGimp
 
