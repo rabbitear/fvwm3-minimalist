@@ -36,7 +36,7 @@ ButtonStyle 2 Vector 9 0+5px100-6p@3 100-7px100-6p@3 100-7px-0+4p@3 0+5px0+4p@3 
 ButtonStyle 4 Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3
 ButtonStyle 1 Vector 9 0+4px50+1p@3 100-6px50+1p@3 100-6px50-2p@3 0+4px50-2p@3 0+4px50+2@3 0+5px50+2p@2 0+6px50+2p@2 100-5px50+2p@3 100-5px50@3
 
-Mouse 0 1 N WindowShade
+Mouse 0 1 N Menu Window-Ops
 Mouse 0 4 N Thumbnail
 Mouse 0 2 N Maximize
 
@@ -210,6 +210,24 @@ AddToFunc EWMHActivateWindowFunc
 + I Focus
 + I Raise
 + I WarpToWindow 50 50
+
+#########
+# Menus #
+#########
+AddToMenu Window-Ops
+"  Select a window to...  "  Title 
++ "(Un)Shade "    WindowShade
++ "Thumbnail"     Thumbnail 
++ ""
++ "Move "         Move
++ "Raise"         Raise 
++ "Lower "        Lower 
++ "(Un)Maximize"  Maximize 
++ "" 
++ "Identify"      Module FvwmIdent
++ "Screenshot"    Exec exec flameshot gui -p ~/Pictures/Screenshots
++ ""
++ "Close"         Close
 
 
 #####################
