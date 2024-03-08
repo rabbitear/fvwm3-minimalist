@@ -200,6 +200,18 @@ AddToFunc UrgencyFunc
 AddToFunc UrgencyDoneFunc
 + I Nop 
 
+# Mouse Bindings Functions from default-config
+DestroyFunc RaiseMoveX
+AddToFunc RaiseMoveX
++ I Raise
++ M $0
++ D $1
+
+DestroyFunc RaiseMove
+AddToFunc RaiseMove
++ I Raise
++ M $0
+
 DestroyFunc WindowUp
 AddToFunc WindowUp
 + I Focus
@@ -381,12 +393,17 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 ##################
 Mouse 1 R  A Nop
 Mouse 3 R  A Exec exec st -f "Iosevka Nerd Font:size=18" -g 80x9
-Mouse 1 FS  A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
-Mouse 1 T   A MoveOrRaiseOrLowerFunc
+
+Mouse 1 T    A RaiseMoveX Move Maximize
+Mouse 1 FS   A RaiseMove Resize
+
+#Mouse 1 T   A MoveOrRaiseOrLowerFunc
+#Mouse 1 FS  A Function RaiseOrMoveOrResizeFunc
 #Mouse 1 T  D Function Thumbnail
 #Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
+
 Mouse 3 FS  A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I   A Iconify off
 Mouse 2 R   A WindowList c c
