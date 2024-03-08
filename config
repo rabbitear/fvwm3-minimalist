@@ -62,7 +62,8 @@ Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
 Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
-
+Style "xdaliclock" NoTitle, NeverFocus, StaysOnBottom, !Iconifiable, \
+  WindowListSkip, BorderWidth 0, HandleWidth 0
 
 # StartFunction is executed on startups and restats.
 DestroyFunc StartFunction
@@ -78,6 +79,7 @@ AddToFunc StartFunction
 + I Test (X nm-tray) PipeRead 'pgrep -x "nm-tray" > /dev/null || echo Exec exec nm-tray'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
++ I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -geometry -5+26 -transparent -visual TrueColor -nocycle -noseconds -24 -fg lightgreen'
 + I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed -geometry 80x20+5+26 \
 	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
 + I Exec exec feh --bg-scale ~/.fvwm/pix/space-wallpaper1.jpg
@@ -387,6 +389,7 @@ Mouse 1 T   A MoveOrRaiseOrLowerFunc
 #Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS  A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I   A Iconify off
+Mouse 2 R   A WindowList c c
 
 
 # End of Fvwm3 config
