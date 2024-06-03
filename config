@@ -28,6 +28,7 @@ ImagePath $FVWM_USERDIR/pix
 EwmhBaseStruts  0 128 32 0
 EdgeScroll      100 100
 EdgeThickness   2
+EdgeResistance 350
 Style * EdgeMoveDelay 350
 Style * EdgeMoveResistance 20
 Style * SnapAttraction 8
