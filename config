@@ -22,8 +22,16 @@
 # - xscreensaver
 # - alacritty
 
-DesktopSize 1x1
+DesktopSize 2x2
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
+ImagePath $FVWM_USERDIR/pix
+EwmhBaseStruts  0 128 32 0
+EdgeScroll      100 100
+EdgeThickness   2
+Style * EdgeMoveDelay 350
+Style * EdgeMoveResistance 20
+Style * SnapAttraction 8
+
 Style * IconBox 5 120 -5 -5, IconFill Bottom Right
 #Style * IconBox 240 0 +5 -5, IconFill Right Bottom
 #Style * IconBox -5 26 5 -5, IconFill Top Right 
@@ -52,6 +60,77 @@ Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-couri
 Style * IconFont "xft:Luxi Mono:Medium:Roman:size=10:encoding=iso8859-1;-adobe-courier-bold-r-normal--10-*"
 
 
+#####
+# -decor-
+# ktr - this decore comes mainly from the 'Stone Age' fvwm theme
+##################
+Colorset 0 fg burlywood, bg #66594b, TiledPixmap buttons/rock-beige.xpm, Tint
+Colorset 1 fg burlywood1, bg #71513E, TiledPixmap buttons/rock-ruddy.xpm, Tint
+Colorset 90 Transparent
+
+AddToDecor "stoneage" BorderStyle -- !NoInset
+AddToDecor "stoneage" BorderStyle -- HiddenHandles
+AddToDecor "stoneage" BorderStyle Active   TiledPixmap buttons/rock-ruddy.xpm
+AddToDecor "stoneage" BorderStyle Inactive TiledPixmap buttons/rock-beige.xpm
+
+AddToDecor "stoneage" TitleStyle -- raised
+AddToDecor "stoneage" TitleStyle ActiveUp   TiledPixmap buttons/rock-ruddy.xpm
+AddToDecor "stoneage" TitleStyle ActiveDown TiledPixmap buttons/rock-ruddy.xpm
+AddToDecor "stoneage" TitleStyle Inactive   TiledPixmap buttons/rock-beige.xpm
+AddToDecor "stoneage" TitleStyle LeftJustified
+AddToDecor "stoneage" TitleStyle Height 25
+
++ ButtonStyle Reset
++ ButtonStyle All Pixmap empty.xpm
++ ButtonStyle All -- raised
++ AddButtonStyle 1 ActiveUp   pixmap buttons/rock_menu.xpm
++ AddButtonStyle 1 ActiveDown pixmap buttons/rock_menu.xpm
++ AddButtonStyle 1 Inactive   pixmap buttons/rock-beige.xpm
++ AddButtonStyle 2 ActiveUp   pixmap buttons/gold_min.xpm
++ AddButtonStyle 2 ActiveDown pixmap buttons/rock-beige.xpm
++ AddButtonStyle 2 Inactive   pixmap buttons/gold_min.xpm
++ AddButtonStyle 3 ActiveUp   pixmap viewer.xpm
++ AddButtonStyle 3 ActiveDown pixmap viewer.xpm
++ AddButtonStyle 3 Inactive   pixmap viewer.xpm
++ AddButtonStyle 4 ActiveUp   pixmap buttons/rock_min.xpm
++ AddButtonStyle 4 ActiveDown pixmap buttons/rock_min.xpm
++ AddButtonStyle 4 Inactive   pixmap buttons/rock-beige.xpm
++ AddButtonStyle 5 ActiveUp   pixmap mini.left2.xpm
++ AddButtonStyle 5 ActiveDown pixmap buttons/rock-beige.xpm
++ AddButtonStyle 5 Inactive   pixmap mini.left2.xpm
++ AddButtonStyle 7 ActiveUp   pixmap mini.right2.xpm
++ AddButtonStyle 7 ActiveDown pixmap buttons/rock-beige.xpm
++ AddButtonStyle 7 Inactive   pixmap mini.right2.xpm
+
+#IconFont -adobe-helvetica-medium-r-normal--10-100-75-75-p-56-iso8859-1
+#IconFont "xft:snap"
+IconFont "xft:Trebuchet MS:size=10"
+*FvwmIconMan: 1 Font -adobe-helvetica-medium-r-normal--10-100-75-75-p-56-iso8859-1
+
+MenuStyle * MenuColorset 1
+MenuStyle * BorderWidth 3
+MenuStyle * TrianglesSolid
+MenuStyle * SeparatorsShort
+MenuStyle * Hilight3DThick 
+MenuStyle * Font -b&h-lucida-bold-r-normal-sans-12-120-75-75-p-79-iso8859-1
+MenuStyle * SidePic
+
+Style * Colorset 0
+Style * HilightColorset 1
+#Style * Font -adobe-helvetica-bold-r-normal--14-140-75-75-p-82-iso8859-1
+Style * Font "xft:Trebuchet MS:size=12"
+Style * BorderWidth 4
+Style * HandleWidth 4
+Style * FvwmBorder
+
+Style * UseDecor stoneage
+
+
+
+####################
+## Program Styles ##
+#################### 
+
 Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "WikiJournal" Sticky, !Closable, !Iconifiable, !Title, !Maximizable
@@ -60,7 +139,9 @@ Style "FvwmLogView" Sticky, !Closable
 Style "urxvt" PositionPlacement UnderMouse
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
 Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
-    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
+    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom, Sticky
+Style "FvwmPager" NoTitle, BorderWidth 6, HandleWidth 6, !Maximizable, \
+    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom, Sticky
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
 Style "xdaliclock" NoTitle, NeverFocus, StaysOnBottom, !Iconifiable, \
   WindowListSkip, BorderWidth 0, HandleWidth 0
@@ -86,6 +167,7 @@ AddToFunc StartFunction
 + I Exec exec xset r rate 175 60
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
++ I Module FvwmPager 0 0
 + I All (Iconic) ReThumbnail
 
 # ktr - taking xscreensaver out, I think it may be causing a crash.
@@ -99,6 +181,7 @@ DestroyFunc ExitFunction
 AddToFunc ExitFunction
 + I Test (ToRestart) KillModule FvwmEvent
 + I Test (ToRestart) KillModule ButtonBox
+* I Test (ToRestart) KillModule FvwmPager
 
 
 DestroyModuleConfig ButtonBox: *
@@ -114,6 +197,19 @@ DestroyModuleConfig ButtonBox: *
     xclock -digital -render -padding 0 -update 1 -strftime ' %H:%M %a %b %d' \
     -face xft:NotoSansMono-Regular:size=12")
 
+DestroyModuleConfig FvwmPager: *
+*FvwmPager: Colorset * 0
+*FvwmPager: HilightColorset * 1
+*FvwmPager: Font none
+*FvwmPager: DeskTopScale 64
+*FvwmPager: Geometry 90x60-5+26
+*FvwmPager: Label 0 Pager
+*FvwmPager: SmallFont 5x7
+*FvwmPager: Columns 1
+*FvwmPager: Rows 1
+*FvwmPager: Balloons 
+*FvwmPager: UseSkipList
+*FvwmPager: Balloons Pager
 
 
 DestroyModuleConfig FvwmEvent: *
