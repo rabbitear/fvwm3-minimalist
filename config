@@ -24,9 +24,9 @@
 
 DesktopSize 1x1
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
-#Style * IconBox 5 120 -5 -5, IconFill Bottom Right
+Style * IconBox 5 120 -5 -5, IconFill Bottom Right
 #Style * IconBox 240 0 +5 -5, IconFill Right Bottom
-Style * IconBox -5 26 5 -5, IconFill Top Right 
+#Style * IconBox -5 26 5 -5, IconFill Top Right 
 Style * ResizeOutline
 Style * SloppyFocus, MouseFocusClickRaises
 
@@ -102,16 +102,17 @@ AddToFunc ExitFunction
 
 
 DestroyModuleConfig ButtonBox: *
-*ButtonBox: Geometry 112x16+5+5
+*ButtonBox: Geometry 168x24+5+5
 *ButtonBox: BoxSize fixed
 *ButtonBox: Rows 1
 *ButtonBox: Columns 7
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
-*ButtonBox: (1x1, Action ToggleNotes, Swallow(kill) xeyes "Exec exec xeyes")
+*ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
+    $widthx$height+$left+$top o+50 +22m`, Swallow(kill) xeyes "Exec exec xeyes")
 *ButtonBox: (6x1, Action ToggleQuickTerm, Swallow(kill) xclock "Exec exec \
     xclock -digital -render -padding 0 -update 1 -strftime ' %H:%M %a %b %d' \
-    -face xft:NotoSansMono-Regular:size=8")
+    -face xft:NotoSansMono-Regular:size=12")
 
 
 
@@ -231,10 +232,12 @@ AddToFunc EWMHActivateWindowFunc
 #########
 # Menus #
 #########
+DestroyMenu Window-Ops
 AddToMenu Window-Ops
 "  Select a window to...  "  Title 
 + "(Un)Shade "    WindowShade
-+ "Thumbnail"     Thumbnail 
++ "(Un)Stick "    Stick
++ "Thumbnail "    Thumbnail 
 + ""
 + "Move "         Move
 + "Raise"         Raise 
@@ -246,6 +249,16 @@ AddToMenu Window-Ops
 + ""
 + "Close"         Close
 
+DestroyMenu ToDoMenu
+AddToMenu ToDoMenu
++ "What do you want TODO?" Title
++ "Firefox"     Exec exec firefox
++ "URxvt"       Exec exec urxvt +sb 
++ ""            Nop
++ "Programs"    Exec exec rofi -modi drun,run -show drun
++ ""            Nop
++ "Restart"     Restart
++ "Logout"      Quit
 
 #####################
 # Program Functions #
