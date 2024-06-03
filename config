@@ -348,8 +348,8 @@ AddToMenu Window-Ops
 
 DestroyMenu ToDoMenu
 AddToMenu ToDoMenu
-+ "What do you want TODO?" Title
-+ "Firefox"     Exec exec firefox
++ "-=> What do you want TODO? <=-" Title
++ "Firefox"     ToggleFirefox
 + "URxvt"       Exec exec urxvt +sb 
 + ""            Nop
 + "Programs"    Exec exec rofi -modi drun,run -show drun
