@@ -35,7 +35,7 @@
 ! $ printf '\e]710;%s\007' "xft:Terminus:pixelsize=12"
 
 ! The font
-URxvt.font: xft:NotoMono
+URxvt.font: xft:3270 Nerd Font:size=16
 URxvt.scrollBar: false
 
 ! Somethings need to lessen the distance between chars, use letterSpace:
@@ -45,7 +45,6 @@ URxvt.scrollBar: false
 ! This creates a transparent background.
 urxvt*depth: 32
 urxvt*background: rgba:0000/0000/0200/c800
-
 
 ! Scrollback position
 ! do not scroll with output
@@ -61,18 +60,15 @@ URxvt.secondaryScroll: 0
 
 URxvt.perl-ext-common: default,matcher,url-select,selection-to-clipboard,keyboard-select,font-size,-confirm-paste,-selection-popup,-option-popup
 
-URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.url-launcher: xdg-open
 URxvt.matcher.button: 1
 URxvt.matcher.rend.0: Uline Bold fg5
  
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.keysym.M-Escape:keyboard-select:activate
-URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.launcher: xdg-open
 URxvt.url-select.underline: true
 
-URxvt.keysym.C-S-Down:  resize-font:smaller
-URxvt.keysym.C-S-Up:    resize-font:bigger
- 
 URxvt.clipboard.autocopy: true
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.Keysym.M-v: perl:clipboard:paste
