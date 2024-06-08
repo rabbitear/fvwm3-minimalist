@@ -164,7 +164,7 @@ AddToFunc StartFunction
 + I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -geometry -5+26 -transparent -visual TrueColor -nocycle -noseconds -24 -fg lightgreen'
 + I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed -geometry 80x20+5+26 \
 	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
-+ I Exec exec feh --bg-fill ~/.fvwm/pix/wallpaper-dark1.jpg
++ I Exec exec feh --bg-fill ~/.fvwm/pix2/wallpaper-dark1.jpg
 + I Exec exec xset r rate 175 60
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
