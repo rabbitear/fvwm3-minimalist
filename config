@@ -41,6 +41,7 @@ ButtonStyle 1 Vector 9 0+4px50+1p@3 100-6px50+1p@3 100-6px50-2p@3 0+4px50-2p@3 0
 Mouse 0 1 N Menu Window-Ops Close
 Mouse 0 4 N Thumbnail
 Mouse 0 2 N Maximize
+Mouse 0 3 N Maximize growonlayers $[w.layer] -1 grow 0
 
 TitleStyle LeftJustified
 
@@ -87,19 +88,22 @@ AddToDecor "stoneage" TitleStyle Height 25
 + ButtonStyle Reset
 + ButtonStyle All Pixmap empty.png
 + ButtonStyle All -- raised
-+ AddButtonStyle 1 ActiveUp   pixmap rock_menu.png
-+ AddButtonStyle 1 ActiveDown pixmap rock_menu.png
-+ AddButtonStyle 1 Inactive   pixmap rock-beige.png
++ ButtonStyle 1 ActiveUp MiniIcon
++ ButtonStyle 1 ActiveDown MiniIcon
++ ButtonStyle 1 Inactive MiniIcon
++ AddButtonStyle 1 ActiveUp   MiniIcon
++ AddButtonStyle 1 ActiveDown MiniIcon
++ AddButtonStyle 1 Inactive   MiniIcon
 + AddButtonStyle 2 ActiveUp   pixmap gold_min.png
 + AddButtonStyle 2 ActiveDown pixmap rock-beige.png
 + AddButtonStyle 2 Inactive   pixmap gold_min.png
 # viewer.xpm doesn't exist
-+ AddButtonStyle 3 ActiveUp   pixmap viewer.xpm
-+ AddButtonStyle 3 ActiveDown pixmap viewer.xpm
-+ AddButtonStyle 3 Inactive   pixmap viewer.xpm
-+ AddButtonStyle 4 ActiveUp   pixmap rock_min.png
-+ AddButtonStyle 4 ActiveDown pixmap rock_min.png
-+ AddButtonStyle 4 Inactive   pixmap rock-beige.png
++ AddButtonStyle 3 ActiveUp   pixmap mini/mini.viewer.png
++ AddButtonStyle 3 ActiveDown pixmap mini/mini.viewer.png
++ AddButtonStyle 3 Inactive   pixmap mini/mini.viewer.png
++ AddButtonStyle 4 ActiveUp   Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3 
++ AddButtonStyle 4 ActiveDown Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3 
++ AddButtonStyle 4 Inactive   Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3
 # mini.left2.xpm doesn't exist
 + AddButtonStyle 5 ActiveUp   pixmap mini.left2.xpm
 + AddButtonStyle 5 ActiveDown pixmap rock-beige.png
@@ -122,6 +126,7 @@ Style * BorderWidth 4
 Style * HandleWidth 4
 Style * FvwmBorder
 
+Style * EWMHDonateMiniIcon, EWMHDonateIcon
 Style * UseDecor stoneage
 
 ####################
@@ -133,7 +138,7 @@ Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
 Style "WikiJournal" Sticky, !Closable, !Iconifiable, !Title, !Maximizable
 Style "Picture-in-Picture" Sticky, StaysOnTop
 Style "FvwmLogView" !Closable
-Style "urxvt" PositionPlacement UnderMouse
+Style "urxvt" PositionPlacement UnderMouse, MiniIcon mini/mini.term.png
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
 Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom, Sticky
@@ -142,6 +147,9 @@ Style "FvwmPager" NoTitle, BorderWidth 6, HandleWidth 6, !Maximizable, \
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
 Style "xdaliclock" NoTitle, NeverFocus, StaysOnBottom, !Iconifiable, \
   WindowListSkip, BorderWidth 0, HandleWidth 0
+
+# MiniIcons 
+Style "Surf" MiniIcon mini/mini.www.png, MinOverlapPlacement
 
 #############
 # Functions #
@@ -409,6 +417,7 @@ AddToFunc StartSurf
 + I Exec exec surf -z 1.8 "https://duckduckgo.com/lite"
 + I Wait Surf
 + I Next (Surf) WarpToWindow +150p +130p
++ I Next (Surf) Resize 630p 268p
 
 ################
 # Key Bindings #
@@ -440,13 +449,17 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 ##################
 # Mouse bindings #
 ##################
-Mouse 1 R  A Nop
-Mouse 3 R  A Exec exec st -f "Iosevka Nerd Font:size=18" -g 80x9
+Mouse 1 R   A Nop
+Mouse 3 R   4 Exec exec urxvt -font "xft:3270 Nerd Font:size=13" -g 80x7
+Mouse 3 R   M Exec exec urxvt -font "xft:3270 Nerd Font:size=12" -g 80x7
+Mouse 3 R   C Exec exec urxvt -font "xft:3270 Nerd Font:size=10" -g 80x7
+Mouse 3 R   S StartSutf
+Mouse 3 R   N StartSurf 
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
 
-Mouse 1 T    A RaiseMoveX Move Maximize
-Mouse 1 FS   A RaiseMove Resize
+Mouse 1 T   A RaiseMoveX Move Maximize
+Mouse 1 FS  A RaiseMove Resize
 
 Mouse 8 A N Prev (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
 Mouse 9 A N Next (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp 
