@@ -132,7 +132,7 @@ Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "WikiJournal" Sticky, !Closable, !Iconifiable, !Title, !Maximizable
 Style "Picture-in-Picture" Sticky, StaysOnTop
-Style "FvwmLogView" Sticky, !Closable
+Style "FvwmLogView" !Closable
 Style "urxvt" PositionPlacement UnderMouse
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
 Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
@@ -162,6 +162,7 @@ AddToFunc StartFunction
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
 + I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -geometry -5+26 -transparent -visual TrueColor -nocycle -noseconds -24 -fg lightgreen'
++ I Test (X flameshot) PipeRead 'pgrep -x "flameshot" > /dev/null || echo Exec exec flameshot'
 + I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed -geometry 80x20+5+26 \
 	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
 + I Exec exec feh --bg-fill ~/.fvwm/pix2/wallpaper-dark1.jpg
@@ -223,13 +224,13 @@ AddToFunc DeThumbnail
 + I Exec 'rm -f $[ICON_TMPDIR]/icon.tmp.$[w.id].png'
 + I Echo "DeThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
 
-# changing -scale from 64 to 128, see what happens.
+# changing -scale from 64 to 92, see what happens.
 DestroyFunc Thumbnail
 AddToFunc Thumbnail
 + I Schedule 800 Raise
 + I Raise
 + I Current (!Shaded, Iconifiable, !Iconic) PipeRead \
-    "xwd -silent -id $[w.id] | nice -n 19 convert -scale 25% -frame 1x1 \
+    "xwd -silent -id $[w.id] | nice -n 19 convert -scale 92 -frame 1x1 \
     -mattecolor black -quality 0 xwd:- \
     png:$[ICON_TMPDIR]/icon.tmp.$[w.id].png \
     && sleep 0.2 && echo WindowStyle IconOverride, \
@@ -447,8 +448,8 @@ Mouse 1 WFS M Move
 Mouse 1 T    A RaiseMoveX Move Maximize
 Mouse 1 FS   A RaiseMove Resize
 
-Mouse 8 A 4 Prev (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
-Mouse 9 A 4 Next (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp 
+Mouse 8 A N Prev (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
+Mouse 9 A N Next (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp 
 
 Mouse 3 FS  A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I   A Iconify off
