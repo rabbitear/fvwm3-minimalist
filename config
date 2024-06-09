@@ -48,7 +48,7 @@ Mouse 1 1 N Menu Window-Ops Close
 Mouse 3 1 N Maximize 0 100
 Mouse 0 4 N Thumbnail
 Mouse 0 2 N Maximize
-Mouse 1 3 N Menu Surf-Ops `Maximize growonlayers $[w.layer] -1 grow 0`
+Mouse 1 3 N Menu Surf-Ops Maximize growonlayers $[w.layer] -1 grow grow
 Mouse 3 3 N Maximize growonlayers $[w.layer] -1 0 grow
 
 # Only for Surf, have a bookmarks menu
@@ -161,7 +161,8 @@ Style "xdaliclock" NoTitle, NeverFocus, StaysOnBottom, !Iconifiable, \
   WindowListSkip, BorderWidth 0, HandleWidth 0
 
 # MiniIcons 
-Style "Surf" MiniIcon mini/mini.www.png, MinOverlapPlacement
+Style "Fvwm*" MiniIcon amusement.png
+Style "Surf" MiniIcon mini/mini.www.png, PositionPlacement UnderMouse
 Style "Picture-in-Picture" MiniIcon 24x24-multimedia.png
 Style "urxvt" PositionPlacement UnderMouse, MiniIcon mini/mini.term.png
 
@@ -214,8 +215,10 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
     $widthx$height+$left+$top o+50 +28m`, Swallow(kill) xeyes \
     "Exec exec xeyes -fg black -bg olive")
-*ButtonBox: (1x1, Action StartSurf, Icon 24x24-viewer.png)
-*ButtonBox: (1x1, Action StartURxvt, Icon 24x24-term.png)
+*ButtonBox: (1x1, Action StartSurf, Icon 24x24-viewer.png, \
+    PressIcon 24x24-viewer-press.png)
+*ButtonBox: (1x1, Action StartURxvt, Icon 24x24-term.png, \
+    PressIcon 24x24-term-press.png)
 *ButtonBox: (5x1, Action ToggleQuickTerm, Swallow(kill) xclock \
     "Exec exec \
     xclock -digital -render -padding 0 -update 1 \
@@ -390,14 +393,14 @@ DestroyMenu Surf-Ops
 AddToMenu Surf-Ops 
 + "Places to Search...  " Title 
 + "" Nop 
-+ "Max up/down"       Maximize growonlayers $[w.layer] -1 grow 0
-+ "Max left/right"    Maximize growonlayers $[w.layer] -1 0 grow
++ "Max up/down"%object-flip-vertical.png%      Maximize growonlayers -1 $[w.layer] 0 grow
++ "Max left/right"%object-flip-horizontal.png% Maximize growonlayers $[w.layer] -1 0 grow
 + "" Nop
 + "(en) Wikipedia"    StartSurfGoTo https://en.wikipedia.org/wiki/Main_Page
 + "DuckDuckGo (lite)" StartSurfGoTo https://duckduckgo.com/lite
 + "Hacker News"       StartSurfGoTo https://news.ycombinator.com/
 + "" Nop 
-+ "Close"       Close
++ "Close"%window-close.png% Close
 
 #####################
 # Program Functions #
