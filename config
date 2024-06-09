@@ -41,11 +41,15 @@ ButtonStyle 1 Vector 9 0+4px50+1p@3 100-6px50+1p@3 100-6px50-2p@3 0+4px50-2p@3 0
 #############################
 # Mouse Buttons on Titlebar #
 #############################
-Mouse 0 1 N Menu Window-Ops Close
+Mouse 1 1 N Menu Window-Ops Close
+Mouse 3 1 N Maximize 0 100
 Mouse 0 4 N Thumbnail
 Mouse 0 2 N Maximize
-Mouse 1 3 N Maximize growonlayers $[w.layer] -1 grow 0
+Mouse 1 3 N Menu Surf-Ops `Maximize growonlayers $[w.layer] -1 grow 0`
 Mouse 3 3 N Maximize growonlayers $[w.layer] -1 0 grow
+
+# Only for Surf, have a bookmarks menu
+Mouse (Surf) 1 3 N Menu Surf-Ops Maximize 0 100
 
 TitleStyle LeftJustified
 
@@ -378,6 +382,19 @@ AddToMenu ToDoMenu
 + "Restart"     Restart
 + "Logout"      Quit
 
+DestroyMenu Surf-Ops
+AddToMenu Surf-Ops 
++ "Places to Search...  " Title 
++ "" Nop 
++ "Max up/down"       Maximize growonlayers $[w.layer] -1 grow 0
++ "Max left/right"    Maximize growonlayers $[w.layer] -1 0 grow
++ "" Nop
++ "(en) Wikipedia"    StartSurfGoTo https://en.wikipedia.org/wiki/Main_Page
++ "DuckDuckGo (lite)" StartSurfGoTo https://duckduckgo.com/lite
++ "Hacker News"       StartSurfGoTo https://news.ycombinator.com/
++ "" Nop 
++ "Close"       Close
+
 #####################
 # Program Functions #
 #####################
@@ -427,10 +444,19 @@ AddToFunc ToggleGimp
 
 DestroyFunc StartSurf
 AddToFunc StartSurf
++ I Test (EnvIsSet $0) Echo The $0 is set. 
 + I Exec exec surf -z 1.0 "https://duckduckgo.com/lite"
 + I Wait Surf
 + I Next (Surf) WarpToWindow +44p +20p
 + I Next (Surf) Resize 612p 150p
+
+DestroyFunc StartSurfGoTo
+AddToFunc StartSurfGoTo
++ I Test (EnvIsSet $0) Echo The $0 is set. 
++ I Exec exec surf -z 1.2 "$0"
++ I Wait Surf
++ I Next (Surf) WarpToWindow +44p +20p
++ I Next (Surf) Resize 612p 560p
 
 DestroyFunc StartURxvt 
 AddToFunc StartURxvt 
@@ -474,18 +500,21 @@ Mouse 3 R   M StartURxvt
 Mouse 3 R   C StartURxvt
 Mouse 3 R   S StartSutf
 Mouse 3 R   N StartSurf 
-Mouse 1 WFS 4 Move
-Mouse 1 WFS M Move
+Mouse 2 R   A WindowList c c
 
-Mouse 1 T   A RaiseMoveX Move Maximize
-Mouse 3 T   A RaiseMoveX Move Thumbnail
-Mouse 1 FS  A RaiseMove Resize
+Mouse 3 I   A Iconify off
 
 Mouse 8 A N Prev (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
 Mouse 9 A N Next (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp 
 
+############################
+# Mouse binding per Window #
+############################
+Mouse 1 WFS 4 Move
+Mouse 1 WFS M Move
+Mouse 1 T   A RaiseMoveX Move Maximize
+Mouse 3 T   A RaiseMoveX Move Thumbnail
+Mouse 1 FS  A RaiseMove Resize
 Mouse 3 FS  A Function ResizeOrRaiseOrIconifyFunc
-Mouse 3 I   A Iconify off
-Mouse 2 R   A WindowList c c
 
-
+## END OF FVWM3 CONFIG ##
