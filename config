@@ -19,7 +19,7 @@
 DesktopSize 2x2 
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
 ImagePath $FVWM_USERDIR/pix2
-EwmhBaseStruts  0 128 32 0
+EwmhBaseStruts  0 128 46 0
 EdgeScroll      100 100
 EdgeThickness   2
 EdgeResistance 350
@@ -140,10 +140,12 @@ Style "Picture-in-Picture" Sticky, StaysOnTop
 Style "FvwmLogView" !Closable
 Style "urxvt" PositionPlacement UnderMouse, MiniIcon mini/mini.term.png
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
-Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
-    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom, Sticky
+Style "ButtonBox" NoTitle, BorderWidth 6, HandleWidth 6, !Maximizable, \
+    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom, Sticky, \
+    !Handles
 Style "FvwmPager" NoTitle, BorderWidth 6, HandleWidth 6, !Maximizable, \
-    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom, Sticky
+    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom, Sticky, \
+    !Handles
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
 Style "xdaliclock" NoTitle, NeverFocus, StaysOnBottom, !Iconifiable, \
   WindowListSkip, BorderWidth 0, HandleWidth 0
@@ -190,16 +192,22 @@ AddToFunc ExitFunction
 * I Test (ToRestart) KillModule FvwmPager
 
 DestroyModuleConfig ButtonBox: *
-*ButtonBox: Geometry 168x24+5+5
+*ButtonBox: Geometry 196x28+5+5
 *ButtonBox: BoxSize fixed
+*ButtonBox: Colorset 1
 *ButtonBox: Rows 1
-*ButtonBox: Columns 7
+*ButtonBox: Columns 8
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
 *ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
-    $widthx$height+$left+$top o+50 +22m`, Swallow(kill) xeyes "Exec exec xeyes")
-*ButtonBox: (6x1, Action ToggleQuickTerm, Swallow(kill) xclock "Exec exec \
-    xclock -digital -render -padding 0 -update 1 -strftime ' %H:%M %a %b %d' \
+    $widthx$height+$left+$top o+50 +28m`, Swallow(kill) xeyes \
+    "Exec exec xeyes -fg black -bg olive")
+*ButtonBox: (1x1, Action StartSurf, Icon 24x24-viewer.png)
+*ButtonBox: (6x1, Action ToggleQuickTerm, Swallow(kill) xclock \
+    "Exec exec \
+    xclock -digital -render -padding 0 -update 1 \
+    -hd blue -hl red \
+    -strftime ' %H:%M %a %b %d' \
     -face xft:NotoSansMono-Regular:size=12")
 
 DestroyModuleConfig FvwmPager: *
