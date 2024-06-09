@@ -23,6 +23,9 @@ EwmhBaseStruts  0 128 46 0
 EdgeScroll      100 100
 EdgeThickness   2
 EdgeResistance 350
+GeometryWindow Position 50 50
+GeometryWindow Hide Never
+
 Style * EdgeMoveDelay 350
 Style * EdgeMoveResistance 20
 Style * SnapAttraction 8
@@ -146,7 +149,6 @@ Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
 Style "WikiJournal" Sticky, !Closable, !Iconifiable, !Title, !Maximizable
 Style "Picture-in-Picture" Sticky, StaysOnTop
 Style "FvwmLogView" !Closable
-Style "urxvt" PositionPlacement UnderMouse, MiniIcon mini/mini.term.png
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
 Style "ButtonBox" NoTitle, BorderWidth 6, HandleWidth 6, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom, Sticky, \
@@ -160,6 +162,8 @@ Style "xdaliclock" NoTitle, NeverFocus, StaysOnBottom, !Iconifiable, \
 
 # MiniIcons 
 Style "Surf" MiniIcon mini/mini.www.png, MinOverlapPlacement
+Style "Picture-in-Picture" MiniIcon 24x24-multimedia.png
+Style "urxvt" PositionPlacement UnderMouse, MiniIcon mini/mini.term.png
 
 #############
 # Functions #
