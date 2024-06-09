@@ -38,10 +38,14 @@ ButtonStyle 2 Vector 9 0+5px100-6p@3 100-7px100-6p@3 100-7px-0+4p@3 0+5px0+4p@3 
 ButtonStyle 4 Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3
 ButtonStyle 1 Vector 9 0+4px50+1p@3 100-6px50+1p@3 100-6px50-2p@3 0+4px50-2p@3 0+4px50+2@3 0+5px50+2p@2 0+6px50+2p@2 100-5px50+2p@3 100-5px50@3
 
+#############################
+# Mouse Buttons on Titlebar #
+#############################
 Mouse 0 1 N Menu Window-Ops Close
 Mouse 0 4 N Thumbnail
 Mouse 0 2 N Maximize
-Mouse 0 3 N Maximize growonlayers $[w.layer] -1 grow 0
+Mouse 1 3 N Maximize growonlayers $[w.layer] -1 grow 0
+Mouse 3 3 N Maximize growonlayers $[w.layer] -1 0 grow
 
 TitleStyle LeftJustified
 
@@ -192,7 +196,7 @@ AddToFunc ExitFunction
 * I Test (ToRestart) KillModule FvwmPager
 
 DestroyModuleConfig ButtonBox: *
-*ButtonBox: Geometry 196x28+5+5
+*ButtonBox: Geometry 218x28+5+5
 *ButtonBox: BoxSize fixed
 *ButtonBox: Colorset 1
 *ButtonBox: Rows 1
@@ -203,7 +207,8 @@ DestroyModuleConfig ButtonBox: *
     $widthx$height+$left+$top o+50 +28m`, Swallow(kill) xeyes \
     "Exec exec xeyes -fg black -bg olive")
 *ButtonBox: (1x1, Action StartSurf, Icon 24x24-viewer.png)
-*ButtonBox: (6x1, Action ToggleQuickTerm, Swallow(kill) xclock \
+*ButtonBox: (1x1, Action StartURxvt, Icon 24x24-term.png)
+*ButtonBox: (5x1, Action ToggleQuickTerm, Swallow(kill) xclock \
     "Exec exec \
     xclock -digital -render -padding 0 -update 1 \
     -hd blue -hl red \
@@ -422,10 +427,16 @@ AddToFunc ToggleGimp
 
 DestroyFunc StartSurf
 AddToFunc StartSurf
-+ I Exec exec surf -z 1.8 "https://duckduckgo.com/lite"
++ I Exec exec surf -z 1.0 "https://duckduckgo.com/lite"
 + I Wait Surf
-+ I Next (Surf) WarpToWindow +150p +130p
-+ I Next (Surf) Resize 630p 268p
++ I Next (Surf) WarpToWindow +44p +20p
++ I Next (Surf) Resize 612p 150p
+
+DestroyFunc StartURxvt 
+AddToFunc StartURxvt 
++ I Exec exec urxvt -font "xft:3270 Nerd Font:size=15" -g 80x8 +sb
++ I Wait urxvt 
++ I Next (urxvt) WarpToWindow +44p +20p 
 
 ################
 # Key Bindings #
@@ -458,15 +469,16 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 # Mouse bindings #
 ##################
 Mouse 1 R   A Nop
-Mouse 3 R   4 Exec exec urxvt -font "xft:3270 Nerd Font:size=13" -g 80x7
-Mouse 3 R   M Exec exec urxvt -font "xft:3270 Nerd Font:size=12" -g 80x7
-Mouse 3 R   C Exec exec urxvt -font "xft:3270 Nerd Font:size=10" -g 80x7
+Mouse 3 R   4 StartURxvt
+Mouse 3 R   M StartURxvt
+Mouse 3 R   C StartURxvt
 Mouse 3 R   S StartSutf
 Mouse 3 R   N StartSurf 
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
 
 Mouse 1 T   A RaiseMoveX Move Maximize
+Mouse 3 T   A RaiseMoveX Move Thumbnail
 Mouse 1 FS  A RaiseMove Resize
 
 Mouse 8 A N Prev (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
