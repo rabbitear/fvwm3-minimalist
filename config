@@ -213,7 +213,7 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
 *ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
-    $widthx$height+$left+$top o+50 +28m`, Swallow(kill) xeyes \
+    $widthx$height+$left+$top o0 +28m`, Swallow(kill) xeyes \
     "Exec exec xeyes -fg black -bg olive")
 *ButtonBox: (1x1, Action StartSurf, Icon 24x24-viewer.png, \
     PressIcon 24x24-viewer-press.png)
