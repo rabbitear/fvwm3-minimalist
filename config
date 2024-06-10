@@ -382,7 +382,7 @@ DestroyMenu ToDoMenu
 AddToMenu ToDoMenu
 + "-=> What do you want TODO? <=-" Title
 + "Firefox"     ToggleFirefox
-+ "URxvt"       Exec exec urxvt +sb 
++ "Gnome-Clocks" Exec exec gnome-clocks
 + ""            Nop
 + "Programs"    Exec exec rofi -modi drun,run -show drun
 + ""            Nop
