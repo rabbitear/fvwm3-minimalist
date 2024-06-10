@@ -254,6 +254,7 @@ AddToFunc DeThumbnail
 + I DestroyWindowStyle
 + I UpdateStyles
 + I Exec 'rm -f $[ICON_TMPDIR]/icon.tmp.$[w.id].png'
++ I RefreshWindow
 + I Echo "DeThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
 
 # changing -scale from 64 to 92, see what happens.
@@ -361,6 +362,17 @@ AddToFunc EWMHActivateWindowFunc
 + I Raise
 + I WarpToWindow 50 50
 
+DestroyFunc ShowDesktop
+AddToFunc   ShowDesktop
++ I All (CurrentPage, Iconic, State 1) RestoreDesktop
++ I TestRc (Match) Break
++ I All (CurrentPage, !Iconic, !State 1) ThisWindow State 1 True
++ I All (CurrentPage, !Iconic, State 1) Thumbnail
+
+DestroyFunc RestoreDesktop
+AddToFunc   RestoreDesktop
++ I All (CurrentPage, Iconic, State 1) Iconify off
++ I All (CurrentPage, State 1) ThisWindow State 1 False
 #########
 # Menus #
 #########
@@ -387,7 +399,9 @@ AddToMenu ToDoMenu
 + "Firefox"     ToggleFirefox
 + "Gnome-Clocks" Exec exec gnome-clocks
 + ""            Nop
++ "Clear Desktop" Function ShowDesktop
 + "Programs"    Exec exec rofi -modi drun,run -show drun
++ "Stop/Start Log" Exec exec `kill -USR2 $(ps ax | awk '/\/usr\/local\/bin\/fvwm3/ {print $1}')`
 + ""            Nop
 + "Restart"     Restart
 + "Logout"      Quit
@@ -505,7 +519,7 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 ##################
 # Mouse bindings #
 ##################
-Mouse 1 R   A Nop
+Mouse 1 R   A StartURxvt
 Mouse 3 R   4 StartURxvt
 Mouse 3 R   M StartURxvt
 Mouse 3 R   C StartURxvt
