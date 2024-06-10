@@ -493,8 +493,9 @@ AddToFunc StartURxvt
 
 AddToFunc StartAlacritty
 + I Exec exec alacritty --option 'font.size=12' \
-      --option 'font.normal.family="3270 Nerd Font"' \
-      --option 'window.dimensions = { columns = 80, lines = 8 }'
+      --option 'font.normal.family="VictorMono Nerd Font Mono"' \
+      --option 'font.offset = { x = 0, y = 0 }' \
+      --option 'window.dimensions = { columns = 80, lines = 12 }'
 + I Wait Alacritty
 + I Next (Alacritty) WarpToWindow +44p +20p 
 
