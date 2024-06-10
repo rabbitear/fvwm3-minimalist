@@ -33,6 +33,7 @@ Style * SnapAttraction 8
 Style * IconBox 5 120 -5 -5, IconFill Bottom Right
 Style * ResizeOutline
 Style * SloppyFocus, MouseFocusClickRaises
+Style * WindowShadeShrinks, WindowShadeSteps 8p
 
 ###########################
 # Window Titlebar buttons #
@@ -50,6 +51,9 @@ Mouse 0 4 N Thumbnail
 Mouse 0 2 N Maximize
 Mouse 1 3 N Menu Surf-Ops Maximize growonlayers $[w.layer] -1 grow grow
 Mouse 3 3 N Maximize growonlayers $[w.layer] -1 0 grow
+
+Mouse 4 T N WindowShade on
+Mouse 5 T N WindowShade off
 
 # Only for Surf, have a bookmarks menu
 Mouse (Surf) 1 3 N Menu Surf-Ops Maximize 0 100
@@ -264,7 +268,8 @@ AddToFunc Thumbnail
 + I Schedule 800 Raise
 + I Raise
 + I Current (!Shaded, Iconifiable, !Iconic) PipeRead \
-    "xwd -silent -id $[w.id] | nice -n 19 convert -scale 92 -frame 1x1 \
+    "xwd -silent -id $[w.id] | nice -n 19 convert -scale 92 \
+    -colorspace Gray -frame 1x1 \
     -mattecolor black -quality 0 xwd:- \
     png:$[ICON_TMPDIR]/icon.tmp.$[w.id].png \
     && sleep 0.2 && echo WindowStyle IconOverride, \
@@ -323,7 +328,7 @@ AddToFunc RaiseOrMoveOrResizeFunc
 DestroyFunc UrgencyFunc
 AddToFunc UrgencyFunc
 + I Echo "UrgencyFunc [before name]: $[w.name]"
-+ I ThisWindow (QuickTerm) Break
++ I ThisWindow (QuickTerm|Alacritty|URxvt) Break
 + I Iconify off 
 + I FlipFocus 
 + I Raise 
@@ -357,7 +362,7 @@ AddToFunc WindowUp
 DestroyFunc EWMHActivateWindowFunc
 AddToFunc EWMHActivateWindowFunc 
 + I DeiconifyAndRearrange
-+ I ThisWindow (QuickTerm) Break
++ I ThisWindow (QuickTerm|Alacritty|URxvt) Break
 + I Echo "EWMHActivateWindowFunc entered, name: $[w.name]"
 + I Focus
 + I Raise
