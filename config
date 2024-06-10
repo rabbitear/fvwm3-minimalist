@@ -321,6 +321,7 @@ AddToFunc RaiseOrMoveOrResizeFunc
 DestroyFunc UrgencyFunc
 AddToFunc UrgencyFunc
 + I Echo "UrgencyFunc [before name]: $[w.name]"
++ I ThisWindow (QuickTerm) Break
 + I Iconify off 
 + I FlipFocus 
 + I Raise 
@@ -354,6 +355,8 @@ AddToFunc WindowUp
 DestroyFunc EWMHActivateWindowFunc
 AddToFunc EWMHActivateWindowFunc 
 + I DeiconifyAndRearrange
++ I ThisWindow (QuickTerm) Break
++ I Echo "EWMHActivateWindowFunc entered, name: $[w.name]"
 + I Focus
 + I Raise
 + I WarpToWindow 50 50
