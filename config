@@ -165,6 +165,7 @@ Style "Fvwm*" MiniIcon amusement.png
 Style "Surf" MiniIcon mini/mini.www.png, PositionPlacement UnderMouse
 Style "Picture-in-Picture" MiniIcon 24x24-multimedia.png
 Style "urxvt" PositionPlacement UnderMouse, MiniIcon mini/mini.term.png
+Style "Alacritty" PositionPlacement UnderMouse
 
 #############
 # Functions #
@@ -270,8 +271,8 @@ AddToFunc Thumbnail
     Icon $[ICON_TMPDIR]/icon.tmp.$[w.id].png \
     || echo Nop"
 + I UpdateStyles
++ I Iconify on 
 + I RefreshWindow
-+ I Iconify 
 + I WarpToWindow 15p 15p
 + I Echo "Thumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
 
@@ -373,6 +374,7 @@ DestroyFunc RestoreDesktop
 AddToFunc   RestoreDesktop
 + I All (CurrentPage, Iconic, State 1) Iconify off
 + I All (CurrentPage, State 1) ThisWindow State 1 False
+
 #########
 # Menus #
 #########
@@ -415,7 +417,7 @@ AddToMenu Surf-Ops
 + "" Nop
 + "(en) Wikipedia"    StartSurfGoTo https://en.wikipedia.org/wiki/Main_Page
 + "DuckDuckGo (lite)" StartSurfGoTo https://duckduckgo.com/lite
-+ "LXer.com"          StartSurfGoTo https://lxer.com
++ "LXer.com"          StartSurfGoTo http://lxer.com/
 + "Hacker News"       StartSurfGoTo https://news.ycombinator.com/
 + "" Nop 
 + "Close"%window-close.png% Close
@@ -489,16 +491,24 @@ AddToFunc StartURxvt
 + I Wait urxvt 
 + I Next (urxvt) WarpToWindow +44p +20p 
 
+AddToFunc StartAlacritty
++ I Exec exec alacritty --option 'font.size=12' \
+      --option 'font.normal.family="3270 Nerd Font"' \
+      --option 'window.dimensions = { columns = 80, lines = 8 }'
++ I Wait Alacritty
++ I Next (Alacritty) WarpToWindow +44p +20p 
+
+
 ################
 # Key Bindings #
 ################
-Key I WFS 	4  Function Thumbnail
-Key I I		4  Iconify off
-Key I I		M  Iconify off
-Key M WFS  	4  Maximize 0 100
-Key M WFS  	4S Maximize 100 0
-Key M WFS	4C Maximize 100 100
-Key Q WFSI 	4S Close
+Key I TWFS 4  Thumbnail
+Key I I		 4  Iconify off
+Key I I		 M  Iconify off
+Key M WFS  4  Maximize 0 100
+Key M WFS  4S Maximize 100 0
+Key M WFS	 4C Maximize 100 100
+Key Q WFSI 4S Close
 
 # Move from window to window with keys
 Key P A 4   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
@@ -519,7 +529,7 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 ##################
 # Mouse bindings #
 ##################
-Mouse 1 R   A StartURxvt
+Mouse 1 R   A StartAlacritty
 Mouse 3 R   4 StartURxvt
 Mouse 3 R   M StartURxvt
 Mouse 3 R   C StartURxvt
