@@ -398,6 +398,7 @@ AddToMenu Surf-Ops
 + "" Nop
 + "(en) Wikipedia"    StartSurfGoTo https://en.wikipedia.org/wiki/Main_Page
 + "DuckDuckGo (lite)" StartSurfGoTo https://duckduckgo.com/lite
++ "LXer.com"          StartSurfGoTo https://lxer.com
 + "Hacker News"       StartSurfGoTo https://news.ycombinator.com/
 + "" Nop 
 + "Close"%window-close.png% Close
