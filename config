@@ -42,6 +42,10 @@ ButtonStyle 2 Vector 9 0+5px100-6p@3 100-7px100-6p@3 100-7px-0+4p@3 0+5px0+4p@3 
 ButtonStyle 4 Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3
 ButtonStyle 1 Vector 9 0+4px50+1p@3 100-6px50+1p@3 100-6px50-2p@3 0+4px50-2p@3 0+4px50+2@3 0+5px50+2p@2 0+6px50+2p@2 100-5px50+2p@3 100-5px50@3
 
+# Surf Forward and Back button
+ButtonStyle 5 Vector 8 80x40@1 50x40@1 50x20@1 20x50@1 50x80@0 50x60@0 80x60@0 80x40@0
+ButtonStyle 7 Vector 8 20x40@1 50x40@1 50x20@1 80x50@1 50x80@0 50x60@0 20x60@0 20x40@1
+
 #############################
 # Mouse Buttons on Titlebar #
 #############################
@@ -51,6 +55,10 @@ Mouse 0 4 N Thumbnail
 Mouse 0 2 N Maximize
 Mouse 1 3 N Menu Surf-Ops Maximize growonlayers $[w.layer] -1 grow grow
 Mouse 3 3 N Maximize growonlayers $[w.layer] -1 0 grow
+
+# Surf, back button
+Mouse (Surf) 0 5 N Exec exec xdotool key --window $[w.id] ctrl+h
+Mouse (Surf) 0 7 N Exec exec xdotool key --window $[w.id] ctrl+l
 
 Mouse 4 T N WindowShade on
 Mouse 5 T N WindowShade off
@@ -120,11 +128,11 @@ AddToDecor "stoneage" TitleStyle Height 25
 + AddButtonStyle 4 ActiveDown Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3 
 + AddButtonStyle 4 Inactive   Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3
 # mini.left2.xpm doesn't exist
-+ AddButtonStyle 5 ActiveUp   pixmap mini.left2.xpm
++ AddButtonStyle 5 ActiveUp   Vector 8 80x40@1 50x40@1 50x20@1 20x50@1 50x80@0 50x60@0 80x60@0 80x40@0 
 + AddButtonStyle 5 ActiveDown pixmap rock-beige.png
 + AddButtonStyle 5 Inactive   pixmap mini.left2.xpm
 # mini.right2.xpm doesn't exist
-+ AddButtonStyle 7 ActiveUp   pixmap mini.right2.xpm
++ AddButtonStyle 7 ActiveUp   Vector 8 20x40@1 50x40@1 50x20@1 80x50@1 50x80@0 50x60@0 20x60@0 20x40@1
 + AddButtonStyle 7 ActiveDown pixmap rock-beige.png
 + AddButtonStyle 7 Inactive   pixmap mini.right2.xpm
 
