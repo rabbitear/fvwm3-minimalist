@@ -539,6 +539,10 @@ Key M WFS  4  Maximize 0 100
 Key M WFS  4S Maximize 100 0
 Key M WFS	 4C Maximize 100 100
 Key Q WFSI 4S Close
+Key Z I    4  Iconify off 
+Key Z WFST 4  Thumbnail 
+Key Z I    M  Iconify off 
+Key Z WFST M  Thumbnail 
 
 # Move from window to window with keys
 Key P A 4   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
