@@ -54,15 +54,16 @@ Mouse 1 1 N Menu Window-Ops Close
 Mouse 3 1 N Maximize 0 100
 Mouse 0 4 N Thumbnail
 Mouse 0 2 N Maximize
-Mouse 1 3 N Menu Surf-Ops Maximize growonlayers $[w.layer] -1 grow grow
-Mouse 3 3 N Maximize growonlayers $[w.layer] -1 0 grow
+
+# Buttons 3 and 5
+Mouse 0 3 N Maximize growonlayers $[w.layer] -1 grow 0
+Mouse 0 5 N Maximize growonlayers -1 $[w.layer] 0 grow
+Mouse ("Surf") 0 3 N Exec exec xdotool key --window $[w.id] ctrl+h
+Mouse ("Surf") 0 5 N Exec exec xdotool key --window $[w.id] ctrl+l
 
 # Mouse wheel shades any window
 Mouse 4 T N WindowShade on
 Mouse 5 T N WindowShade off
-
-# For All Windows, have a bookmarks menu
-Mouse 1 3 N Menu Surf-Ops Maximize 0 100
 
 TitleStyle LeftJustified
 
@@ -114,14 +115,16 @@ AddToDecor "stoneage" TitleStyle Height 25
 + AddButtonStyle 2 ActiveUp   pixmap gold_min.png
 + AddButtonStyle 2 ActiveDown pixmap rock-beige.png
 + AddButtonStyle 2 Inactive   pixmap gold_min.png
-+ AddButtonStyle 3 ActiveUp   pixmap mini/mini.viewer.png
-+ AddButtonStyle 3 ActiveDown pixmap mini/mini.viewer.png
-+ AddButtonStyle 3 Inactive   pixmap mini/mini.viewer.png
 + AddButtonStyle 4 ActiveUp   Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3 
 + AddButtonStyle 4 ActiveDown Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3 
 + AddButtonStyle 4 Inactive   Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3
-+ AddButtonStyle 5 Pixmap rock-ruddy.png (-- Flat)
-+ AddButtonStyle 7 Pixmap rock-ruddy.png (-- Flat)
++ AddButtonStyle 3 ActiveUp   Vector 12 10x50@1 35x25@1 35x40@1 65x40@1 65x25@1 90x50@1 65x75@0 65x60@0 35x60@0 35x75@0 10x50@0 10x50@1
++ AddButtonStyle 3 ActiveDown Vector 12 10x50@1 35x25@1 35x40@1 65x40@1 65x25@1 90x50@1 65x75@0 65x60@0 35x60@0 35x75@0 10x50@0 10x50@1
++ AddButtonStyle 3 Inactive   Vector 12 10x50@1 35x25@1 35x40@1 65x40@1 65x25@1 90x50@1 65x75@0 65x60@0 35x60@0 35x75@0 10x50@0 10x50@1
++ AddButtonStyle 5 ActiveUp   Vector 12 50x10@1 25x35@1 40x35@1 40x60@1 25x60@1 50x85@1 75x60@0 60x60@0 60x35@0 75x35@0 50x10@0 50x10@1
++ AddButtonStyle 5 ActiveDown Vector 12 50x10@1 25x35@1 40x35@1 40x60@1 25x60@1 50x85@1 75x60@0 60x60@0 60x35@0 75x35@0 50x10@0 50x10@1
++ AddButtonStyle 5 Inactive   Vector 12 50x10@1 25x35@1 40x35@1 40x60@1 25x60@1 50x85@1 75x60@0 60x60@0 60x35@0 75x35@0 50x10@0 50x10@1
+
 
 DestroyDecor "SurfButtons"
 AddToDecor "SurfButtons"
@@ -131,18 +134,15 @@ AddToDecor "SurfButtons"
 + AddButtonStyle 2 ActiveUp   pixmap gold_min.png
 + AddButtonStyle 2 ActiveDown pixmap rock-beige.png
 + AddButtonStyle 2 Inactive   pixmap gold_min.png
-+ AddButtonStyle 3 ActiveUp   pixmap mini/mini.viewer.png
-+ AddButtonStyle 3 ActiveDown pixmap mini/mini.viewer.png
-+ AddButtonStyle 3 Inactive   pixmap mini/mini.viewer.png
 + AddButtonStyle 4 ActiveUp   Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3 
 + AddButtonStyle 4 ActiveDown Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3 
 + AddButtonStyle 4 Inactive   Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3
-+ ButtonStyle 5 ActiveUp   Vector 8 80x40@1 50x40@1 50x20@1 20x50@1 50x80@0 50x60@0 80x60@0 80x40@0 -- Raised
-+ ButtonStyle 5 ActiveDown Vector 8 80x40@1 50x40@1 50x20@1 20x50@1 50x80@0 50x60@0 80x60@0 80x40@0 -- Sunk
-+ ButtonStyle 5 Inactive   Vector 8 80x40@1 50x40@1 50x20@1 20x50@1 50x80@0 50x60@0 80x60@0 80x40@0 -- Flat
-+ ButtonStyle 7 ActiveUp   Vector 8 20x40@1 50x40@1 50x20@1 80x50@1 50x80@0 50x60@0 20x60@0 20x40@1 -- Raised
-+ ButtonStyle 7 ActiveDown Vector 8 20x40@1 50x40@1 50x20@1 80x50@1 50x80@0 50x60@0 20x60@0 20x40@1 -- Sunk
-+ ButtonStyle 7 Inactive   Vector 8 20x40@1 50x40@1 50x20@1 80x50@1 50x80@0 50x60@0 20x60@0 20x40@1 -- Flat
++ AddButtonStyle 3 ActiveUp   Vector 8 80x40@1 50x40@1 50x20@1 20x50@1 50x80@0 50x60@0 80x60@0 80x40@0 -- Raised
++ AddButtonStyle 3 ActiveDown Vector 8 80x40@1 50x40@1 50x20@1 20x50@1 50x80@0 50x60@0 80x60@0 80x40@0 -- Sunk
++ AddButtonStyle 3 Inactive   Vector 8 80x40@1 50x40@1 50x20@1 20x50@1 50x80@0 50x60@0 80x60@0 80x40@0 -- Flat
++ AddButtonStyle 5 ActiveUp   Vector 8 20x40@1 50x40@1 50x20@1 80x50@1 50x80@0 50x60@0 20x60@0 20x40@1 -- Raised
++ AddButtonStyle 5 ActiveDown Vector 8 20x40@1 50x40@1 50x20@1 80x50@1 50x80@0 50x60@0 20x60@0 20x40@1 -- Sunk
++ AddButtonStyle 5 Inactive   Vector 8 20x40@1 50x40@1 50x20@1 80x50@1 50x80@0 50x60@0 20x60@0 20x40@1 -- Flat
 
 ################
 # Global Style #
@@ -159,11 +159,6 @@ Style * FvwmBorder
 
 Style * EWMHDonateMiniIcon, EWMHDonateIcon
 Style * UseDecor stoneage
-
-Mouse * 1 5 N -
-Mouse * 1 7 N -
-Mouse ("Surf") 1 5 N Exec exec xdotool key --window $[w.id] ctrl+h
-Mouse ("Surf") 1 7 N Exec exec xdotool key --window $[w.id] ctrl+l
 
 Style "Surf" UseDecor SurfButtons
 
@@ -241,9 +236,10 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
 *ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
-    $widthx$height+$left+$top o0 +28m`, Swallow(kill) xeyes \
+    $widthx$height+$left+$top o0 +24m`, Swallow(kill) xeyes \
     "Exec exec xeyes -fg black -bg olive")
-*ButtonBox: (1x1, Action StartSurf, \
+*ButtonBox: (1x1, Action `Menu Surf-Ops rectangle \
+    $widthx$height+$left+$top o0 +20m`, \
     Icon 24x24-viewer.png, \
     PressIcon 24x24-viewer-press.png)
 *ButtonBox: (1x1, Action (Mouse 1) StartURxvt, \
