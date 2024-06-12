@@ -23,6 +23,7 @@ EwmhBaseStruts  0 128 46 0
 EdgeScroll      100 100
 EdgeThickness   2
 EdgeResistance 350
+ExecUseShell
 GeometryWindow Position 50 50
 GeometryWindow Hide Never
 
@@ -159,6 +160,8 @@ Style * FvwmBorder
 Style * EWMHDonateMiniIcon, EWMHDonateIcon
 Style * UseDecor stoneage
 
+Mouse * 1 5 N -
+Mouse * 1 7 N -
 Mouse ("Surf") 1 5 N Exec exec xdotool key --window $[w.id] ctrl+h
 Mouse ("Surf") 1 7 N Exec exec xdotool key --window $[w.id] ctrl+l
 
@@ -219,7 +222,7 @@ AddToFunc StartFunction
 + I Module FvwmEvent
 + I Module FvwmPager 0 0
 + I All (Iconic) ReThumbnail
-+ I Exec exec pkill -USR2 fvwm3
++ I Exec exec kill -USR2 $(ps ax | awk '/\/usr\/local\/bin\/fvwm3/ {print $1}')
 
 # ExitFunction is excuted when exiting or restarting before actually 
 # quitting. Kill modules here
@@ -230,22 +233,26 @@ AddToFunc ExitFunction
 * I Test (ToRestart) KillModule FvwmPager
 
 DestroyModuleConfig ButtonBox: *
-*ButtonBox: Geometry 218x28+5+5
+*ButtonBox: Geometry 242x28+5+5
 *ButtonBox: BoxSize fixed
 *ButtonBox: Colorset 1
 *ButtonBox: Rows 1
-*ButtonBox: Columns 8
+*ButtonBox: Columns 11
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
 *ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
     $widthx$height+$left+$top o0 +28m`, Swallow(kill) xeyes \
     "Exec exec xeyes -fg black -bg olive")
-*ButtonBox: (1x1, Action (Mouse 1) StartSurf, \
-    Action (Mouse 3) StartSurfGoto "$(xclip)", Icon 24x24-viewer.png, \
+*ButtonBox: (1x1, Action StartSurf, \
+    Icon 24x24-viewer.png, \
     PressIcon 24x24-viewer-press.png)
-*ButtonBox: (1x1, Action StartURxvt, Icon 24x24-term.png, \
+*ButtonBox: (1x1, Action (Mouse 1) StartURxvt, \
+    Icon 24x24-term.png, \
+    PressIcon 24x24-term-press.png, \
+    Action (Mouse 3) StartAlacritty)
+*ButtonBox: (1x1, Action ToggleFirefox, Icon 22x22-gartoon-www.png, \
     PressIcon 24x24-term-press.png)
-*ButtonBox: (5x1, Action ToggleQuickTerm, Swallow(kill) xclock \
+*ButtonBox: (7x1, Action ToggleQuickTerm, Swallow(kill) xclock \
     "Exec exec \
     xclock -digital -render -padding 0 -update 1 \
     -hd blue -hl red \
@@ -484,7 +491,7 @@ AddToFunc ToggleFirefox
 + I Echo "Raising firefox.. window id of $[w.id]"
 + I TestRc (NoMatch) Exec exec firefox
 + I Echo "Starting firefox.. window id of $[w.id]"
-+ I Next (Navigator|firefox|*Firefox) WarpToWindow +50p +50p
++ I Next (Navigator|firefox|*Firefox) WarpToWindow +44p +20p
 
 DestroyFunc ToggleGimp
 AddToFunc ToggleGimp
@@ -497,15 +504,15 @@ AddToFunc ToggleGimp
 
 DestroyFunc StartSurf
 AddToFunc StartSurf
-+ I Test (EnvIsSet $0) Echo The $0 is set. 
-+ I Exec exec surf -z 1.0 "https://duckduckgo.com/lite"
++ I Test (X $[FVWM_USERDIR]/bin/start_surf.sh) PipeRead 'echo Exec exec $[FVWM_USERDIR]/bin/start_surf.sh'
 + I Wait Surf
 + I Next (Surf) WarpToWindow +44p +20p
-+ I Next (Surf) Resize 612p 150p
++ I Next (Surf) Resize 612p 450p
 
+#+ I Exec exec surf https://duckduckgo.com/lite/
 DestroyFunc StartSurfGoTo
 AddToFunc StartSurfGoTo
-+ I Test (EnvIsSet $0) Echo The $0 is set. 
++ I Echo The 0 is $0 and CLIP is $[CLIP] 
 + I Exec exec surf -z 1.2 "$0"
 + I Wait Surf
 + I Next (Surf) WarpToWindow +44p +20p
@@ -549,6 +556,7 @@ Key J A 4   Next (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
 Key D A 4  Exec exec rofi -show drun
 
 # Special keys
+Key R A 4S  Restart
 Key XF86AudioRaiseVolume A N Exec exec amixer -q sset Master 5%+
 Key XF86AudioLowerVolume A N Exec exec amixer -q sset Master 5%-
 Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
