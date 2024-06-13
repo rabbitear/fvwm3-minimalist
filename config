@@ -188,6 +188,7 @@ Style "Surf" MiniIcon mini/mini.www.png, PositionPlacement UnderMouse
 Style "Picture-in-Picture" MiniIcon 24x24-multimedia.png
 Style "urxvt" PositionPlacement UnderMouse, MiniIcon mini/mini.term.png
 Style "Alacritty" PositionPlacement UnderMouse
+Style "YouTube" MiniIcon amusement.png
 
 #############
 # Functions #
@@ -236,10 +237,10 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
 *ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
-    $widthx$height+$left+$top o0 +24m`, Swallow(kill) xeyes \
+    $widthx$height+$left+$top o0 +22m`, Swallow(kill) xeyes \
     "Exec exec xeyes -fg black -bg olive")
 *ButtonBox: (1x1, Action `Menu Surf-Ops rectangle \
-    $widthx$height+$left+$top o0 +20m`, \
+    $widthx$height+$left+$top o0 +28m`, \
     Icon 24x24-viewer.png, \
     PressIcon 24x24-viewer-press.png)
 *ButtonBox: (1x1, Action (Mouse 1) StartURxvt, \
@@ -285,6 +286,12 @@ AddToFunc DeThumbnail
 + I Exec 'rm -f $[ICON_TMPDIR]/icon.tmp.$[w.id].png'
 + I RefreshWindow
 + I Echo "DeThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
+
+DestroyFunc DeDeThumb
+AddToFunc DeDeThumb
++ I Iconify off
++ I Raise
++ I WarpToWindow 20p 44p
 
 # changing -scale from 64 to 92, see what happens.
 DestroyFunc Thumbnail
@@ -440,10 +447,6 @@ AddToMenu ToDoMenu
 DestroyMenu Surf-Ops
 AddToMenu Surf-Ops 
 + "Places to Search...  " Title 
-+ "" Nop 
-+ "Max up/down"%object-flip-vertical.png%      Maximize growonlayers -1 $[w.layer] 0 grow
-+ "Max left/right"%object-flip-horizontal.png% Maximize growonlayers $[w.layer] -1 0 grow
-+ "" Nop
 + "(en) Wikipedia"    StartSurfGoTo https://en.wikipedia.org/wiki/Main_Page
 + "DuckDuckGo (lite)" StartSurfGoTo https://duckduckgo.com/lite
 + "LXer.com"          StartSurfGoTo http://lxer.com/
@@ -501,15 +504,16 @@ AddToFunc ToggleGimp
 DestroyFunc StartSurf
 AddToFunc StartSurf
 + I Test (X $[FVWM_USERDIR]/bin/start_surf.sh) PipeRead 'echo Exec exec $[FVWM_USERDIR]/bin/start_surf.sh'
-+ I Wait Surf
-+ I Next (Surf) WarpToWindow +44p +20p
-+ I Next (Surf) Resize 612p 450p
+
+#+ I Wait Surf
+#+ I Next (Surf) WarpToWindow +44p +20p
+#+ I Next (Surf) Resize 750p 450p
 
 #+ I Exec exec surf https://duckduckgo.com/lite/
 DestroyFunc StartSurfGoTo
 AddToFunc StartSurfGoTo
 + I Echo The 0 is $0 and CLIP is $[CLIP] 
-+ I Exec exec surf -z 1.2 "$0"
++ I Exec exec surf -z 1.2 -s "$0"
 + I Wait Surf
 + I Next (Surf) WarpToWindow +44p +20p
 + I Next (Surf) Resize 612p 560p
@@ -539,9 +543,9 @@ Key M WFS  4  Maximize 0 100
 Key M WFS  4S Maximize 100 0
 Key M WFS	 4C Maximize 100 100
 Key Q WFSI 4S Close
-Key Z I    4  Iconify off 
+Key Z I    4  DeDeThumb
 Key Z WFST 4  Thumbnail 
-Key Z I    M  Iconify off 
+Key Z I    M  DeDeThumb
 Key Z WFST M  Thumbnail 
 
 # Move from window to window with keys
