@@ -188,7 +188,7 @@ Style "Surf" MiniIcon mini/mini.www.png, PositionPlacement UnderMouse
 Style "Picture-in-Picture" MiniIcon 24x24-multimedia.png
 Style "urxvt" PositionPlacement UnderMouse, MiniIcon mini/mini.term.png
 Style "Alacritty" PositionPlacement UnderMouse
-Style "YouTube" MiniIcon amusement.png
+Style "YouTube" NoTitle, MiniIcon amusement.png
 
 #############
 # Functions #
@@ -237,7 +237,7 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
 *ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
-    $widthx$height+$left+$top o0 +22m`, Swallow(kill) xeyes \
+    $widthx$height+$left+$top o0 +20m`, Swallow(kill) xeyes \
     "Exec exec xeyes -fg black -bg olive")
 *ButtonBox: (1x1, Action `Menu Surf-Ops rectangle \
     $widthx$height+$left+$top o0 +28m`, \
@@ -247,7 +247,9 @@ DestroyModuleConfig ButtonBox: *
     Icon 24x24-term.png, \
     PressIcon 24x24-term-press.png, \
     Action (Mouse 3) StartAlacritty)
-*ButtonBox: (1x1, Action ToggleFirefox, Icon 22x22-gartoon-www.png, \
+*ButtonBox: (1x1, Action (Mouse 1) ToggleFirefox, \
+    Action (Mouse 3) ToggleChromium, \
+    Icon 22x22-gartoon-www.png, \
     PressIcon 24x24-term-press.png)
 *ButtonBox: (7x1, Action ToggleQuickTerm, Swallow(kill) xclock \
     "Exec exec \
@@ -435,6 +437,7 @@ DestroyMenu ToDoMenu
 AddToMenu ToDoMenu
 + "-=> What do you want TODO? <=-" Title
 + "Firefox"     ToggleFirefox
++ "Chromium"    ToggleChromium
 + "Gnome-Clocks" Exec exec gnome-clocks
 + ""            Nop
 + "Clear Desktop" Function ShowDesktop
@@ -492,6 +495,16 @@ AddToFunc ToggleFirefox
 + I Echo "Starting firefox.. window id of $[w.id]"
 + I Next (Navigator|firefox|*Firefox) WarpToWindow +44p +20p
 
+
+DestroyFunc ToggleChromium
+AddToFunc ToggleChromium
++ I Next (Chromium-browser, Iconic) Iconify off
++ I Next (Chromium-browser, !Iconic, !Focused) FlipFocus
++ I Next (Chromium-browser, !raise) Raise
++ I None (Chromium-browser) Exec exec chrome
++ I Next (Chromium-browser) WarpToWindow +20p +45p
+
+
 DestroyFunc ToggleGimp
 AddToFunc ToggleGimp
 + I All (gimp*) Close
@@ -504,10 +517,6 @@ AddToFunc ToggleGimp
 DestroyFunc StartSurf
 AddToFunc StartSurf
 + I Test (X $[FVWM_USERDIR]/bin/start_surf.sh) PipeRead 'echo Exec exec $[FVWM_USERDIR]/bin/start_surf.sh'
-
-#+ I Wait Surf
-#+ I Next (Surf) WarpToWindow +44p +20p
-#+ I Next (Surf) Resize 750p 450p
 
 #+ I Exec exec surf https://duckduckgo.com/lite/
 DestroyFunc StartSurfGoTo
