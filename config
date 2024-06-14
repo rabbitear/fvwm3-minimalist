@@ -17,7 +17,7 @@
 ###########################
 
 DesktopSize 2x2 
-BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
+BugOpts ExplainWindowPlacement False, DisplayNewWindowNames True
 ImagePath $FVWM_USERDIR/pix2
 EwmhBaseStruts  0 128 46 0
 EdgeScroll      100 100
@@ -210,15 +210,15 @@ AddToFunc StartFunction
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
 + I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -geometry -5+26 -transparent -visual TrueColor -nocycle -noseconds -24 -fg lightgreen'
 + I Test (X flameshot) PipeRead 'pgrep -x "flameshot" > /dev/null || echo Exec exec flameshot'
-+ I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed -geometry 80x20+5+26 \
-	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
 + I Exec exec feh --bg-fill ~/.fvwm/pix2/wallpaper-dark1.jpg
 + I Exec exec xset r rate 175 60
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
 + I Module FvwmPager 0 0
-+ I All (Iconic) ReThumbnail
-+ I Exec exec kill -USR2 $(ps ax | awk '/\/usr\/local\/bin\/fvwm3/ {print $1}')
++ I Exec exec /usr/local/bin/dunst
++ I Exec exec `kill -USR2 $(ps ax | awk '/\/usr\/local\/bin\/fvwm3/ {print $1}')`
++ I Schedule 5000 Exec exec xrootconsole -fg darkgreen --wrap \
+    -geometry 188x20+0-0 ~/.fvwm/fvwm3-output.log
 
 # ExitFunction is excuted when exiting or restarting before actually 
 # quitting. Kill modules here
@@ -226,22 +226,27 @@ DestroyFunc ExitFunction
 AddToFunc ExitFunction
 + I Test (ToRestart) KillModule FvwmEvent
 + I Test (ToRestart) KillModule ButtonBox
-* I Test (ToRestart) KillModule FvwmPager
++ I Test (ToRestart) KillModule FvwmPager
++ I Test (ToRestart) Exec exec killall xrootconsole
 
 DestroyModuleConfig ButtonBox: *
-*ButtonBox: Geometry 242x28+5+5
+*ButtonBox: Geometry 266x28+5+5
 *ButtonBox: BoxSize fixed
 *ButtonBox: Colorset 1
 *ButtonBox: Rows 1
-*ButtonBox: Columns 11
+*ButtonBox: Columns 12
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
 *ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
-    $widthx$height+$left+$top o0 +20m`, Swallow(kill) xeyes \
+    $widthx$height+$left+$top 0p 34p`, Swallow(kill) xeyes \
     "Exec exec xeyes -fg black -bg olive")
 *ButtonBox: (1x1, Action `Menu Surf-Ops rectangle \
-    $widthx$height+$left+$top o0 +28m`, \
+    $widthx$height+$left+$top 0p 34p`, \
     Icon 24x24-viewer.png, \
+    PressIcon 24x24-viewer-press.png)
+*ButtonBox: (1x1, Action `Menu GameMenu rectangle \
+    $widthx$height+$left+$top 0p 34p`, \
+    Icon 22x22-gartoon-game.png, \
     PressIcon 24x24-viewer-press.png)
 *ButtonBox: (1x1, Action (Mouse 1) StartURxvt, \
     Icon 24x24-term.png, \
@@ -255,7 +260,7 @@ DestroyModuleConfig ButtonBox: *
     "Exec exec \
     xclock -digital -render -padding 0 -update 1 \
     -hd blue -hl red \
-    -strftime ' %H:%M %a %b %d' \
+    -strftime '     %H:%M %a %b %d' \
     -face xft:NotoSansMono-Regular:size=12")
 
 DestroyModuleConfig FvwmPager: *
@@ -388,9 +393,10 @@ AddToFunc RaiseMove
 
 DestroyFunc WindowUp
 AddToFunc WindowUp
++ I (Iconic) Iconify off
 + I Focus
 + I Raise
-+ I WarpToWindow +30p +35p
++ I WarpToWindow +45p +20p
 
 DestroyFunc EWMHActivateWindowFunc
 AddToFunc EWMHActivateWindowFunc 
@@ -435,7 +441,7 @@ AddToMenu Window-Ops
 
 DestroyMenu ToDoMenu
 AddToMenu ToDoMenu
-+ "-=> What do you want TODO? <=-" Title
++ "-=> What ToDo? <=-" Title
 + "Firefox"     ToggleFirefox
 + "Chromium"    ToggleChromium
 + "Gnome-Clocks" Exec exec gnome-clocks
@@ -449,13 +455,19 @@ AddToMenu ToDoMenu
 
 DestroyMenu Surf-Ops
 AddToMenu Surf-Ops 
-+ "Places to Search...  " Title 
++ " ...Places to Search... " Title 
 + "(en) Wikipedia"    StartSurfGoTo https://en.wikipedia.org/wiki/Main_Page
 + "DuckDuckGo (lite)" StartSurfGoTo https://duckduckgo.com/lite
 + "LXer.com"          StartSurfGoTo http://lxer.com/
 + "Hacker News"       StartSurfGoTo https://news.ycombinator.com/
-+ "" Nop 
-+ "Close"%window-close.png% Close
++ "AI Hacker News Summary" StartSurfGoTo https://hackernews.betacat.io/
++ "" Nop
++ "Olloma (Local)"    Exec exec surf http://192.168.8.188:8080
+
+DestroyMenu GameMenu
+AddToMenu GameMenu
++ " ...Games... " Title
++ "Open Morrowind" Exec exec openmw-launcher
 
 #####################
 # Program Functions #
@@ -564,6 +576,9 @@ Key N A 4   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
                UseIconName, SelectOnRelease Super_L
 Key K A 4   Prev (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
 Key J A 4   Next (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp 
+Key K A 4S  Prev (AcceptsFocus, CurrentPage) Function WindowUp
+Key J A 4S  Next (AcceptsFocus, CurrentPage) Function WindowUp 
+
 
 # Programs to run from keys
 Key D A 4  Exec exec rofi -show drun
