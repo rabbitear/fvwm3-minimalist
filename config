@@ -202,7 +202,8 @@ AddToFunc StartFunction
 + I Echo "====================="
 + I Test (Init)	Desk 0 0
 + I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
-+ I PipeRead 'test -d /dev/shm/fvwmicon && echo SetEnv ICON_TMPDIR /dev/shm/fvwmicon || echo SetEnv ICON_TMPDIR $[FVWM_USERDIR]'
++ I Test (Init) Exec exec mkdir $[FVWM_USERDIR]/tmp
++ I Test (Init) SetEnv ICON_TMPDIR $[FVWM_USERDIR]/tmp'
 + I Test (X xcompmgr) PipeRead 'pgrep -x "xcompmgr" > /dev/null || echo Exec exec xcompmgr -cCfF -t-5 -l-5 -r4.2 -o.55 -D6'
 + I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
 + I Test (X nm-tray) PipeRead 'pgrep -x "nm-tray" > /dev/null || echo Exec exec nm-tray'
@@ -254,7 +255,7 @@ DestroyModuleConfig ButtonBox: *
     Action (Mouse 3) StartAlacritty)
 *ButtonBox: (1x1, Action (Mouse 1) ToggleFirefox, \
     Action (Mouse 3) ToggleChromium, \
-    Icon 22x22-gartoon-www.png, \
+    Icon 16x16-crystalclear-www.png, \
     PressIcon 24x24-term-press.png)
 *ButtonBox: (7x1, Action ToggleQuickTerm, Swallow(kill) xclock \
     "Exec exec \
