@@ -51,6 +51,7 @@ ButtonStyle 1 Vector 9 0+4px50+1p@3 100-6px50+1p@3 100-6px50-2p@3 0+4px50-2p@3 0
 # Mouse Buttons on Titlebar #
 #############################
 Mouse 1 1 N Menu Window-Ops Close
+Mouse ("Surf") 1 1 N Menu Surf-Ops Close
 Mouse 3 1 N Maximize 0 100
 Mouse 0 4 N Thumbnail
 Mouse 0 2 N Maximize
@@ -211,7 +212,7 @@ AddToFunc StartFunction
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
 + I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -geometry -5+26 -transparent -visual TrueColor -nocycle -noseconds -24 -fg lightgreen'
 + I Test (X flameshot) PipeRead 'pgrep -x "flameshot" > /dev/null || echo Exec exec flameshot'
-+ I Exec exec feh --bg-scale ~/.fvwm/pix2/wallpaper/imp9-wallpaper.jpg
++ I Exec exec feh --bg-scale ~/.fvwm/pix2/wallpaper/imp10-wallpaper.jpg
 + I Exec exec xset r rate 175 60
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
@@ -241,7 +242,7 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: (1x1, Action `Menu ToDoMenu rectangle \
     $widthx$height+$left+$top 0p 34p`, Swallow(kill) xeyes \
     "Exec exec xeyes -fg black -bg olive")
-*ButtonBox: (1x1, Action `Menu Surf-Ops rectangle \
+*ButtonBox: (1x1, Action `Menu PlacesMenu rectangle \
     $widthx$height+$left+$top 0p 34p`, \
     Icon 24x24-viewer.png, \
     PressIcon 24x24-viewer-press.png)
@@ -440,6 +441,21 @@ AddToMenu Window-Ops
 + ""
 + "Close"         Close
 
+DestroyMenu Surf-Ops
+AddToMenu Surf-Ops
++ "Max Left/Right"  Maximize growonlayers $[w.layer] -1 grow 0
++ "Max Up/Down"     Maximize growonlayers -1 $[w.layer] 0 grow
++ "" Nop
++ " Echo $[w.id]"     Echo window-id: $[w.id]
++ "Font Bigger"     Exec exec xdotool key --window $[w.id] ctrl+K
++ "Font Smaller"    Exec exec xdotool key --window $[w.id] ctrl+J
++ "" Nop
++ "Identify"      Module FvwmIdent
++ "Screenshot"    Exec exec flameshot gui -p ~/Pictures/Screenshots
++ ""
++ "Close"         Close
+
+
 DestroyMenu ToDoMenu
 AddToMenu ToDoMenu
 + "-=> What ToDo? <=-" Title
@@ -454,8 +470,8 @@ AddToMenu ToDoMenu
 + "Restart"     Restart
 + "Logout"      Quit
 
-DestroyMenu Surf-Ops
-AddToMenu Surf-Ops 
+DestroyMenu PlacesMenu
+AddToMenu PlacesMenu
 + " ...Places to Search... " Title 
 + "(en) Wikipedia"    StartSurfGoTo https://en.wikipedia.org/wiki/Main_Page
 + "DuckDuckGo (lite)" StartSurfGoTo https://duckduckgo.com/lite
