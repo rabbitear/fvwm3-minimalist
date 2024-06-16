@@ -443,17 +443,34 @@ AddToMenu Window-Ops
 
 DestroyMenu Surf-Ops
 AddToMenu Surf-Ops
-+ "Max Left/Right"  Maximize growonlayers $[w.layer] -1 grow 0
-+ "Max Up/Down"     Maximize growonlayers -1 $[w.layer] 0 grow
++ "Font Bigger"     Function SurfFontBigger
++ "Font Smaller"    Function SurfFontSmaller
 + "" Nop
-+ " Echo $[w.id]"     Echo window-id: $[w.id]
-+ "Font Bigger"     Exec exec xdotool key --window $[w.id] ctrl+K
-+ "Font Smaller"    Exec exec xdotool key --window $[w.id] ctrl+J
++ "Max Left/Right"  Function GrowHorz 
++ "Max Up/Down"     Function GrowVert
 + "" Nop
 + "Identify"      Module FvwmIdent
 + "Screenshot"    Exec exec flameshot gui -p ~/Pictures/Screenshots
 + ""
 + "Close"         Close
+
+DestroyFunc SurfFontBigger
+AddToFunc SurfFontBigger
++ I Echo "surf font bigger: $[w.name]"
++ I Exec exec xdotool key --window $[w.id] ctrl+K
+
+DestroyFunc SurfFontSmaller
+AddToFunc SurfFontSmaller
++ I Echo "surf font smaller: $[w.name]"
++ I Exec exec xdotool key --window $[w.id] ctrl+J
+
+DestroyFunc GrowHorz
+AddToFunc GrowHorz
++ I Maximize growonlayers $[w.layer] -1 grow 0
+
+DestroyFunc GrowVert
+AddToFunc GrowVert
++ I Maximize growonlayers -1 $[w.layer] 0 grow
 
 
 DestroyMenu ToDoMenu
