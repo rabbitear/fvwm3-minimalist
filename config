@@ -36,16 +36,15 @@ Style * ResizeOutline
 Style * SloppyFocus, MouseFocusClickRaises
 Style * WindowShadeShrinks, WindowShadeSteps 8p
 
+Style * TitleFormat %n [%r](%I)
+Style * IconTitleFormat %n (%I)
+
 ###########################
 # Window Titlebar buttons #
 ###########################
 ButtonStyle 2 Vector 9 0+5px100-6p@3 100-7px100-6p@3 100-7px-0+4p@3 0+5px0+4p@3 0+5px100-5p@3 0+7px100-5p@2 0+8px100-5p@3 100-6px100-5p@3 100-6px-0+6p@3
 ButtonStyle 4 Vector 9 50-2px50+1p@3 50+2px50+1p@3 50+2px50-3p@3 50-2px50-3p@3 50-2px50+2p@3 50-0px50+2p@2 50-0px50+2p@3 50+3px50+2p@3 50+3px50-1p@3
 ButtonStyle 1 Vector 9 0+4px50+1p@3 100-6px50+1p@3 100-6px50-2p@3 0+4px50-2p@3 0+4px50+2@3 0+5px50+2p@2 0+6px50+2p@2 100-5px50+2p@3 100-5px50@3
-
-# Surf Forward and Back button
-#ButtonStyle 5 Vector 8 80x40@1 50x40@1 50x20@1 20x50@1 50x80@0 50x60@0 80x60@0 80x40@0
-#ButtonStyle 7 Vector 8 20x40@1 50x40@1 50x20@1 80x50@1 50x80@0 50x60@0 20x60@0 20x40@1
 
 #############################
 # Mouse Buttons on Titlebar #
@@ -203,7 +202,7 @@ AddToFunc StartFunction
 + I Echo "====================="
 + I Test (Init)	Desk 0 0
 + I Test (Init) Exec exec mkdir $[FVWM_USERDIR]/tmp
-+ I Test (Init) SetEnv ICON_TMPDIR $[FVWM_USERDIR]/tmp'
++ I Test (Init) SetEnv ICON_TMPDIR $[FVWM_USERDIR]/tmp
 + I Test (X xcompmgr) PipeRead 'pgrep -x "xcompmgr" > /dev/null || echo Exec exec xcompmgr -cCfF -t-5 -l-5 -r4.2 -o.55 -D6'
 + I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
 + I Test (X nm-tray) PipeRead 'pgrep -x "nm-tray" > /dev/null || echo Exec exec nm-tray'
@@ -219,19 +218,15 @@ AddToFunc StartFunction
 + I Exec exec /usr/local/bin/dunst
 + I Exec exec `kill -USR2 $(ps ax | awk '/\/usr\/local\/bin\/fvwm3/ {print $1}')`
 
-#+ I Schedule 5000 Exec exec xrootconsole -fg darkgreen --wrap \
-#    -geometry 188x20+0-0 ~/.fvwm/fvwm3-output.log
-#+ I Exec exec feh --bg-scale ~/.fvwm/pix2/wallpaper/imp10-wallpaper.jpg
-
-
 # ExitFunction is excuted when exiting or restarting before actually 
 # quitting. Kill modules here
 DestroyFunc ExitFunction
 AddToFunc ExitFunction
++ I Test (ToRestart) All (Iconic) DeiconifyAndRearrange
 + I Test (ToRestart) KillModule FvwmEvent
 + I Test (ToRestart) KillModule ButtonBox
 + I Test (ToRestart) KillModule FvwmPager
-+ I Exec (ToRestart) KillModule FvwmBacker
++ I Test (ToRestart) KillModule FvwmBacker
 + I Test (ToRestart) Exec exec killall xrootconsole
 
 DestroyModuleConfig FvwmBacker: *
@@ -289,8 +284,8 @@ DestroyModuleConfig FvwmPager: *
 *FvwmPager: Balloons Pager
 
 
-DestroyModuleConfig FvwmEvent: *
-*FvwmEvent: deiconify DeThumbnail
+#DestroyModuleConfig FvwmEvent: *
+#*FvwmEvent: deiconify DeThumbnail
 
 Mouse 1 I A DeiconifyAndRearrange
 
@@ -305,47 +300,32 @@ AddToFunc DeThumbnail
 + I RefreshWindow
 + I Echo "DeThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
 
-DestroyFunc DeDeThumb
-AddToFunc DeDeThumb
-+ I Iconify off
-+ I Raise
-+ I WarpToWindow 20p 44p
-
 # changing -scale from 64 to 92, see what happens.
 DestroyFunc Thumbnail
 AddToFunc Thumbnail
 + I Schedule 800 Raise
 + I Raise
 + I Current (!Shaded, Iconifiable, !Iconic) PipeRead \
-    "xwd -silent -id $[w.id] | nice -n 19 convert -scale 92 \
+    "xwd -silent -id $[w.id] | convert -scale 92 \
     -colorspace Gray -frame 1x1 \
     -mattecolor black -quality 0 xwd:- \
     png:$[ICON_TMPDIR]/icon.tmp.$[w.id].png \
-    && sleep 0.2 && echo WindowStyle IconOverride, \
+    && echo WindowStyle IconOverride, \
     Icon $[ICON_TMPDIR]/icon.tmp.$[w.id].png \
     || echo Nop"
-+ I UpdateStyles
-+ I Iconify on 
-+ I RefreshWindow
-+ I WarpToWindow 15p 15p
-+ I Echo "Thumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
++ I Iconify on
 
 DestroyFunc ReThumbnail
 AddToFunc ReThumbnail
-+ I Iconify off
++ I DeiconifyAndRearrange
 + I FlipFocus
 + I RefreshWindow
 + I Schedule 500 $[w.id] Thumbnail
-+ I Echo "ReThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
-
-#+ I Schedule 1000 Raise
 
 DestroyFunc DeiconifyAndRearrange
 AddToFunc DeiconifyAndRearrange
 + C Iconify off
-+ D Iconify off
 + C All (CurrentPage, Iconic) PlaceAgain Icon
-+ I Echo "DeiconifyAndRearrange $[w.id] may happen, ktr."
 
 
 #################################
@@ -378,7 +358,7 @@ DestroyFunc UrgencyFunc
 AddToFunc UrgencyFunc
 + I Echo "UrgencyFunc [before name]: $[w.name]"
 + I ThisWindow (QuickTerm|Alacritty|URxvt) Break
-+ I Iconify off 
++ I DeiconifyAndRearrange
 + I FlipFocus 
 + I Raise 
 + I WarpToWindow !raise 5p 5p
@@ -404,7 +384,7 @@ AddToFunc RaiseMove
 
 DestroyFunc WindowUp
 AddToFunc WindowUp
-+ I (Iconic) Iconify off
++ I (Iconic) DeiconifyAndRearrange
 + I Focus
 + I Raise
 + I WarpToWindow +45p +20p
@@ -424,10 +404,11 @@ AddToFunc   ShowDesktop
 + I TestRc (Match) Break
 + I All (CurrentPage, !Iconic, !State 1) ThisWindow State 1 True
 + I All (CurrentPage, !Iconic, State 1) Thumbnail
++ I Refresh
 
 DestroyFunc RestoreDesktop
 AddToFunc   RestoreDesktop
-+ I All (CurrentPage, Iconic, State 1) Iconify off
++ I All (CurrentPage, Iconic, State 1) DeiconifyAndRearrange
 + I All (CurrentPage, State 1) ThisWindow State 1 False
 
 #########
@@ -529,7 +510,7 @@ AddToFunc ToggleQuickTerm
 + I Next (QuickTerm, !Iconic) PipeRead 'test $[w.y] -gt 50 \
     && echo AnimatedMove keep +2 \
     || echo AnimatedMove keep -2'
-+ I All (QuickTerm, Iconic) Iconify off
++ I All (QuickTerm, Iconic) DeiconifyAndRearrange
 + I Next (QuickTerm) Focus
 + I Next (QuickTerm, !raise) Raise
 + I Next (QuickTerm) MoveToPage prev
@@ -541,7 +522,7 @@ AddToFunc ToggleQuickTerm
 DestroyFunc ToggleFirefox
 AddToFunc ToggleFirefox
 + I Next (Navigator|firefox|*Firefox) Echo "Tiggered -firefox window-"
-+ I Next (Navigator|firefox|*Firefox, Iconic) Iconify off
++ I Next (Navigator|firefox|*Firefox, Iconic) DeiconifyAndRearrange
 + I Next (Navigator|firefox|*Firefox) FlipFocus
 + I Next (Navigator|firefox|*Firefox, !raise) Raise
 + I Next (Navigator|firefox|*Firefox) WarpToWindow +90p +90p
@@ -553,7 +534,7 @@ AddToFunc ToggleFirefox
 
 DestroyFunc ToggleChromium
 AddToFunc ToggleChromium
-+ I Next (Chromium-browser, Iconic) Iconify off
++ I Next (Chromium-browser, Iconic) DeiconifyAndRearrange
 + I Next (Chromium-browser, !Iconic, !Focused) FlipFocus
 + I Next (Chromium-browser, !raise) Raise
 + I None (Chromium-browser) Exec exec chrome
@@ -601,8 +582,8 @@ AddToFunc StartAlacritty
 # Key Bindings #
 ################
 Key I TWFS 4  Thumbnail
-Key I I		 4  Iconify off
-Key I I		 M  Iconify off
+Key I I		 4  DeiconifyAndRearrange
+Key I I		 M  DeiconifyAndRearrange
 Key M WFS  4  Maximize 0 100
 Key M WFS  4S Maximize 100 0
 Key M WFS	 4C Maximize 100 100
@@ -643,7 +624,7 @@ Mouse 3 R   S StartSutf
 Mouse 3 R   N StartSurf 
 Mouse 2 R   A WindowList c c
 
-Mouse 3 I   A Iconify off
+Mouse 3 I   A DeiconifyAndRearrange
 
 Mouse 8 A N Prev (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp
 Mouse 9 A N Next (AcceptsFocus, CurrentPage, !Iconic) Function WindowUp 
