@@ -427,7 +427,7 @@ AddToMenu Window-Ops
 + "(Un)Maximize"  Maximize 
 + "" 
 + "Identify"      Module FvwmIdent
-+ "Screenshot"    Exec exec flameshot gui -p ~/Pictures/Screenshots
++ "Screenshot"    Function ScreenShotWindow
 + ""
 + "Close"         Close
 
@@ -439,10 +439,10 @@ AddToMenu Surf-Ops
 + "Max Left/Right"  Function GrowHorz 
 + "Max Up/Down"     Function GrowVert
 + "" Nop
-+ "Identify"      Module FvwmIdent
-+ "Screenshot"    Exec exec flameshot gui -p ~/Pictures/Screenshots
++ "Identify"        Module FvwmIdent
++ "Screenshot"      Function ScreenShotWindow
 + ""
-+ "Close"         Close
++ "Close"           Close
 
 DestroyFunc SurfFontBigger
 AddToFunc SurfFontBigger
@@ -576,6 +576,14 @@ AddToFunc StartAlacritty
       --option 'window.dimensions = { columns = 80, lines = 12 }'
 + I Wait Alacritty
 + I Next (Alacritty) WarpToWindow +44p +20p 
+
+DestroyFunc ScreenShotWindow 
+AddToFunc ScreenShotWindow 
++ I MenuClose
++ I Raise
++ I Current (!Shaded, !Iconic) PipeRead \
+  "xwd -silent -id $[w.id] | convert -mattecolor black xwd:- \
+  png:$HOME/windowshot-$[w.resource]-$(date "+%Y-%m-%d-%H.%M.%S").png"
 
 
 ################
