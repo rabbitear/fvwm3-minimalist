@@ -202,7 +202,6 @@ AddToFunc StartFunction
 + I Echo "= Fvwm3 is starting ="
 + I Echo "====================="
 + I Test (Init)	Desk 0 0
-+ I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
 + I Test (Init) Exec exec mkdir $[FVWM_USERDIR]/tmp
 + I Test (Init) SetEnv ICON_TMPDIR $[FVWM_USERDIR]/tmp'
 + I Test (X xcompmgr) PipeRead 'pgrep -x "xcompmgr" > /dev/null || echo Exec exec xcompmgr -cCfF -t-5 -l-5 -r4.2 -o.55 -D6'
@@ -212,15 +211,18 @@ AddToFunc StartFunction
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
 + I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -geometry -5+26 -transparent -visual TrueColor -nocycle -noseconds -24 -fg lightgreen'
 + I Test (X flameshot) PipeRead 'pgrep -x "flameshot" > /dev/null || echo Exec exec flameshot'
-+ I Exec exec feh --bg-scale ~/.fvwm/pix2/wallpaper/imp10-wallpaper.jpg
 + I Exec exec xset r rate 175 60
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
 + I Module FvwmPager 0 0
++ I Module FvwmBacker 
 + I Exec exec /usr/local/bin/dunst
 + I Exec exec `kill -USR2 $(ps ax | awk '/\/usr\/local\/bin\/fvwm3/ {print $1}')`
-+ I Schedule 5000 Exec exec xrootconsole -fg darkgreen --wrap \
-    -geometry 188x20+0-0 ~/.fvwm/fvwm3-output.log
+
+#+ I Schedule 5000 Exec exec xrootconsole -fg darkgreen --wrap \
+#    -geometry 188x20+0-0 ~/.fvwm/fvwm3-output.log
+#+ I Exec exec feh --bg-scale ~/.fvwm/pix2/wallpaper/imp10-wallpaper.jpg
+
 
 # ExitFunction is excuted when exiting or restarting before actually 
 # quitting. Kill modules here
@@ -229,7 +231,14 @@ AddToFunc ExitFunction
 + I Test (ToRestart) KillModule FvwmEvent
 + I Test (ToRestart) KillModule ButtonBox
 + I Test (ToRestart) KillModule FvwmPager
++ I Exec (ToRestart) KillModule FvwmBacker
 + I Test (ToRestart) Exec exec killall xrootconsole
+
+DestroyModuleConfig FvwmBacker: *
+*FvwmBacker: Command (Desk 0, Page 0 0) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp1-wallpaper.png
+*FvwmBacker: Command (Desk 0, Page 0 1) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp2-wallpaper.png
+*FvwmBacker: Command (Desk 0, Page 1 0) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp3-wallpaper.png
+*FvwmBacker: Command (Desk 0, Page 1 1) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp4-wallpaper.png
 
 DestroyModuleConfig ButtonBox: *
 *ButtonBox: Geometry 266x28+5+5
