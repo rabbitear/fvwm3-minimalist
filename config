@@ -207,16 +207,20 @@ AddToFunc StartFunction
 + I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
 + I Test (X nm-tray) PipeRead 'pgrep -x "nm-tray" > /dev/null || echo Exec exec nm-tray'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
++ I Test (X xscreensaver) PipeRead 'pgrep -x "xscreensaver" > /dev/null || echo Exec exec xscreensaver --no-splash'
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
-+ I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -geometry -5+26 -transparent -visual TrueColor -nocycle -noseconds -24 -fg lightgreen'
++ I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -geometry -100+26 -transparent -visual TrueColor -nocycle -noseconds -24 -fg lightgreen'
 + I Test (X flameshot) PipeRead 'pgrep -x "flameshot" > /dev/null || echo Exec exec flameshot'
++ I Test (X simplescreenrecorder) PipeRead 'pgrep -x "simplescreenrecorder" > /dev/null || echo Exec exec simplescreenrecorder --start-hidden --logfile'
 + I Exec exec xset r rate 175 60
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
 + I Module FvwmPager 0 0
-+ I Module FvwmBacker 
-+ I Exec exec /usr/local/bin/dunst
++ I Exec exec /usr/local/bin/dunst -config $HOME/.config/dunst/dunstrc
 + I Exec exec `kill -USR2 $(ps ax | awk '/\/usr\/local\/bin\/fvwm3/ {print $1}')`
++ I Exec exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp9-wallpaper.png
+
+# + I Module FvwmBacker 
 
 # ExitFunction is excuted when exiting or restarting before actually 
 # quitting. Kill modules here
@@ -229,11 +233,11 @@ AddToFunc ExitFunction
 + I Test (ToRestart) KillModule FvwmBacker
 + I Test (ToRestart) Exec exec killall xrootconsole
 
-DestroyModuleConfig FvwmBacker: *
-*FvwmBacker: Command (Desk 0, Page 0 0) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp1-wallpaper.png
-*FvwmBacker: Command (Desk 0, Page 0 1) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp2-wallpaper.png
-*FvwmBacker: Command (Desk 0, Page 1 0) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp3-wallpaper.png
-*FvwmBacker: Command (Desk 0, Page 1 1) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp4-wallpaper.png
+#DestroyModuleConfig FvwmBacker: *
+#*FvwmBacker: Command (Desk 0, Page 0 0) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp1-wallpaper.png
+#*FvwmBacker: Command (Desk 0, Page 0 1) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp2-wallpaper.png
+#*FvwmBacker: Command (Desk 0, Page 1 0) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp3-wallpaper.png
+#*FvwmBacker: Command (Desk 0, Page 1 1) Exec feh --bg-max $[FVWM_USERDIR]/pix2/wallpaper/imp4-wallpaper.png
 
 DestroyModuleConfig ButtonBox: *
 *ButtonBox: Geometry 266x28+5+5
@@ -468,11 +472,13 @@ AddToMenu ToDoMenu
 + "-=> What ToDo? <=-" Title
 + "Firefox"     ToggleFirefox
 + "Chromium"    ToggleChromium
++ "Thunderbird"  Exec exec thunderbird
 + "Gnome-Clocks" Exec exec gnome-clocks
 + ""            Nop
 + "Clear Desktop" Function ShowDesktop
 + "Programs"    Exec exec rofi -modi drun,run -show drun
 + "Stop/Start Log" Exec exec `kill -USR2 $(ps ax | awk '/\/usr\/local\/bin\/fvwm3/ {print $1}')`
++ "FvwmConsole" Module FvwmConsole
 + ""            Nop
 + "Restart"     Restart
 + "Logout"      Quit
@@ -500,7 +506,7 @@ DestroyFunc ToggleConsole
 AddToFunc ToggleConsole
 + I All (FvwmConsole) Close
 + I TestRc (NoMatch) Module FvwmConsole -g 30x6+10-10 -fn 8x8 \
-	+sb -terminal xterm -bg limegreen -fg darkgreen
+	+sb -terminal urxvt -bg limegreen -fg darkgreen
 + I Wait FvwmConsole
 + I Next (FvwmConsole) WarpToWindow +10p +15p
 
