@@ -180,7 +180,7 @@ Style "FvwmPager" NoTitle, BorderWidth 6, HandleWidth 6, !Maximizable, \
     !Handles
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
 Style "xdaliclock" NoTitle, NeverFocus, StaysOnBottom, !Iconifiable, \
-  WindowListSkip, BorderWidth 0, HandleWidth 0
+  WindowListSkip, BorderWidth 0, HandleWidth 0, Sticky
 
 # MiniIcons 
 Style "Fvwm*" MiniIcon amusement.png
@@ -506,7 +506,7 @@ DestroyFunc ToggleConsole
 AddToFunc ToggleConsole
 + I All (FvwmConsole) Close
 + I TestRc (NoMatch) Module FvwmConsole -g 30x6+10-10 -fn 8x8 \
-	+sb -terminal urxvt -bg limegreen -fg darkgreen
+	+sb -terminal urxvt -bg "#5F3722" -fg darkgreen
 + I Wait FvwmConsole
 + I Next (FvwmConsole) WarpToWindow +10p +15p
 
@@ -571,9 +571,11 @@ AddToFunc StartSurfGoTo
 
 DestroyFunc StartURxvt 
 AddToFunc StartURxvt 
-+ I Exec exec urxvt -font "xft:3270 Nerd Font:size=15" -g 80x8 +sb
++ I Exec exec urxvt -font "xft:Ubuntu Mono" -bg "#5F3722" -g 80x8 +sb
 + I Wait urxvt 
 + I Next (urxvt) WarpToWindow +44p +20p 
+
+#+ I Exec exec urxvt -font "xft:3270 Nerd Font:size=15" -g 80x8 +sb
 
 AddToFunc StartAlacritty
 + I Exec exec alacritty --option 'font.size=12' \
