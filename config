@@ -16,7 +16,9 @@
 # Global Desktop Settings #
 ###########################
 
-DesktopSize 2x2 
+#DesktopSize 2x2 
+# This "1x2 1x2" works well for 2 monitors, side by side
+DesktopSize 1x2 1x2 
 BugOpts ExplainWindowPlacement False, DisplayNewWindowNames True
 ImagePath $FVWM_USERDIR/pix2
 EwmhBaseStruts  0 128 46 0
