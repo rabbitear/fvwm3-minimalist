@@ -34,7 +34,8 @@ Style * EdgeMoveResistance 20
 Style * SnapAttraction 8
 
 Style * IconBox 5 120 -5 -5, IconFill Bottom Right
-Style * ResizeOutline
+#Style * ResizeOutline
+Style * ResizeOpaque
 Style * SloppyFocus, MouseFocusClickRaises
 Style * WindowShadeShrinks, WindowShadeSteps 8p
 
@@ -183,6 +184,7 @@ Style "FvwmPager" NoTitle, BorderWidth 6, HandleWidth 6, !Maximizable, \
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
 Style "xdaliclock" NoTitle, NeverFocus, StaysOnBottom, !Iconifiable, \
   WindowListSkip, BorderWidth 0, HandleWidth 0, Sticky
+Style "chromium-browser" ClickToFocus
 
 # MiniIcons 
 Style "Fvwm*" MiniIcon amusement.png
@@ -473,6 +475,7 @@ DestroyMenu ToDoMenu
 AddToMenu ToDoMenu
 + "-=> What ToDo? <=-" Title
 + "Firefox"     ToggleFirefox
++ "Tor-browser" Exec exec tor-browser
 + "Chromium"    ToggleChromium
 + "Thunderbird"  Exec exec thunderbird
 + "Gnome-Clocks" Exec exec gnome-clocks
