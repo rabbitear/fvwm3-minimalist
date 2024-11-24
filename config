@@ -229,7 +229,7 @@ AddToFunc EWMHActivateWindowFunc
 + I DeiconifyAndRearrange
 + I Focus
 + I Raise
-+ I WarpToWindow 50 50
+#+ I WarpToWindow 50 50
 
 #########
 # Menus #
