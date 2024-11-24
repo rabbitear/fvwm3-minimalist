@@ -28,7 +28,9 @@ Style * IconBox 5 120 -5 -5, IconFill Bottom Right
 #Style * IconBox 240 0 +5 -5, IconFill Right Bottom
 #Style * IconBox -5 26 5 -5, IconFill Top Right 
 Style * ResizeOutline
-Style * SloppyFocus, MouseFocusClickRaises
+#Style * SloppyFocus, MouseFocusClickRaises
+Style * ClickToFocus
+
 
 # Took these button styles from fvwm-sgi config 
 # https://github.com/ZoomTen/fvwm2-sgi/blob/master/.fvwm/components/wm_decorations.fvwm2rc
@@ -423,6 +425,8 @@ Mouse 1 FS   A RaiseMove Resize
 Mouse 3 FS  A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I   A Iconify off
 Mouse 2 R   A WindowList c c
+
+Style * CascadePlacement NorthWest
 
 
 # End of Fvwm3 config
