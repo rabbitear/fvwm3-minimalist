@@ -16,10 +16,10 @@
 # Global Desktop Settings #
 ###########################
 
-#DesktopSize 2x2 
+DesktopSize 2x2 
 # This "1x2 1x2" works well for 2 monitors, side by side
-DesktopSize 1x2 1x2 
-BugOpts ExplainWindowPlacement False, DisplayNewWindowNames True
+#DesktopSize 1x2 1x2 
+BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
 ImagePath $FVWM_USERDIR/pix2
 EwmhBaseStruts  0 128 46 0
 EdgeScroll      100 100
@@ -191,7 +191,7 @@ Style "Fvwm*" MiniIcon amusement.png
 Style "Surf" MiniIcon mini/mini.www.png, PositionPlacement UnderMouse
 Style "Picture-in-Picture" MiniIcon 24x24-multimedia.png
 Style "urxvt" PositionPlacement UnderMouse, MiniIcon mini/mini.term.png
-Style "Alacritty" PositionPlacement UnderMouse
+#Style "Alacritty" PositionPlacement UnderMouse
 Style "YouTube" NoTitle, MiniIcon amusement.png
 
 #############
@@ -399,12 +399,12 @@ AddToFunc WindowUp
 
 DestroyFunc EWMHActivateWindowFunc
 AddToFunc EWMHActivateWindowFunc 
-+ I DeiconifyAndRearrange
-+ I ThisWindow (QuickTerm|Alacritty|URxvt) Break
-+ I Echo "EWMHActivateWindowFunc entered, name: $[w.name]"
-+ I Focus
+#+ I DeiconifyAndRearrange
+#+ I ThisWindow (QuickTerm|Alacritty|URxvt) Break
++ I Echo "ktr- EWMHActivateWindowFunc entered, name: $[w.name]"
 + I Raise
-+ I WarpToWindow 50 50
++ I Focus
+#+ I WarpToWindow 50 50
 
 DestroyFunc ShowDesktop
 AddToFunc   ShowDesktop
@@ -503,6 +503,7 @@ DestroyMenu GameMenu
 AddToMenu GameMenu
 + " ...Games... " Title
 + "Open Morrowind" Exec exec openmw-launcher
++ "Lunar Lancer"   Exec exec sameboy ~/play/roms/gameboy/Lunar_Lancer.gb
 
 #####################
 # Program Functions #
@@ -576,7 +577,7 @@ AddToFunc StartSurfGoTo
 
 DestroyFunc StartURxvt 
 AddToFunc StartURxvt 
-+ I Exec exec urxvt -font "xft:Ubuntu Mono" -bg "#5F3722" -g 80x8 +sb
++ I Exec exec urxvt -font "xft:Ubuntu Mono" -bg "#0B3746" -g 80x13 +sb
 + I Wait urxvt 
 + I Next (urxvt) WarpToWindow +44p +20p 
 
