@@ -26,7 +26,7 @@ DesktopSize 1x1
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
 #Style * IconBox 5 120 -5 -5, IconFill Bottom Right
 #Style * IconBox 240 0 +5 -5, IconFill Right Bottom
-Style * IconBox -5 26 5 -5, IconFill Top Right 
+Style * IconBox -5 30 10 -5, IconFill Top Right 
 Style * ResizeOutline
 Style * SloppyFocus, MouseFocusClickRaises
 
@@ -60,7 +60,7 @@ Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
 Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
-
+Style * NoTitle
 
 # StartFunction is executed on startups and restats.
 DestroyFunc StartFunction
@@ -80,6 +80,7 @@ AddToFunc StartFunction
 	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
 + I Exec exec feh --bg-scale ~/.fvwm/pix/blackbrick.jpg
 + I Exec exec xset r rate 175 60
++ I Exec exec xinput set-prop "USB-HID Keyboard Mouse" 312 0, 0, 1
 + I Module FvwmButtons ButtonBox
 + I Module FvwmEvent
 + I All (Iconic) ReThumbnail
@@ -98,14 +99,14 @@ AddToFunc ExitFunction
 
 
 DestroyModuleConfig ButtonBox: *
-*ButtonBox: Geometry 112x16+5+5
+*ButtonBox: Geometry 112x16+8+5
 *ButtonBox: BoxSize fixed
 *ButtonBox: Rows 1
-*ButtonBox: Columns 7
+*ButtonBox: Columns 8
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
-*ButtonBox: (1x1, Action ToggleNotes, Swallow(kill) xeyes "Exec exec xeyes")
-*ButtonBox: (6x1, Action ToggleQuickTerm, Swallow(kill) xclock "Exec exec \
+*ButtonBox: (2x1, Action ToggleNotes, Swallow(kill) xeyes "Exec exec xeyes")
+*ButtonBox: (6x1, Action ShowDesktop, Swallow(kill) xclock "Exec exec \
     xclock -digital -render -padding 0 -update 1 -strftime ' %H:%M %a %b %d' \
     -face xft:NotoSansMono-Regular:size=8")
 
@@ -131,7 +132,7 @@ AddToFunc Thumbnail
 + I Schedule 800 Raise
 + I Raise
 + I Current (!Shaded, Iconifiable, !Iconic) PipeRead \
-    "xwd -silent -id $[w.id] | nice -n 19 convert -scale 64 -frame 1x1 \
+    "xwd -silent -id $[w.id] | nice -n 19 convert -scale 128 -frame 1x1 \
     -mattecolor black -quality 0 xwd:- \
     png:$[ICON_TMPDIR]/icon.tmp.$[w.id].png \
     && sleep 0.2 && echo WindowStyle IconOverride, \
@@ -195,12 +196,25 @@ AddToFunc WindowUp
 + I Raise
 + I WarpToWindow +30p +35p
 
-DestroyFunc EWMHActivateWindowFunc
-AddToFunc EWMHActivateWindowFunc 
-+ I DeiconifyAndRearrange
-+ I Focus
-+ I Raise
-+ I WarpToWindow 50 50
+#DestroyFunc EWMHActivateWindowFunc
+#AddToFunc EWMHActivateWindowFunc 
+#+ I DeiconifyAndRearrange
+#+ I Focus
+#+ I Raise
+#+ I WarpToWindow 50 50
+
+DestroyFunc ShowDesktop
+AddToFunc   ShowDesktop
++ I All (CurrentPage, Iconic, State 1) RestoreDesktop
++ I TestRc (Match) Break
++ I All (CurrentPage, !Iconic, !State 1) ThisWindow State 1 True
++ I All (CurrentPage, !Iconic, State 1) Thumbnail
++ I Refresh
+
+DestroyFunc RestoreDesktop
+AddToFunc   RestoreDesktop
++ I All (CurrentPage, Iconic, State 1) DeiconifyAndRearrange
++ I All (CurrentPage, State 1) ThisWindow State 1 False
 
 
 #####################
