@@ -1,4 +1,3 @@
-# Minimalist Fvwm Config by Rabbitear
 #
 # Assumed these programs are installed
 # - rxvt-unicode
@@ -71,13 +70,14 @@ AddToFunc StartFunction
 + I Test (Init)	Desk 0 0
 + I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
 + I PipeRead 'test -d /dev/shm/fvwmicon && echo SetEnv ICON_TMPDIR /dev/shm/fvwmicon || echo SetEnv ICON_TMPDIR $[FVWM_USERDIR]'
-+ I Test (X picom) PipeRead 'pgrep -x "picom" > /dev/null || echo Exec exec picom --daemon --conifg=$[FVWM_USERDIR]/picom.conf'
 + I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
-+ I Test (X nm-tray) PipeRead 'pgrep -x "nm-tray" > /dev/null || echo Exec exec nm-tray'
++ I Test (X nm-applet) PipeRead 'pgrep -x "nm-applet" > /dev/null || echo Exec exec nm-applet'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
-+ I Test (Init) Exec exec urxvt -title FvwmLogView -fn fixed -geometry 80x20+5+26 \
++ I Test (Init) Exec exec xterm +ai -title FvwmLogView -fn fixed \
+    -geometry 80x20+5+26 +sb -bg limegreen -fg darkgreen \
 	-e bash -c 'tail -f ~/.fvwm/fvwm3-output.log'
++ I Test (init) Exec exec ~/.fvwm/bin/picom.sh
 + I Exec exec feh --bg-scale ~/.fvwm/pix/blackbrick.jpg
 + I Exec exec xset r rate 175 60
 + I Exec exec xinput set-prop "USB-HID Keyboard Mouse" 312 0, 0, 1
