@@ -24,8 +24,6 @@
 
 DesktopSize 1x1
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
-#Style * IconBox 5 120 -5 -5, IconFill Bottom Right
-#Style * IconBox 240 0 +5 -5, IconFill Right Bottom
 Style * IconBox -5 30 10 -5, IconFill Top Right 
 Style * ResizeOutline
 Style * SloppyFocus, MouseFocusClickRaises
@@ -47,7 +45,9 @@ Style * SloppyFocus, MouseFocusClickRaises
 #ChangeDecor Default
 
 Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
-Style * IconFont "xft:Luxi Mono:Medium:Roman:size=10:encoding=iso8859-1;-adobe-courier-bold-r-normal--10-*"
+Style * !IconTitle
+Style * IconBackgroundRelief 4
+Style * IconBackgroundPadding 1
 
 
 Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
@@ -71,7 +71,7 @@ AddToFunc StartFunction
 + I Test (Init)	Desk 0 0
 + I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
 + I PipeRead 'test -d /dev/shm/fvwmicon && echo SetEnv ICON_TMPDIR /dev/shm/fvwmicon || echo SetEnv ICON_TMPDIR $[FVWM_USERDIR]'
-+ I Test (X xcompmgr) PipeRead 'pgrep -x "xcompmgr" > /dev/null || echo Exec exec xcompmgr -cCfF -t-5 -l-5 -r4.2 -o.55 -D6'
++ I Test (X picom) PipeRead 'pgrep -x "picom" > /dev/null || echo Exec exec picom --daemon --conifg=$[FVWM_USERDIR]/picom.conf'
 + I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
 + I Test (X nm-tray) PipeRead 'pgrep -x "nm-tray" > /dev/null || echo Exec exec nm-tray'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
@@ -196,11 +196,27 @@ AddToFunc WindowUp
 + I Raise
 + I WarpToWindow +30p +35p
 
-#DestroyFunc EWMHActivateWindowFunc
-#AddToFunc EWMHActivateWindowFunc 
+DestroyFunc UrgencyFunc
+AddToFunc UrgencyFunc
++ I Echo "UrgencyFunc [before name]: $[w.name]"
++ I ThisWindow (QuickTerm|Alacritty|URxvt) Break
++ I DeiconifyAndRearrange
++ I FlipFocus
++ I Raise
++ I WarpToWindow !raise 5p 5p
++ I Echo "UrgencyFunc $[w.id], name: $[w.name]."
+
+DestroyFunc UrgencyDoneFunc
+AddToFunc UrgencyDoneFunc
++ I Prev (AcceptsFocus) Focus
++ I Echo "UrgencyDoneFunc $[w.id], name: $[w.name]."
++ I Nop
+
+DestroyFunc EWMHActivateWindowFunc
+AddToFunc EWMHActivateWindowFunc 
 #+ I DeiconifyAndRearrange
-#+ I Focus
-#+ I Raise
++ I Focus
++ I Raise
 #+ I WarpToWindow 50 50
 
 DestroyFunc ShowDesktop
@@ -208,7 +224,7 @@ AddToFunc   ShowDesktop
 + I All (CurrentPage, Iconic, State 1) RestoreDesktop
 + I TestRc (Match) Break
 + I All (CurrentPage, !Iconic, !State 1) ThisWindow State 1 True
-+ I All (CurrentPage, !Iconic, State 1) Thumbnail
++ I All (CurrentPage, !Iconic, State 1) Iconify on
 + I Refresh
 
 DestroyFunc RestoreDesktop
@@ -256,7 +272,7 @@ AddToFunc ToggleQuickTerm
 + I Next (QuickTerm, !Iconic) PipeRead 'test $[w.y] -gt 50 \
     && echo AnimatedMove keep +2 \
     || echo AnimatedMove keep -2'
-+ I All (QuickTerm, Iconic) Iconify off
++ I All (QuickTerm, Iconic) DeiconifyAndRearrange
 + I Next (QuickTerm) Focus
 + I Next (QuickTerm, !raise) Raise
 + I Next (QuickTerm) MoveToPage prev
@@ -273,7 +289,7 @@ AddToFunc ToggleQuickTerm
 DestroyFunc ToggleFirefox
 AddToFunc ToggleFirefox
 + I Next (Navigator|firefox|*Firefox) Echo "Tiggered -firefox window-"
-+ I Next (Navigator|firefox|*Firefox, Iconic) Iconify off
++ I Next (Navigator|firefox|*Firefox, Iconic) DeiconifyAndRearrange
 + I Next (Navigator|firefox|*Firefox) FlipFocus
 + I Next (Navigator|firefox|*Firefox, !raise) Raise
 + I Next (Navigator|firefox|*Firefox) WarpToWindow +90p +90p
@@ -306,15 +322,18 @@ AddToFunc StartSurf
 Key Space WFS   4  Function Thumbnail
 Key Space A     4S All (CurrentPage,!Fvwm*B*) Function Thumbnail
 Key I WFS 	4  Function Thumbnail
-Key I I		4  Iconify off
-Key I I		M  Iconify off
+Key I I		4  DeiconifyAndRearrange
+Key I I		M  DeiconifyAndRearrange
 Key Space A 	M  Function Thumbnail
-Key Space I 	M  Iconify off
-Key Space I 	4  Iconify off
+Key Space I 	M  DeiconifyAndRearrange
+Key Space I 	4  DeiconifyAndRearrange
 Key M WFS  	4  Maximize 0 100
 Key M WFS  	4S Maximize 100 0
 Key M WFS	4C Maximize 100 100
 Key Q WFSI 	4S Close
+
+Key (st) R A 4  Resize 80c 24c
+Key (urxvt) R A 4  Resize 80c 24c
 
 # Move from window to window with keys
 Key P A 4   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
@@ -371,9 +390,8 @@ Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
 Mouse 1 T   D Function Thumbnail
-#Mouse 1 FS A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
-Mouse 3 I  A Iconify off
+Mouse 3 I  A DeiconifyAndRearrange
 
 
 # End of Fvwm3 config
