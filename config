@@ -184,7 +184,7 @@ AddToFunc WindowUp
 DestroyFunc UrgencyFunc
 AddToFunc UrgencyFunc
 + I Echo "UrgencyFunc [before name]: $[w.name]"
-+ I ThisWindow (QuickTerm|Alacritty|URxvt|st|xterm) Break
++ I ThisWindow (QuickTerm|URxvt|st|xterm) Break
 + I DeiconifyAndRearrange
 + I FlipFocus
 + I Raise
@@ -250,9 +250,10 @@ AddToFunc ToggleNotes
 + I TestRc (NoMatch) Exec exec st -g 80x11+5+5 -n WikiJournal \
     -T WikiJournal -f "Agave Nerd Font:size=16" \
     -e nvim -c WikiJournal
-+ I Wait WikiJournal
-+ I Next (WikiJournal) WarpToWindow +50p +50p
-+ I Echo Toggled Notes
+
+#+ I Wait WikiJournal
+#+ I Next (WikiJournal) WarpToWindow +50p +50p
+#+ I Echo Toggled Notes
 
 
 DestroyFunc ToggleQuickTerm
@@ -266,8 +267,9 @@ AddToFunc ToggleQuickTerm
 + I Next (QuickTerm) MoveToPage prev
 + I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
 + I TestRc (NoMatch) Exec exec alacritty -T QuickTerm
-+ I Wait QuickTerm
-+ I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
+
+#+ I Wait QuickTerm
+#+ I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
 
 
 DestroyFunc ToggleFirefox
@@ -295,7 +297,7 @@ AddToFunc ToggleGimp
 DestroyFunc StartSurf
 AddToFunc StartSurf
 + I Exec exec surf -z 1.8 "https://duckduckgo.com/lite"
-+ I Wait Surf
+#+ I Wait Surf
 + I Next (Surf) WarpToWindow +150p +130p
 
 ################
@@ -357,9 +359,9 @@ Key C      A 4  Function ToggleQuickTerm
 Key R A    4S Restart
 Key L A    4S Exec xscreensaver-command -lock
 Key I WFSI 4S FvwmIdent
-#Key Y A    4  Exec exec maim -s | tee ~/Pictures/$(date +%s).png \
-#    | xclip -selection clipboard -t image/png \ 
-#    && notify-send "Screenshot taken"
+Key Y A    4  Exec exec maim -s | tee ~/Pictures/$(date +%s).png \
+    | xclip -selection clipboard -t image/png \ 
+    && notify-send "Screenshot taken"
 Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
 
 Key XF86AudioRaiseVolume A N Exec exec amixer -q sset Master 5%+
