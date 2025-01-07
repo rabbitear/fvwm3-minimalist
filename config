@@ -38,7 +38,7 @@ Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
 Style "WikiJournal" Sticky, !Closable, !Iconifiable, !Title, !Maximizable
 Style "Picture-in-Picture" Sticky, StaysOnTop
 Style "FvwmLogView" !Maximizable, !Iconifiable, WindowListSkip, NeverFocus
-Style "FvwmConsole" !Maximizable, !Iconifiable, WindowListSkip, NeverFocus
+Style "FvwmConsole" !Maximizable, !Iconifiable, WindowListSkip
 Style "QuickXterm" !Maximizable, !Iconifiable
 Style "urxvt" PositionPlacement UnderMouse
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
@@ -57,6 +57,7 @@ AddToFunc StartFunction
 + I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
 + I PipeRead 'test -d /dev/shm/fvwmicon && echo SetEnv ICON_TMPDIR /dev/shm/fvwmicon || echo SetEnv ICON_TMPDIR $[FVWM_USERDIR]'
 + I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
++ I Test (X dunst) PipeRead 'pgrep -x "dunst" > /dev/null || echo Exec exec dunst'
 + I Test (X nm-applet) PipeRead 'pgrep -x "nm-applet" > /dev/null || echo Exec exec nm-applet'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
@@ -134,7 +135,6 @@ AddToFunc ReThumbnail
 + I Schedule 500 $[w.id] Thumbnail
 + I Echo "ReThumbnail wid $[w.id], name $[w.name], dir $[ICON_TMPDIR]."
 
-#+ I Schedule 1000 Raise
 
 DestroyFunc DeiconifyAndRearrange
 AddToFunc DeiconifyAndRearrange
@@ -199,10 +199,8 @@ AddToFunc UrgencyDoneFunc
 
 DestroyFunc EWMHActivateWindowFunc
 AddToFunc EWMHActivateWindowFunc 
-#+ I DeiconifyAndRearrange
 + I Focus
 + I Raise
-#+ I WarpToWindow 50 50
 
 DestroyFunc ShowDesktop
 AddToFunc   ShowDesktop
@@ -239,18 +237,6 @@ AddToFunc ToggleLogView
     -e bash -c 'tail --lines=+0 -f ~/.fvwm/fvwm3-output.log'
 + I Wait FvwmLogView
 + I Next (FvwmLogView) WarpToWindow +10p +15p
-
-DestroyFunc ToggleQuickXterm
-AddToFunc ToggleQuickXterm
-+ I All (QuickXterm) Close
-+ I TestRc (NoMatch) Exec exec xterm -T ToggleQuickXterm \
-    -n QuickXterm \
-    -fn "xft:RobotoMono Nerd Font:size=11" \
-    -geometry 72x6-5-10 -sb -bg "#133030" -fg "#6ba35e" 
-+ I Wait QuickXterm
-+ I Next (QuickXterm) WarpToWindow +10p +15p
-
-
 
 
 DestroyFunc ToggleNotes
@@ -344,12 +330,11 @@ Key J A 4   Next (AcceptsFocus, CurrentPage) Function WindowUp
 # Start programs
 Key W A 4  Exec exec surf -z 1.8 -s "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
 Key W A 4S Exec exec surf -z 1.0 -s -i "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
-Key X A 4  Exec exec rofi -show drun
-Key D A 4  StartSurf
-Key D A 4S Exec exec surf -z 1.3 "https://duckduckgo.com/?kae=t&k1=-1&km=l&kt=e&q=$(xclip -o -selection primary)"
+Key S A 4  StartSurf
+Key S A 4S Exec exec surf -z 1.3 "https://duckduckgo.com/?kae=t&k1=-1&km=l&kt=e&q=$(xclip -o -selection primary)"
 # rofi ddgr search, see ~/.fvwm/bin/ddgr_search.py
 # and https://github.com/gmagno/rofi-ddgr
-Key S A 4  Exec exec rofi \
+Key S A 4M Exec exec rofi \
             -show ddgrsearch \
             -lines 5 \
             -eh 3 \
@@ -361,18 +346,21 @@ Key F      A 4  Function ToggleFirefox
 Key F      A 4S Function ToggleFirefox
 Key Space  A 4M Function ToggleNotes
 Key Space  A 4C Function ToggleQuickTerm
-Key C      A 4  Function ToggleConsole
 Key G      A 4  Function ToggleGimp
-Key V      A 4  Function ToggleLogView
-Key B      A 4  Function ToggleQuickXterm
+Key D      A 4  Exec exec rofi -show drun
+# Toggle keys across the bottom of the screen
+Key Z      A 4  Function ToggleConsole
+Key X      A 4  Function ToggleLogView
+Key C      A 4  Function ToggleQuickTerm
 
 # Globalish keybindings
 Key R A    4S Restart
 Key L A    4S Exec xscreensaver-command -lock
 Key I WFSI 4S FvwmIdent
-Key Y A	   4  Exec exec flameshot gui -p $HOME/Pictures/Screenshots
+#Key Y A    4  Exec exec maim -s | tee ~/Pictures/$(date +%s).png \
+#    | xclip -selection clipboard -t image/png \ 
+#    && notify-send "Screenshot taken"
 Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
-Key Z A	   4  Exec exec flameshot full --clipboard
 
 Key XF86AudioRaiseVolume A N Exec exec amixer -q sset Master 5%+
 Key XF86AudioLowerVolume A N Exec exec amixer -q sset Master 5%-
@@ -384,7 +372,7 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 # Mouse bindings #
 ##################
 Mouse 1 R  A Nop
-Mouse 3 R  A Exec exec st -f "Iosevka Nerd Font:size=18" -g 80x9
+Mouse 3 R  A Function ToggleQuickTerm
 Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
