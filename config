@@ -88,8 +88,8 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: Columns 8
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
-*ButtonBox: (2x1, Action ToggleNotes, Swallow(kill) xeyes "Exec exec xeyes")
-*ButtonBox: (6x1, Action ShowDesktop, Swallow(kill) xclock "Exec exec \
+*ButtonBox: (2x1, Action Exec exec $[FVWM_USERDIR]/bin/screenshot.sh, Swallow(kill) xeyes "Exec exec xeyes")
+*ButtonBox: (6x1, Action ToggleNotes, Swallow(kill) xclock "Exec exec \
     xclock -digital -render -padding 0 -update 1 -strftime ' %H:%M %a %b %d' \
     -face xft:NotoSansMono-Regular:size=8")
 
@@ -359,9 +359,7 @@ Key C      A 4  Function ToggleQuickTerm
 Key R A    4S Restart
 Key L A    4S Exec xscreensaver-command -lock
 Key I WFSI 4S FvwmIdent
-Key Y A    4  Exec exec maim -s | tee ~/Pictures/$(date +%s).png \
-    | xclip -selection clipboard -t image/png \ 
-    && notify-send "Screenshot taken"
+Key Y A    4  Exec exec $[FVWM_USERDIR]/bin/screenshot.sh
 Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
 
 Key XF86AudioRaiseVolume A N Exec exec amixer -q sset Master 5%+
