@@ -66,7 +66,7 @@ AddToFunc StartFunction
 + I Test (init) Exec exec ~/.fvwm/bin/picom.sh
 + I Test (init) Exec exec \
     echo "Starting moe =-=-=-=-= $(date) =-=-=-=-=" > ~/.fvwm/fvwm3-output.log
-+ I Exec exec feh --bg-scale ~/.fvwm/pix/mountain-drawing.jpg
++ I Exec exec feh --bg-scale ~/.fvwm/pix/wallpaper-darklake1.jpg
 + I Exec exec xset r rate 170 70
 + I Exec exec xinput set-prop "USB-HID Keyboard Mouse" 312 0, 0, 1
 + I Module FvwmButtons ButtonBox
