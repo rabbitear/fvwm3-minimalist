@@ -28,7 +28,12 @@ Style * ResizeOutline
 Style * SloppyFocus, MouseFocusClickRaises
 
 Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
-Style * !IconTitle
+Style * IconTitleFormat %n
+Style "org.mozilla.firefox" IconTitleFormat Firefox
+Style "jetbrains-studio" IconTitleFormat Android-Studio
+Style "Alacritty" IconTitleFormat QuickTerm (%t)
+Style "Spotify" IconTitleFormat %n
+Style * IconTitleFont "xft:Luxi Mono:Medium:size=20"
 Style * IconBackgroundRelief 4
 Style * IconBackgroundPadding 1
 
@@ -38,7 +43,7 @@ Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
 Style "WikiJournal" Sticky, !Closable, !Iconifiable, !Title, !Maximizable
 Style "Picture-in-Picture" Sticky, StaysOnTop
 Style "FvwmLogView" !Maximizable, !Iconifiable, WindowListSkip, NeverFocus
-Style "FvwmConsole" !Maximizable, !Iconifiable, WindowListSkip
+Style "FvwmConsole" !Maximizable, !Iconifiable
 Style "QuickXterm" !Maximizable, !Iconifiable
 Style "urxvt" PositionPlacement UnderMouse
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
@@ -50,6 +55,7 @@ Style * NoTitle
 # StartFunction is executed on startups and restats.
 DestroyFunc StartFunction
 AddToFunc StartFunction
++ I Test (Init) Exec exec $[FVWM_USERDIR]/bin/display.sh
 + I Echo "====================="
 + I Echo "= Fvwm3 is starting ="
 + I Echo "====================="
@@ -225,8 +231,8 @@ AddToFunc ToggleConsole
 + I TestRc (NoMatch) Module FvwmConsole -g 30x6+10-10 \
     -fn "xft:RobotoMono Nerd Font:size=11" \
 	+sb -terminal xterm -bg "#133030" -fg "#6ba35e" 
-+ I Wait FvwmConsole
 + I Next (FvwmConsole) WarpToWindow +10p +15p
+
 
 DestroyFunc ToggleLogView
 AddToFunc ToggleLogView
@@ -250,10 +256,6 @@ AddToFunc ToggleNotes
 + I TestRc (NoMatch) Exec exec st -g 80x11+5+5 -n WikiJournal \
     -T WikiJournal -f "Agave Nerd Font:size=16" \
     -e nvim -c WikiJournal
-
-#+ I Wait WikiJournal
-#+ I Next (WikiJournal) WarpToWindow +50p +50p
-#+ I Echo Toggled Notes
 
 
 DestroyFunc ToggleQuickTerm
@@ -358,7 +360,7 @@ Key C      A 4  Function ToggleQuickTerm
 # Globalish keybindings
 Key R A    4S Restart
 Key L A    4S Exec xscreensaver-command -lock
-Key I WFSI 4S FvwmIdent
+Key I A    4S FvwmIdent
 Key Y A    4  Exec exec $[FVWM_USERDIR]/bin/screenshot.sh
 Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
 
