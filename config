@@ -318,7 +318,7 @@ Key Return I 	N  DeiconifyAndRearrange
 Key M WFS  	4  Maximize 0 100
 Key M WFS  	4S Maximize 100 0
 Key M WFS	4C Maximize 100 100
-Key Q WFSI 	4S Close
+Key Q WFSI 	4  Close
 
 Key (st) R A 4  Resize 80c 24c
 Key (urxvt) R A 4  Resize 80c 24c
