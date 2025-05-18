@@ -154,7 +154,7 @@ Mouse 1 I A DeiconifyAndRearrange
 
 
 MenuStyle * Font "xft:DejaVu Sans:size=14"
-MenuStyle * Translucent 60, !HilightBack, !HilightTitleBack, ActiveFore
+MenuStyle * MenuColorset 10
 
 DestroyMenu MainMenu
 AddToMenu MainMenu
@@ -403,6 +403,11 @@ Key N A 4   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
                UseIconName, SelectOnRelease Super_L
 Key K A 4   Prev (AcceptsFocus, CurrentPage) Function WindowUp
 Key J A 4   Next (AcceptsFocus, CurrentPage) Function WindowUp 
+
+Key F1 A N   Menu MainMenu
+Key F2 A N   Prev (AcceptsFocus, CurrentPage) Function WindowUp
+Key F3 A N   Next (AcceptsFocus, CurrentPage) Function WindowUp 
+
 
 # Start programs
 Key W A 4  Exec exec surf -z 1.8 -s "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
