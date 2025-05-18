@@ -434,10 +434,10 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 ##################
 Mouse 1 R  A Nop
 Mouse 3 R  A Function ToggleQuickTerm
-Mouse 1 TFS A Function RaiseOrMoveOrResizeFunc
+Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
-#Mouse 1 T   D Function Thumbnail
+Mouse 1 T   A MoveOrRaiseOrLowerFunc
 Mouse 3 TFS A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I  A DeiconifyAndRearrange
 
