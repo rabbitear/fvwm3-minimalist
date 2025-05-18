@@ -1,4 +1,4 @@
-#
+
 # Assumed these programs are installed
 # - rxvt-unicode
 # - ImageMagick
@@ -25,13 +25,13 @@ DesktopSize 1x1
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
 Style * IconBox -5 30 10 -5, IconFill Top Right 
 Style * ResizeOutline
-Style * SloppyFocus, MouseFocusClickRaises
+#Style * SloppyFocus, MouseFocusClickRaises
 
 Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
 Style * IconTitleFormat %n
 Style "org.mozilla.firefox" IconTitleFormat Firefox
 Style "jetbrains-studio" IconTitleFormat Android-Studio
-Style "Alacritty" IconTitleFormat QuickTerm (%t)
+Style "URxvt" IconTitleFormat QuickTerm (%t)
 Style "Spotify" IconTitleFormat %n
 Style * IconTitleFont "xft:Luxi Mono:Medium:size=20"
 Style * IconBackgroundRelief 4
@@ -46,11 +46,39 @@ Style "FvwmLogView" !Maximizable, !Iconifiable, WindowListSkip, NeverFocus
 Style "FvwmConsole" !Maximizable, !Iconifiable
 Style "QuickXterm" !Maximizable, !Iconifiable
 Style "urxvt" PositionPlacement UnderMouse
+Style "xdaliclock" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
+    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
 Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
-Style * NoTitle
+
+#Style * NoTitle
+
+## From ChatGPT:
+# Font for the window titles
+Style * Font "xft:DejaVu Sans:bold:size=14"
+
+# Title text alignment and height
+TitleStyle LeftJustified Height 26
+
+# Focused window title (active window)
+Style * HilightFore rgb:F4/E3/D7          # Light sand text
+Style * HilightBack rgb:8E/6C/4D          # Terracotta background
+
+# Unfocused window title (inactive window)
+Style * ForeColor rgb:3A/2F/2A            # Dark clay text
+Style * BackColor rgb:F4/E3/D7           # Light sand background
+
+# Optional border colors to match the theme
+BorderStyle Active   -- Flat Raised BorderWidth 2 Color rgb:8E/6C/4D
+BorderStyle Inactive -- Flat Raised BorderWidth 2 Color rgb:F4/E3/D7
+
+# Optional: gradient background for active/inactive titles
+TitleStyle Active   (TiledPixmap gradient:vertical rgb:8E/6C/4D rgb:C0/A3/82)
+TitleStyle Inactive (TiledPixmap gradient:vertical rgb:F4/E3/D7 rgb:DD/C9/B4)
+## ChatGPT end
+
 
 # StartFunction is executed on startups and restats.
 DestroyFunc StartFunction
@@ -61,6 +89,7 @@ AddToFunc StartFunction
 + I Echo "====================="
 + I Test (Init)	Desk 0 0
 + I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
++ I Test (Init) Exec exec xinput set-prop 15 "libinput Accel Profile Enabled" 0, 0, 1
 + I PipeRead 'test -d /dev/shm/fvwmicon && echo SetEnv ICON_TMPDIR /dev/shm/fvwmicon || echo SetEnv ICON_TMPDIR $[FVWM_USERDIR]'
 + I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
 + I Test (X dunst) PipeRead 'pgrep -x "dunst" > /dev/null || echo Exec exec dunst'
@@ -69,6 +98,7 @@ AddToFunc StartFunction
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
 + I Test (X neochat) PipeRead 'pgrep -x "neochat" > /dev/null || echo Exec exec neochat'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
++ I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -oink-oink -transparent -bw 0 -fg green -bg black -nocycle -geom -10-10'
 + I Test (init) Exec exec ~/.fvwm/bin/picom.sh
 + I Test (init) Exec exec \
     echo "Starting moe =-=-=-=-= $(date) =-=-=-=-=" > ~/.fvwm/fvwm3-output.log
@@ -95,7 +125,7 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
 *ButtonBox: (2x1, Action Exec exec $[FVWM_USERDIR]/bin/screenshot.sh, Swallow(kill) xeyes "Exec exec xeyes")
-*ButtonBox: (6x1, Action ToggleNotes, Swallow(kill) xclock "Exec exec \
+*ButtonBox: (6x1, Action `Menu MainMenu rectangle $widthx$height+$left+$top o+50 10m`, Swallow(kill) xclock "Exec exec \
     xclock -digital -render -padding 0 -update 1 -strftime ' %H:%M %a %b %d' \
     -face xft:NotoSansMono-Regular:size=8")
 
@@ -105,6 +135,26 @@ DestroyModuleConfig FvwmEvent: *
 *FvwmEvent: deiconify DeThumbnail
 
 Mouse 1 I A DeiconifyAndRearrange
+
+
+MenuStyle * Font "xft:DejaVu Sans:size=14"
+MenuStyle * Translucent 60, !HilightBack, !HilightTitleBack, ActiveFore
+
+DestroyMenu MainMenu
+AddToMenu MainMenu
++ "Main Menu" Title
++ "Restart" restart
++ "" Nop
++ "Firefox" Function ToggleFirefox
++ "Gimp" Function ToggleGimp
++ "QuickTerm" Function ToggleQuickTerm
++ "Notes" Function ToggleNotes
++ "" Nop
++ "Console" Function ToggleConsole
++ "LogView" Function ToggleLogView
++ "" Nop
++ "Quit" quit
+
 
 #######################
 # Thumbnail Functions #
@@ -268,8 +318,10 @@ AddToFunc ToggleQuickTerm
 + I Next (QuickTerm, !raise) Raise
 + I Next (QuickTerm) MoveToPage prev
 + I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
-+ I TestRc (NoMatch) Exec exec alacritty -T QuickTerm
++ I TestRc (NoMatch) Exec exec urxvt +sb -title QuickTerm
 
+
+#+ I TestRc (NoMatch) Exec exec alacritty -T QuickTerm
 #+ I Wait QuickTerm
 #+ I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
 
@@ -346,16 +398,18 @@ Key S A 4M Exec exec rofi \
             -theme-str 'window {height: 80%; width: 80%;}' 
 
 # Toggle Functions
-Key F      A 4  Function ToggleFirefox
-Key F      A 4S Function ToggleFirefox
-Key Space  A 4M Function ToggleNotes
+#Key F      A 4  Function ToggleFirefox
+#Key F      A 4S Function ToggleFirefox
+#Key Space  A 4M Function ToggleNotes
 Key Space  A 4C Function ToggleQuickTerm
-Key G      A 4  Function ToggleGimp
+#Key G      A 4  Function ToggleGimp
 Key D      A 4  Exec exec rofi -show drun
+Key C      A 4  Exec exec rofi -show drun
 # Toggle keys across the bottom of the screen
-Key Z      A 4  Function ToggleConsole
-Key X      A 4  Function ToggleLogView
-Key C      A 4  Function ToggleQuickTerm
+
+Key C      A 4S  Function ToggleConsole
+#Key X      A 4  Function ToggleLogView
+#Key C      A 4  Function ToggleQuickTerm
 
 # Globalish keybindings
 Key R A    4S Restart
