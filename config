@@ -1,4 +1,4 @@
-#
+
 # Assumed these programs are installed
 # - rxvt-unicode
 # - ImageMagick
@@ -31,7 +31,7 @@ Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-couri
 Style * IconTitleFormat %n
 Style "org.mozilla.firefox" IconTitleFormat Firefox
 Style "jetbrains-studio" IconTitleFormat Android-Studio
-Style "Alacritty" IconTitleFormat QuickTerm (%t)
+Style "URxvt" IconTitleFormat QuickTerm (%t)
 Style "Spotify" IconTitleFormat %n
 Style * IconTitleFont "xft:Luxi Mono:Medium:size=20"
 Style * IconBackgroundRelief 4
@@ -46,11 +46,44 @@ Style "FvwmLogView" !Maximizable, !Iconifiable, WindowListSkip, NeverFocus
 Style "FvwmConsole" !Maximizable, !Iconifiable
 Style "QuickXterm" !Maximizable, !Iconifiable
 Style "urxvt" PositionPlacement UnderMouse
+Style "xdaliclock" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
+    !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
 Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
-Style * NoTitle
+
+## From ChatGPT using Colorsets, southwestern style
+# Define earthy Southwestern colorsets
+
+Colorset 9 fg rgb:3A/2F/2A, bg rgb:6F/53/3C        # Unfocused Title: dark clay on darker terracotta
+Colorset 10 fg rgb:F4/E3/D7, bg rgb:8E/6C/4D        # Focused title: light sand on terracotta
+Colorset 11 fg rgb:3A/2F/2A, bg rgb:F4/E3/D7        # Unfocused title: dark clay on light sand, not used.
+Colorset 12 bg rgb:C0/A3/82                         # Border color (focused)
+Colorset 13 bg rgb:DD/C9/B4                         # Border color (unfocused)
+
+# Font and title style
+Style * Font "xft:DejaVu Sans:bold:size=14"
+TitleStyle LeftJustified Height 26
+
+# Apply Colorsets to window decorations
+Style * HilightColorset 10         # Active window title
+Style * Colorset 9               # Inactive window title
+
+# Apply colorsets to borders
+BorderStyle Active   -- Flat Raised BorderWidth 2 Colorset 12
+BorderStyle Inactive -- Flat Raised BorderWidth 2 Colorset 13
+
+# Optional: titlebar gradients using Colorset pixmaps
+# These must be generated beforehand or use built-in gradients.
+# Otherwise, fallback to solid colors as above.
+# You can use something like ImageMagick or `fvwm-convert-pixmap` if needed.
+
+# If you want titlebar gradients:
+# TitleStyle Active   (TiledPixmap gradient:vertical rgb:8E/6C/4D rgb:C0/A3/82)
+# TitleStyle Inactive (TiledPixmap gradient:vertical rgb:F4/E3/D7 rgb:DD/C9/B4)
+
+## ChatGPT end
 
 # Bring a window to the very top layer
 AddToFunc raise-to-top
@@ -72,6 +105,7 @@ AddToFunc StartFunction
 + I Echo "====================="
 + I Test (Init)	Desk 0 0
 + I Test (Init) Exec exec mkdir /dev/shm/fvwmicon
++ I Test (Init) Exec exec xinput set-prop 15 "libinput Accel Profile Enabled" 0, 0, 1
 + I PipeRead 'test -d /dev/shm/fvwmicon && echo SetEnv ICON_TMPDIR /dev/shm/fvwmicon || echo SetEnv ICON_TMPDIR $[FVWM_USERDIR]'
 + I Test (X stalonetray) PipeRead 'pgrep -x "stalonetray" > /dev/null || echo Exec exec stalonetray --transparent --vertical --geometry 31x1-5+5 --grow-gravity S --icon-gravity NE --icon-size=16 --kludges=force_icons_size'
 + I Test (X dunst) PipeRead 'pgrep -x "dunst" > /dev/null || echo Exec exec dunst'
@@ -80,6 +114,7 @@ AddToFunc StartFunction
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
 + I Test (X neochat) PipeRead 'pgrep -x "neochat" > /dev/null || echo Exec exec neochat'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
++ I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -oink-oink -transparent -bw 0 -fg green -bg black -nocycle -geom -10-10'
 + I Test (init) Exec exec ~/.fvwm/bin/picom.sh
 + I Test (init) Exec exec \
     echo "Starting moe =-=-=-=-= $(date) =-=-=-=-=" > ~/.fvwm/fvwm3-output.log
@@ -106,7 +141,7 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
 *ButtonBox: (2x1, Action Exec exec $[FVWM_USERDIR]/bin/screenshot.sh, Swallow(kill) xeyes "Exec exec xeyes")
-*ButtonBox: (6x1, Action ToggleNotes, Swallow(kill) xclock "Exec exec \
+*ButtonBox: (6x1, Action `Menu MainMenu rectangle $widthx$height+$left+$top o+50 10m`, Swallow(kill) xclock "Exec exec \
     xclock -digital -render -padding 0 -update 1 -strftime ' %H:%M %a %b %d' \
     -face xft:NotoSansMono-Regular:size=8")
 
@@ -116,6 +151,26 @@ DestroyModuleConfig FvwmEvent: *
 *FvwmEvent: deiconify DeThumbnail
 
 Mouse 1 I A DeiconifyAndRearrange
+
+
+MenuStyle * Font "xft:DejaVu Sans:size=14"
+MenuStyle * Translucent 60, !HilightBack, !HilightTitleBack, ActiveFore
+
+DestroyMenu MainMenu
+AddToMenu MainMenu
++ "Main Menu" Title
++ "Restart" restart
++ "" Nop
++ "Firefox" Function ToggleFirefox
++ "Gimp" Function ToggleGimp
++ "QuickTerm" Function ToggleQuickTerm
++ "Notes" Function ToggleNotes
++ "" Nop
++ "Console" Function ToggleConsole
++ "LogView" Function ToggleLogView
++ "" Nop
++ "Quit" quit
+
 
 #######################
 # Thumbnail Functions #
@@ -190,6 +245,11 @@ AddToFunc RaiseOrMoveOrResizeFunc
 + M Resize
 + D Maximize 100 100
 
+DestroyFunc RaiseLowerFunc
+AddToFunc RaiseLowerFunc
++ I Raise
++ M Move
++ D Lower
 
 
 DestroyFunc WindowUp
@@ -279,8 +339,10 @@ AddToFunc ToggleQuickTerm
 + I Next (QuickTerm, !raise) Raise
 + I Next (QuickTerm) MoveToPage prev
 + I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
-+ I TestRc (NoMatch) Exec exec alacritty -T QuickTerm
++ I TestRc (NoMatch) Exec exec urxvt +sb -title QuickTerm
 
+
+#+ I TestRc (NoMatch) Exec exec alacritty -T QuickTerm
 #+ I Wait QuickTerm
 #+ I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
 
@@ -329,7 +391,7 @@ Key Return I 	N  DeiconifyAndRearrange
 Key M WFS  	4  Maximize 0 100
 Key M WFS  	4S Maximize 100 0
 Key M WFS	4C Maximize 100 100
-Key Q WFI 	4S Close
+Key Q WFSI 	4  Close
 
 Key (st) R A 4  Resize 80c 24c
 Key (urxvt) R A 4  Resize 80c 24c
@@ -357,16 +419,18 @@ Key S A 4M Exec exec rofi \
             -theme-str 'window {height: 80%; width: 80%;}' 
 
 # Toggle Functions
-Key F      A 4  Function ToggleFirefox
-Key F      A 4S Function ToggleFirefox
-Key Space  A 4M Function ToggleNotes
+#Key F      A 4  Function ToggleFirefox
+#Key F      A 4S Function ToggleFirefox
+#Key Space  A 4M Function ToggleNotes
 Key Space  A 4C Function ToggleQuickTerm
-Key G      A 4  Function ToggleGimp
+#Key G      A 4  Function ToggleGimp
 Key D      A 4  Exec exec rofi -show drun
+Key C      A 4  Exec exec rofi -show drun
 # Toggle keys across the bottom of the screen
-Key Z      A 4  Function ToggleConsole
-Key X      A 4  Function ToggleLogView
-Key C      A 4  Function ToggleQuickTerm
+
+Key C      A 4S  Function ToggleConsole
+#Key X      A 4  Function ToggleLogView
+#Key C      A 4  Function ToggleQuickTerm
 
 # Globalish keybindings
 Key R A    4S Restart
@@ -389,8 +453,8 @@ Mouse 3 R  A Function ToggleQuickTerm
 Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
-Mouse 1 T   D Function Thumbnail
-Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
+Mouse 1 T   A RaiseLowerFunc
+Mouse 3 TFS A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I  A DeiconifyAndRearrange
 
 
