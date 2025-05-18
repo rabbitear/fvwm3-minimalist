@@ -53,32 +53,37 @@ Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
 
-#Style * NoTitle
+## From ChatGPT using Colorsets, southwestern style
+# Define earthy Southwestern colorsets
 
-## From ChatGPT:
-# Font for the window titles
+Colorset 9 fg rgb:3A/2F/2A, bg rgb:6F/53/3C        # Unfocused Title: dark clay on darker terracotta
+Colorset 10 fg rgb:F4/E3/D7, bg rgb:8E/6C/4D        # Focused title: light sand on terracotta
+Colorset 11 fg rgb:3A/2F/2A, bg rgb:F4/E3/D7        # Unfocused title: dark clay on light sand, not used.
+Colorset 12 bg rgb:C0/A3/82                         # Border color (focused)
+Colorset 13 bg rgb:DD/C9/B4                         # Border color (unfocused)
+
+# Font and title style
 Style * Font "xft:DejaVu Sans:bold:size=14"
-
-# Title text alignment and height
 TitleStyle LeftJustified Height 26
 
-# Focused window title (active window)
-Style * HilightFore rgb:F4/E3/D7          # Light sand text
-Style * HilightBack rgb:8E/6C/4D          # Terracotta background
+# Apply Colorsets to window decorations
+Style * HilightColorset 10         # Active window title
+Style * Colorset 9               # Inactive window title
 
-# Unfocused window title (inactive window)
-Style * ForeColor rgb:3A/2F/2A            # Dark clay text
-Style * BackColor rgb:F4/E3/D7           # Light sand background
+# Apply colorsets to borders
+BorderStyle Active   -- Flat Raised BorderWidth 2 Colorset 12
+BorderStyle Inactive -- Flat Raised BorderWidth 2 Colorset 13
 
-# Optional border colors to match the theme
-BorderStyle Active   -- Flat Raised BorderWidth 2 Color rgb:8E/6C/4D
-BorderStyle Inactive -- Flat Raised BorderWidth 2 Color rgb:F4/E3/D7
+# Optional: titlebar gradients using Colorset pixmaps
+# These must be generated beforehand or use built-in gradients.
+# Otherwise, fallback to solid colors as above.
+# You can use something like ImageMagick or `fvwm-convert-pixmap` if needed.
 
-# Optional: gradient background for active/inactive titles
-TitleStyle Active   (TiledPixmap gradient:vertical rgb:8E/6C/4D rgb:C0/A3/82)
-TitleStyle Inactive (TiledPixmap gradient:vertical rgb:F4/E3/D7 rgb:DD/C9/B4)
+# If you want titlebar gradients:
+# TitleStyle Active   (TiledPixmap gradient:vertical rgb:8E/6C/4D rgb:C0/A3/82)
+# TitleStyle Inactive (TiledPixmap gradient:vertical rgb:F4/E3/D7 rgb:DD/C9/B4)
+
 ## ChatGPT end
-
 
 # StartFunction is executed on startups and restats.
 DestroyFunc StartFunction
@@ -429,11 +434,11 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 ##################
 Mouse 1 R  A Nop
 Mouse 3 R  A Function ToggleQuickTerm
-Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
+Mouse 1 TFS A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
-Mouse 1 T   D Function Thumbnail
-Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
+#Mouse 1 T   D Function Thumbnail
+Mouse 3 TFS A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I  A DeiconifyAndRearrange
 
 
