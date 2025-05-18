@@ -234,6 +234,11 @@ AddToFunc RaiseOrMoveOrResizeFunc
 + M Resize
 + D Maximize 100 100
 
+DestroyFunc RaiseLowerFunc
+AddToFunc RaiseLowerFunc
++ I Raise
++ M Move
++ D Lower
 
 
 DestroyFunc WindowUp
@@ -437,7 +442,7 @@ Mouse 3 R  A Function ToggleQuickTerm
 Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
-Mouse 1 T   A MoveOrRaiseOrLowerFunc
+Mouse 1 T   A RaiseLowerFunc
 Mouse 3 TFS A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I  A DeiconifyAndRearrange
 
