@@ -25,7 +25,7 @@ DesktopSize 1x1
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
 Style * IconBox -5 30 10 -5, IconFill Top Right 
 Style * ResizeOutline
-Style * SloppyFocus, MouseFocusClickRaises
+#Style * SloppyFocus, MouseFocusClickRaises
 
 Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
 Style * IconTitleFormat %n
@@ -51,6 +51,17 @@ Style "ButtonBox" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "tabbed" Title, NeverFocus, StaysOnTop, !Iconifiable
 Style * NoTitle
+
+# Bring a window to the very top layer
+AddToFunc raise-to-top
++ I Layer 0 ontop
++ I Raise
+
+AddToFunc SelectWindow
++ I Focus
++ I Iconify false
++ I raise-to-top
++ I WrapToWindow 50 8p
 
 # StartFunction is executed on startups and restats.
 DestroyFunc StartFunction
@@ -159,7 +170,7 @@ AddToFunc DeiconifyAndRearrange
 
 DestroyFunc ResizeOrRaiseOrIconifyFunc
 AddToFunc ResizeOrRaiseOrIconifyFunc 
-+ C Raise
++ C raise-to-top
 + M Resize
 + C Function Thumbnail
 + D Function Thumbnail
@@ -174,7 +185,7 @@ AddToFunc MoveOrRaiseOrLowerFunc
 
 DestroyFunc RaiseOrMoveOrResizeFunc
 AddToFunc RaiseOrMoveOrResizeFunc
-+ I Raise 
++ I raise-to-top
 + C Move
 + M Resize
 + D Maximize 100 100
@@ -184,7 +195,7 @@ AddToFunc RaiseOrMoveOrResizeFunc
 DestroyFunc WindowUp
 AddToFunc WindowUp
 + I FlipFocus
-+ I Raise
++ I raise-to-top
 + I WarpToWindow +30p +35p
 
 DestroyFunc UrgencyFunc
@@ -193,7 +204,7 @@ AddToFunc UrgencyFunc
 + I ThisWindow (QuickTerm|URxvt|st|xterm) Break
 + I DeiconifyAndRearrange
 + I FlipFocus
-+ I Raise
++ I raise-to-top
 + I WarpToWindow !raise 5p 5p
 + I Echo "UrgencyFunc $[w.id], name: $[w.name]."
 
@@ -206,7 +217,7 @@ AddToFunc UrgencyDoneFunc
 DestroyFunc EWMHActivateWindowFunc
 AddToFunc EWMHActivateWindowFunc 
 + I Focus
-+ I Raise
++ I raise-to-top
 
 DestroyFunc ShowDesktop
 AddToFunc   ShowDesktop
@@ -318,7 +329,7 @@ Key Return I 	N  DeiconifyAndRearrange
 Key M WFS  	4  Maximize 0 100
 Key M WFS  	4S Maximize 100 0
 Key M WFS	4C Maximize 100 100
-Key Q WFSI 	4S Close
+Key Q WFI 	4S Close
 
 Key (st) R A 4  Resize 80c 24c
 Key (urxvt) R A 4  Resize 80c 24c
