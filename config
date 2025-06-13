@@ -140,7 +140,7 @@ DestroyModuleConfig ButtonBox: *
 *ButtonBox: Columns 8
 *ButtonBox: Frame 0
 *ButtonBox: Padding 0 0
-*ButtonBox: (2x1, Action Exec exec $[FVWM_USERDIR]/bin/screenshot.sh, Swallow(kill) xeyes "Exec exec xeyes")
+*ButtonBox: (2x1, Action Exec exec $[FVWM_USERDIR]/bin/zoomer.sh, Swallow(kill) xeyes "Exec exec xeyes")
 *ButtonBox: (6x1, Action `Menu MainMenu rectangle $widthx$height+$left+$top o+50 10m`, Swallow(kill) xclock "Exec exec \
     xclock -digital -render -padding 0 -update 1 -strftime ' %H:%M %a %b %d' \
     -face xft:NotoSansMono-Regular:size=8")
@@ -339,7 +339,8 @@ AddToFunc ToggleQuickTerm
 + I Next (QuickTerm, !raise) Raise
 + I Next (QuickTerm) MoveToPage prev
 + I Next (QuickTerm, !Iconic) WarpToWindow +50p +50p
-+ I TestRc (NoMatch) Exec exec urxvt +sb -title QuickTerm
++ I TestRc (NoMatch) Exec exec urxvt +sb -title QuickTerm \
+    -fn "xft:Monospace:size=22"
 
 
 #+ I TestRc (NoMatch) Exec exec alacritty -T QuickTerm
