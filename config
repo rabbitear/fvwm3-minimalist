@@ -21,7 +21,7 @@
 # - xscreensaver
 # - alacritty
 
-DesktopSize 1x1
+DesktopSize 1x1 1x1
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
 Style * IconBox -5 30 10 -5, IconFill Top Right 
 Style * ResizeOutline
@@ -112,7 +112,6 @@ AddToFunc StartFunction
 + I Test (X nm-applet) PipeRead 'pgrep -x "nm-applet" > /dev/null || echo Exec exec nm-applet'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
-+ I Test (X neochat) PipeRead 'pgrep -x "neochat" > /dev/null || echo Exec exec neochat'
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
 + I Test (X xdaliclock) PipeRead 'pgrep -x "xdaliclock" > /dev/null || echo Exec exec xdaliclock -oink-oink -transparent -bw 0 -fg green -bg black -nocycle -geom -10-10'
 + I Test (init) Exec exec ~/.fvwm/bin/picom.sh
