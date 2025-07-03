@@ -24,7 +24,8 @@
 #DesktopSize 1x1 1x1
 DesktopSize 4x1 
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
-Style * IconBox -5 30 10 -5, IconFill Top Right 
+Style * IconBox 0 -40 -1 -1, IconGrid 32 32
+Style * IconFill Buttom Left
 Style * ResizeOutline
 
 EdgeScroll 20 20
