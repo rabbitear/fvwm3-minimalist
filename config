@@ -30,8 +30,8 @@ Style * ResizeOutline
 
 EdgeScroll 20 20
 EdgeThickness 1
-Style * EdgeMoveDelay 550
-Style * EdgeMoveResistance 20 20
+Style * EdgeMoveDelay 10
+Style * EdgeMoveResistance 200 200
 Style * SnapAttraction 16
 
 Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
@@ -111,6 +111,8 @@ AddToFunc SelectWindow
 DestroyFunc StartFunction
 AddToFunc StartFunction
 + I Test (Init) Exec exec $[FVWM_USERDIR]/bin/display.sh
++ I Test (Init) Exec exec pkill --signal USR2 fvwm3
++ I Test (Init) Exec exec picom --config $[FVWM_USERDIR]/picom.conf
 + I Echo "====================="
 + I Echo "= Fvwm3 is starting ="
 + I Echo "====================="
@@ -123,7 +125,7 @@ AddToFunc StartFunction
 + I Test (X blueman-applet) PipeRead 'pgrep -x "blueman-applet" > /dev/null || echo Exec exec blueman-applet'
 + I Test (X copyq) PipeRead 'pgrep -x "copyq" > /dev/null || echo Exec exec copyq'
 + I Exec exec feh --bg-scale ~/.fvwm/pix/wallpaper-darklake1.jpg
-+ I Exec exec xset r rate 170 70
++ I Exec exec xset r rate 250 50
 + I Module FvwmButtons ButtonBox
 + I Module FvwmPager 0 0
 + I Module FvwmEvent
@@ -221,8 +223,8 @@ AddToFunc ScreenShotWindow
 + I Raise
 + I Current (!Shaded, !Iconic) PipeRead \
   "xwd -silent -id $[w.id] | convert -mattecolor black xwd:- \
-  png:$HOME/windowshot-$[w.resource]-$(date "+%Y-%m-%d-%H.%M.%S").png"
-
+  png:$HOME/Pictures/windowshot-$[w.resource]-$(date "+%Y-%m-%d-%H.%M.%S").png"
++ I Exec exec notify-send --icon="$HOME/Pictures/windowshot-$[w.resource]-$(date "+%Y-%m-%d-%H.%M.%S").png" --expire-time=2000 --urgency=low "Screenshot of Window" "$HOME/Pictures/windowshot-$[w.resource]-$(date "+%Y-%m-%d-%H.%M.%S").png" 
 
 DestroyMenu Window-Ops
 AddToMenu Window-Ops
