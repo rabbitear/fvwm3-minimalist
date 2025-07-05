@@ -36,7 +36,8 @@ Style * SnapAttraction 16
 
 Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
 Style * IconTitleFormat %n
-Style "org.mozilla.firefox" IconTitleFormat Firefox
+Style "Alacritty" IconTitleFont "xft:Sans Serif:Medium:size=6"
+Style "org.mozilla.firefox" IconTitleFont "xft:Luxi Mono:Medium:size=6"
 Style "jetbrains-studio" IconTitleFormat Android-Studio
 Style "URxvt" IconTitleFormat QuickTerm (%t)
 Style "Spotify" IconTitleFormat %n
@@ -52,7 +53,9 @@ Style "Picture-in-Picture" Sticky, StaysOnTop
 Style "FvwmLogView" !Maximizable, !Iconifiable, WindowListSkip, NeverFocus
 Style "FvwmConsole" !Maximizable, !Iconifiable
 Style "QuickXterm" !Maximizable, !Iconifiable
-Style "urxvt" PositionPlacement UnderMouse
+Style "urxvt" PositionPlacement UnderMouse, StartShaded, \
+     Icon pix/org.xfce.terminal.png, MiniIcon pix/org.xfce.terminal.png 
+
 Style "xdaliclock" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom
 Style "audacious" BorderWidth 0, HandleWidth 0, !Maximizable
@@ -74,8 +77,8 @@ Colorset 12 bg rgb:C0/A3/82                         # Border color (focused)
 Colorset 13 bg rgb:DD/C9/B4                         # Border color (unfocused)
 
 # Font and title style
-Style * Font "xft:DejaVu Sans:bold:size=14"
-TitleStyle LeftJustified Height 26
+Style * Font "xft:DejaVu Sans:bold:size=10"
+TitleStyle LeftJustified Height 18
 
 # Apply Colorsets to window decorations
 Style * HilightColorset 10         # Active window title
@@ -91,8 +94,8 @@ BorderStyle Inactive -- Flat Raised BorderWidth 2 Colorset 13
 # You can use something like ImageMagick or `fvwm-convert-pixmap` if needed.
 
 # If you want titlebar gradients:
-# TitleStyle Active   (TiledPixmap gradient:vertical rgb:8E/6C/4D rgb:C0/A3/82)
-# TitleStyle Inactive (TiledPixmap gradient:vertical rgb:F4/E3/D7 rgb:DD/C9/B4)
+TitleStyle Active   (TiledPixmap gradient:vertical rgb:8E/6C/4D rgb:C0/A3/82)
+TitleStyle Inactive (TiledPixmap gradient:vertical rgb:F4/E3/D7 rgb:DD/C9/B4)
 
 ## ChatGPT end
 
@@ -177,6 +180,7 @@ Mouse 1 I A DeiconifyAndRearrange
 
 MenuStyle * Font "xft:DejaVu Sans:size=14"
 MenuStyle * MenuColorset 10
+MenuStyle * Win
 
 DestroyMenu MainMenu
 AddToMenu MainMenu
@@ -233,6 +237,7 @@ AddToMenu Window-Ops
 + "(Un)Stick "    Stick
 + "Thumbnail "    Thumbnail 
 + ""
++ "Resize 80x16"  Resize 80c 15c
 + "Move "         Move
 + "Raise"         Raise 
 + "Lower "        Lower 
@@ -240,7 +245,7 @@ AddToMenu Window-Ops
 + "" 
 + "Identify"      Module FvwmIdent
 + "Screenshot"    Function ScreenShotWindow
-+ ""
++ ""                Nop
 + "Close"         Close
 
 #######################
@@ -463,14 +468,33 @@ AddToFunc SwitchToWindow
 # Q: How to hilight boomerly
 # Q: Icons bigger!
 DestroyMenuStyle WindowList
-MenuStyle WindowList SelectOnRelease Meta_L, \
+MenuStyle WindowList \
+    SelectOnRelease Meta_L, \
     Font "xft:DejaVu Sans:size=24", \
     MenuColorset 10
 
+
+# Set default icon size (e.g. 64x64)
+MenuStyle * ItemHeight 72
+MenuStyle * MiniIconSize 64 64
+
+# Apply a unique style for the WindowList menu
+MenuStyle WindowList UseDecorations True
+MenuStyle WindowList MiniIconSize 64 64
+MenuStyle WindowList ItemHeight 72
+MenuStyle WindowList Font "xft:Sans:size=12"
+
+# Bind the window list to a key (if needed)
+Mouse 2 R A WindowList
+
 Key TAB A M WindowList Root c c NoGeometry, NoDeskNum, NoIcons "Prev SwitchToWindow"
 
-# End of WindowList #
-
+DestroyFunc TitleClick
+AddToFunc   TitleClick
++ C Echo "Single click"
++ D WindowShade toggle
++ H Move
++ H Echo "Held click"
 
 
 ################
@@ -494,7 +518,8 @@ Key Space I 	4  DeiconifyAndRearrange
 Key Space A 4  Function ToggleConsole
 
 Key (st) R A 4  Resize 80c 24c
-Key (urxvt) R A 4  Resize 80c 24c
+Key (urxvt) R W 4  Resize 80c 24c
+Key (Alacritty) R TW 4 Resize 80c 24c
 
 # Move from window to window with keys
 #Key P A 4S   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
@@ -545,6 +570,15 @@ Key XF86AudioRaiseVolume A N Exec exec amixer -q sset Master 5%+
 Key XF86AudioLowerVolume A N Exec exec amixer -q sset Master 5%-
 Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 
+## xdotool for other window managers
+Key X      A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
+Key X      A   M   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
+Key Return A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
+Key Return A   M   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
+Key Space  A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
+
+Key C      A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program qutebrowser
+Key C      A   M   Exec exec $[HOME]/.xfiles/bin/toggle_program qutebrowser
 
 
 ##################
@@ -558,5 +592,9 @@ Mouse 1 WFS M Move
 Mouse 1 T   A RaiseLowerFunc
 Mouse 3 TFS A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I   A DeiconifyAndRearrange
+Mouse 1 R   A -
+Mouse 1 T   A Function TitleClick
+Mouse 4 TFS A WindowShade $$[func.context] 
+Mouse 5 TFS A WindowShade $$[func.context] 
 
 # End of Fvwm3 config

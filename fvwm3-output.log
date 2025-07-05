@@ -1,0 +1,2601 @@
+Starting moe =-=-=-=-= Wed Jul  2 09:00:25 PM AKDT 2025 =-=-=-=-=
+picom ret: 0
+[1751520411.657472]  log opened (because of SIGUSR2)
+[1751520858.302296]  log opened (because of SIGUSR2)
+[1751521123.640145]  log opened (because of SIGUSR2)
+[1751521248.948132]  log opened (because of SIGUSR2)
+[1751521249.189959] FScreenInit: Using RandR 1.6
+[1751521249.192449] scan_screens: Case 1: Add new monitors
+[1751521249.192519] monitor_mark_new: Added new monitor: DP-2 (0x558342fc1bc0)
+[1751521249.217394] main: Loading window states via /home/kreator/.fvwm/.fs-restart-buzzy:0
+[1751521249.231661] FlocaleGetFontSet: [fvwm][FlocaleGetFontSet]: (-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*) Missing font charsets:
+[1751521249.231686] FlocaleGetFontSet: ISO8859-13
+[1751521249.231696] FlocaleGetFontSet: , 
+[1751521249.231704] FlocaleGetFontSet: KSC5601.1987-0
+[1751521249.231711] FlocaleGetFontSet: 
+[1751521249.242110] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=20"
+[1751521249.245191] parse_colorset: bad colorset pixmap specifier not 
+[1751521249.246493] parse_and_set_window_style: Unconsumed argument in HilightColorset 10         # Active window title: # Active window title
+[1751521249.246554] parse_and_set_window_style: Unconsumed argument in Colorset 9               # Inactive window title: # Inactive window title
+[1751521249.246604] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521249.246612] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521249.246617] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521249.246622] ReadDecorFace: unknown button face flag '12' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521249.246668] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521249.246675] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521249.246680] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521249.246686] ReadDecorFace: unknown button face flag '13' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521249.276566] ParseBinding: No such key: TAB
+[1751521249.290640] AddWindow: new window:
+  name:      Dali Clock
+  icon name: (unknown)
+  resource:  xdaliclock
+  class:     XDaliClock
+[1751521249.293051] AddWindow: new window:
+  name:      StickyDecor - Chromium
+  icon name: (unknown)
+  resource:  chromium-browser
+  class:     Chromium-browser
+[1751521249.300730] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751521249.306337] AddWindow: new window:
+  name:      FvwmLogView
+  icon name: (unknown)
+  resource:  xterm
+  class:     XTerm
+[1751521249.309515] CMD_Echo: "====================="
+[1751521249.309678] CMD_Echo: "= Fvwm3 is starting ="
+[1751521249.310250] CMD_Echo: "====================="
+[1751521249.514188] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751521249.514536] _explain_placement: placed new window 0x400001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751521249.521563] _merge_cr_moveresize: _merge_cr_moveresize: merged 5 cr events
+[1751521249.538984] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751521249.539008] FlocaleGetFontSet: ISO8859-2
+[1751521249.539016] FlocaleGetFontSet: , 
+[1751521249.539023] FlocaleGetFontSet: ISO8859-3
+[1751521249.539029] FlocaleGetFontSet: , 
+[1751521249.539036] FlocaleGetFontSet: ISO8859-4
+[1751521249.539042] FlocaleGetFontSet: , 
+[1751521249.539048] FlocaleGetFontSet: ISO8859-5
+[1751521249.539064] FlocaleGetFontSet: , 
+[1751521249.539082] FlocaleGetFontSet: KOI8-R
+[1751521249.539089] FlocaleGetFontSet: , 
+[1751521249.539096] FlocaleGetFontSet: ISO8859-7
+[1751521249.539102] FlocaleGetFontSet: , 
+[1751521249.539108] FlocaleGetFontSet: ISO8859-9
+[1751521249.539114] FlocaleGetFontSet: , 
+[1751521249.539121] FlocaleGetFontSet: ISO8859-13
+[1751521249.539127] FlocaleGetFontSet: , 
+[1751521249.539133] FlocaleGetFontSet: ISO8859-14
+[1751521249.539140] FlocaleGetFontSet: , 
+[1751521249.539146] FlocaleGetFontSet: ISO8859-15
+[1751521249.539153] FlocaleGetFontSet: , 
+[1751521249.539159] FlocaleGetFontSet: JISX0208.1983-0
+[1751521249.539165] FlocaleGetFontSet: , 
+[1751521249.539171] FlocaleGetFontSet: KSC5601.1987-0
+[1751521249.539178] FlocaleGetFontSet: , 
+[1751521249.539184] FlocaleGetFontSet: GB2312.1980-0
+[1751521249.539190] FlocaleGetFontSet: , 
+[1751521249.539197] FlocaleGetFontSet: JISX0201.1976-0
+[1751521249.539203] FlocaleGetFontSet: , 
+[1751521249.539209] FlocaleGetFontSet: ISO10646-1
+[1751521249.539216] FlocaleGetFontSet: 
+[1751521249.540637] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751521249.540843] _explain_placement: placed new window 0x2a00001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751521249.547074] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751521249.547398] _explain_placement: placed new window 0x180000b 'xeyes':
+  initial size 150x126
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 21, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521249.560963] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751521249.561290] _explain_placement: placed new window 0x1a0000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 940 5  (used user specified position)
+[1751521249.584067] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751521249.584456] _explain_placement: placed new window 0x380000b 'xclock':
+  initial size 101x56
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 21, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521274.371961] CMD_Echo: "Rotating Monitor normal"
+[1751521274.406910]  log opened (because of SIGUSR2)
+[1751521274.418684] main: Loading window states via /home/kreator/.fvwm/.fs-restart-buzzy:0
+[1751521274.433640] FlocaleGetFontSet: [fvwm][FlocaleGetFontSet]: (-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*) Missing font charsets:
+[1751521274.433671] FlocaleGetFontSet: ISO8859-13
+[1751521274.433680] FlocaleGetFontSet: , 
+[1751521274.433688] FlocaleGetFontSet: KSC5601.1987-0
+[1751521274.433695] FlocaleGetFontSet: 
+[1751521274.445104] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=20"
+[1751521274.448090] parse_colorset: bad colorset pixmap specifier not 
+[1751521274.449224] parse_and_set_window_style: Unconsumed argument in HilightColorset 10         # Active window title: # Active window title
+[1751521274.449277] parse_and_set_window_style: Unconsumed argument in Colorset 9               # Inactive window title: # Inactive window title
+[1751521274.449328] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521274.449344] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521274.449358] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521274.449371] ReadDecorFace: unknown button face flag '12' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521274.450124] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521274.450132] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521274.450137] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521274.450142] ReadDecorFace: unknown button face flag '13' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521274.480864] ParseBinding: No such key: TAB
+[1751521274.489358] AddWindow: new window:
+  name:      Dali Clock
+  icon name: (unknown)
+  resource:  xdaliclock
+  class:     XDaliClock
+[1751521274.491971] AddWindow: new window:
+  name:      StickyDecor - Chromium
+  icon name: (unknown)
+  resource:  chromium-browser
+  class:     Chromium-browser
+[1751521274.499038] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751521274.504384] AddWindow: new window:
+  name:      FvwmLogView
+  icon name: (unknown)
+  resource:  xterm
+  class:     XTerm
+[1751521274.507875] CMD_Echo: "====================="
+[1751521274.507956] CMD_Echo: "= Fvwm3 is starting ="
+[1751521274.508027] CMD_Echo: "====================="
+[1751521274.716136] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751521274.716386] _explain_placement: placed new window 0x400001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751521274.721425] _merge_cr_moveresize: _merge_cr_moveresize: merged 5 cr events
+[1751521274.738844] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751521274.738870] FlocaleGetFontSet: ISO8859-2
+[1751521274.738877] FlocaleGetFontSet: , 
+[1751521274.738882] FlocaleGetFontSet: ISO8859-3
+[1751521274.738887] FlocaleGetFontSet: , 
+[1751521274.738892] FlocaleGetFontSet: ISO8859-4
+[1751521274.738897] FlocaleGetFontSet: , 
+[1751521274.738901] FlocaleGetFontSet: ISO8859-5
+[1751521274.738906] FlocaleGetFontSet: , 
+[1751521274.738911] FlocaleGetFontSet: KOI8-R
+[1751521274.738915] FlocaleGetFontSet: , 
+[1751521274.738920] FlocaleGetFontSet: ISO8859-7
+[1751521274.738925] FlocaleGetFontSet: , 
+[1751521274.738929] FlocaleGetFontSet: ISO8859-9
+[1751521274.738934] FlocaleGetFontSet: , 
+[1751521274.738939] FlocaleGetFontSet: ISO8859-13
+[1751521274.738944] FlocaleGetFontSet: , 
+[1751521274.738948] FlocaleGetFontSet: ISO8859-14
+[1751521274.738953] FlocaleGetFontSet: , 
+[1751521274.738958] FlocaleGetFontSet: ISO8859-15
+[1751521274.738962] FlocaleGetFontSet: , 
+[1751521274.738967] FlocaleGetFontSet: JISX0208.1983-0
+[1751521274.738972] FlocaleGetFontSet: , 
+[1751521274.738976] FlocaleGetFontSet: KSC5601.1987-0
+[1751521274.738981] FlocaleGetFontSet: , 
+[1751521274.738986] FlocaleGetFontSet: GB2312.1980-0
+[1751521274.738991] FlocaleGetFontSet: , 
+[1751521274.738995] FlocaleGetFontSet: JISX0201.1976-0
+[1751521274.739000] FlocaleGetFontSet: , 
+[1751521274.739005] FlocaleGetFontSet: ISO10646-1
+[1751521274.739010] FlocaleGetFontSet: 
+[1751521274.741547] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751521274.741755] _explain_placement: placed new window 0x1a00001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751521274.746080] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751521274.746452] _explain_placement: placed new window 0x2a0000b 'xeyes':
+  initial size 150x126
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 21, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521274.761984] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751521274.762234] _explain_placement: placed new window 0x180000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 940 5  (used user specified position)
+[1751521274.779512] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751521274.779795] _explain_placement: placed new window 0x380000b 'xclock':
+  initial size 101x56
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 21, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521283.595719] CMD_Echo: "Rotating Monitor normal"
+[1751521283.628666]  log opened (because of SIGUSR2)
+[1751521283.640404] main: Loading window states via /home/kreator/.fvwm/.fs-restart-buzzy:0
+[1751521283.655667] FlocaleGetFontSet: [fvwm][FlocaleGetFontSet]: (-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*) Missing font charsets:
+[1751521283.655690] FlocaleGetFontSet: ISO8859-13
+[1751521283.655700] FlocaleGetFontSet: , 
+[1751521283.655708] FlocaleGetFontSet: KSC5601.1987-0
+[1751521283.655716] FlocaleGetFontSet: 
+[1751521283.665931] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=20"
+[1751521283.669412] parse_colorset: bad colorset pixmap specifier not 
+[1751521283.670576] parse_and_set_window_style: Unconsumed argument in HilightColorset 10         # Active window title: # Active window title
+[1751521283.670628] parse_and_set_window_style: Unconsumed argument in Colorset 9               # Inactive window title: # Inactive window title
+[1751521283.670679] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521283.670686] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521283.670691] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521283.670696] ReadDecorFace: unknown button face flag '12' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521283.670856] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521283.670862] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521283.670867] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521283.670872] ReadDecorFace: unknown button face flag '13' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521283.699825] ParseBinding: No such key: TAB
+[1751521283.708005] AddWindow: new window:
+  name:      Dali Clock
+  icon name: (unknown)
+  resource:  xdaliclock
+  class:     XDaliClock
+[1751521283.710584] AddWindow: new window:
+  name:      StickyDecor - Chromium
+  icon name: (unknown)
+  resource:  chromium-browser
+  class:     Chromium-browser
+[1751521283.718339] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751521283.724065] AddWindow: new window:
+  name:      FvwmLogView
+  icon name: (unknown)
+  resource:  xterm
+  class:     XTerm
+[1751521283.727164] CMD_Echo: "====================="
+[1751521283.728131] CMD_Echo: "= Fvwm3 is starting ="
+[1751521283.728612] CMD_Echo: "====================="
+[1751521283.936363] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751521283.936696] _explain_placement: placed new window 0x400001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751521283.939116] _merge_cr_moveresize: _merge_cr_moveresize: merged 5 cr events
+[1751521283.946988] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751521283.947008] FlocaleGetFontSet: ISO8859-2
+[1751521283.947014] FlocaleGetFontSet: , 
+[1751521283.947019] FlocaleGetFontSet: ISO8859-3
+[1751521283.947024] FlocaleGetFontSet: , 
+[1751521283.947029] FlocaleGetFontSet: ISO8859-4
+[1751521283.947033] FlocaleGetFontSet: , 
+[1751521283.947040] FlocaleGetFontSet: ISO8859-5
+[1751521283.947049] FlocaleGetFontSet: , 
+[1751521283.947056] FlocaleGetFontSet: KOI8-R
+[1751521283.947063] FlocaleGetFontSet: , 
+[1751521283.947069] FlocaleGetFontSet: ISO8859-7
+[1751521283.947076] FlocaleGetFontSet: , 
+[1751521283.947083] FlocaleGetFontSet: ISO8859-9
+[1751521283.947090] FlocaleGetFontSet: , 
+[1751521283.947096] FlocaleGetFontSet: ISO8859-13
+[1751521283.947103] FlocaleGetFontSet: , 
+[1751521283.947110] FlocaleGetFontSet: ISO8859-14
+[1751521283.947117] FlocaleGetFontSet: , 
+[1751521283.947124] FlocaleGetFontSet: ISO8859-15
+[1751521283.947131] FlocaleGetFontSet: , 
+[1751521283.947137] FlocaleGetFontSet: JISX0208.1983-0
+[1751521283.947144] FlocaleGetFontSet: , 
+[1751521283.947151] FlocaleGetFontSet: KSC5601.1987-0
+[1751521283.947158] FlocaleGetFontSet: , 
+[1751521283.947165] FlocaleGetFontSet: GB2312.1980-0
+[1751521283.947171] FlocaleGetFontSet: , 
+[1751521283.947178] FlocaleGetFontSet: JISX0201.1976-0
+[1751521283.947185] FlocaleGetFontSet: , 
+[1751521283.947191] FlocaleGetFontSet: ISO10646-1
+[1751521283.947198] FlocaleGetFontSet: 
+[1751521283.948830] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751521283.949055] _explain_placement: placed new window 0x1a00001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751521283.961645] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751521283.961926] _explain_placement: placed new window 0x2a0000b 'xeyes':
+  initial size 150x126
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 21, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521283.984557] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751521283.984808] _explain_placement: placed new window 0x180000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 940 5  (used user specified position)
+[1751521284.000102] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751521284.000496] _explain_placement: placed new window 0x380000b 'xclock':
+  initial size 101x56
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 21, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521301.068890] scan_screens: Case 2: processing 1 monitors
+[1751521301.068930] monitor_mark_changed: DP-2: x: 0, y: 0, w: 1080, h: 1920 comp: x: 0, y: 0, w: 1920, h: 1080
+[1751521301.068945] scan_screens: Case 2.2: DP-2 changed
+[1751521301.075609] monitor_emit_broadcast: DP-2: emit: 256
+[1751521301.075636] monitor_emit_broadcast: DP-2: emit monitor changed
+[1751521301.076109] _execute_command_line: No such command 'RandRFunc'
+[1751521301.076130] monitor_emit_broadcast: DP-2: emit monitor primary change
+[1751521301.076265] _execute_command_line: No such command 'RandRFunc'
+[1751521301.076449] scan_screens: Case 2: processing 1 monitors
+[1751521301.078597] monitor_emit_broadcast: DP-2: emit monitor primary change
+[1751521301.079019] _execute_command_line: No such command 'RandRFunc'
+[1751521301.079032] dispatch_event: Ignoring duplicate event 8414
+[1751521301.079137] scan_screens: Case 2: processing 1 monitors
+[1751521301.081132] monitor_emit_broadcast: DP-2: emit monitor primary change
+[1751521301.081381] _execute_command_line: No such command 'RandRFunc'
+[1751521301.081393] dispatch_event: Ignoring duplicate event 8414
+[1751521700.673822]  log opened (because of SIGUSR2)
+[1751521700.923349] FScreenInit: Using RandR 1.6
+[1751521700.925657] scan_screens: Case 1: Add new monitors
+[1751521700.925728] monitor_mark_new: Added new monitor: DP-2 (0x559a1961ebc0)
+[1751521700.948715] main: Loading window states via /home/kreator/.fvwm/.fs-restart-buzzy:0
+[1751521700.962608] FlocaleGetFontSet: [fvwm][FlocaleGetFontSet]: (-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*) Missing font charsets:
+[1751521700.962629] FlocaleGetFontSet: ISO8859-13
+[1751521700.962639] FlocaleGetFontSet: , 
+[1751521700.962646] FlocaleGetFontSet: KSC5601.1987-0
+[1751521700.962654] FlocaleGetFontSet: 
+[1751521700.973092] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=20"
+[1751521700.976060] parse_colorset: bad colorset pixmap specifier not 
+[1751521700.977184] parse_and_set_window_style: Unconsumed argument in HilightColorset 10         # Active window title: # Active window title
+[1751521700.977237] parse_and_set_window_style: Unconsumed argument in Colorset 9               # Inactive window title: # Inactive window title
+[1751521700.977302] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521700.977309] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521700.977315] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521700.977319] ReadDecorFace: unknown button face flag '12' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521700.977604] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521700.977611] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521700.977616] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521700.977621] ReadDecorFace: unknown button face flag '13' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521701.006955] ParseBinding: No such key: TAB
+[1751521701.015318] AddWindow: new window:
+  name:      Dali Clock
+  icon name: (unknown)
+  resource:  xdaliclock
+  class:     XDaliClock
+[1751521701.017735] AddWindow: new window:
+  name:      StickyDecor - Chromium
+  icon name: (unknown)
+  resource:  chromium-browser
+  class:     Chromium-browser
+[1751521701.024494] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751521701.030713] AddWindow: new window:
+  name:      FvwmLogView
+  icon name: (unknown)
+  resource:  xterm
+  class:     XTerm
+[1751521701.034756] CMD_Echo: "====================="
+[1751521701.034867] CMD_Echo: "= Fvwm3 is starting ="
+[1751521701.035392] CMD_Echo: "====================="
+[1751521701.240809] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751521701.241144] _explain_placement: placed new window 0x400001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751521701.247590] _merge_cr_moveresize: _merge_cr_moveresize: merged 5 cr events
+[1751521701.255847] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751521701.255868] FlocaleGetFontSet: ISO8859-2
+[1751521701.255874] FlocaleGetFontSet: , 
+[1751521701.255879] FlocaleGetFontSet: ISO8859-3
+[1751521701.255883] FlocaleGetFontSet: , 
+[1751521701.255888] FlocaleGetFontSet: ISO8859-4
+[1751521701.255893] FlocaleGetFontSet: , 
+[1751521701.255898] FlocaleGetFontSet: ISO8859-5
+[1751521701.255902] FlocaleGetFontSet: , 
+[1751521701.255907] FlocaleGetFontSet: KOI8-R
+[1751521701.255911] FlocaleGetFontSet: , 
+[1751521701.255916] FlocaleGetFontSet: ISO8859-7
+[1751521701.255921] FlocaleGetFontSet: , 
+[1751521701.255925] FlocaleGetFontSet: ISO8859-9
+[1751521701.255930] FlocaleGetFontSet: , 
+[1751521701.255934] FlocaleGetFontSet: ISO8859-13
+[1751521701.255939] FlocaleGetFontSet: , 
+[1751521701.255943] FlocaleGetFontSet: ISO8859-14
+[1751521701.255948] FlocaleGetFontSet: , 
+[1751521701.255953] FlocaleGetFontSet: ISO8859-15
+[1751521701.255957] FlocaleGetFontSet: , 
+[1751521701.255962] FlocaleGetFontSet: JISX0208.1983-0
+[1751521701.255967] FlocaleGetFontSet: , 
+[1751521701.255971] FlocaleGetFontSet: KSC5601.1987-0
+[1751521701.255976] FlocaleGetFontSet: , 
+[1751521701.255981] FlocaleGetFontSet: GB2312.1980-0
+[1751521701.255985] FlocaleGetFontSet: , 
+[1751521701.255990] FlocaleGetFontSet: JISX0201.1976-0
+[1751521701.255994] FlocaleGetFontSet: , 
+[1751521701.255999] FlocaleGetFontSet: ISO10646-1
+[1751521701.256004] FlocaleGetFontSet: 
+[1751521701.263918] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751521701.264198] _explain_placement: placed new window 0x2a00001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751521701.271601] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751521701.271874] _explain_placement: placed new window 0x180000b 'xeyes':
+  initial size 150x126
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 21, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521701.287321] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751521701.287584] _explain_placement: placed new window 0x1a0000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 940 5  (used user specified position)
+[1751521701.303986] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751521701.304348] _explain_placement: placed new window 0x380000b 'xclock':
+  initial size 101x56
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 21, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521716.015480] CMD_Echo: "Thumbnail wid 0x2000003, name 'QuickTerm', dir /dev/shm/fvwmicon."
+[1751521729.783555] AddWindow: new window:
+  name:      FvwmLogView
+  icon name: (unknown)
+  resource:  xterm
+  class:     XTerm
+[1751521729.783868] _explain_placement: placed new window 0x3a0000c 'FvwmLogView':
+  initial size 645x164
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 304 1746  (used user specified position)
+[1751521729.821558]  log closed (because of SIGUSR2)
+[1751521967.401548]  log opened (because of SIGUSR2)
+[1751521967.611531] FScreenInit: Using RandR 1.6
+[1751521967.613580] scan_screens: Case 1: Add new monitors
+[1751521967.613642] monitor_mark_new: Added new monitor: DP-2 (0x5602b4b75bc0)
+[1751521967.635789] main: Loading window states via /home/kreator/.fvwm/.fs-restart-buzzy:0
+[1751521967.650196] FlocaleGetFontSet: [fvwm][FlocaleGetFontSet]: (-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*) Missing font charsets:
+[1751521967.650215] FlocaleGetFontSet: ISO8859-13
+[1751521967.650223] FlocaleGetFontSet: , 
+[1751521967.650230] FlocaleGetFontSet: KSC5601.1987-0
+[1751521967.650237] FlocaleGetFontSet: 
+[1751521967.660545] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=20"
+[1751521967.663271] parse_colorset: bad colorset pixmap specifier not 
+[1751521967.664200] parse_and_set_window_style: Unconsumed argument in HilightColorset 10         # Active window title: # Active window title
+[1751521967.664251] parse_and_set_window_style: Unconsumed argument in Colorset 9               # Inactive window title: # Inactive window title
+[1751521967.664301] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521967.664307] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521967.664311] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521967.664316] ReadDecorFace: unknown button face flag '12' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751521967.664362] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521967.664368] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521967.664372] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521967.664377] ReadDecorFace: unknown button face flag '13' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751521967.695686] ParseBinding: No such key: TAB
+[1751521967.701272] CMD_Echo: "====================="
+[1751521967.701361] CMD_Echo: "= Fvwm3 is starting ="
+[1751521967.701439] CMD_Echo: "====================="
+[1751521967.904461] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751521967.904851] _explain_placement: placed new window 0x200001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751521967.907697] _merge_cr_moveresize: _merge_cr_moveresize: merged 5 cr events
+[1751521967.919967] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751521967.919993] FlocaleGetFontSet: ISO8859-2
+[1751521967.920001] FlocaleGetFontSet: , 
+[1751521967.920008] FlocaleGetFontSet: ISO8859-3
+[1751521967.920014] FlocaleGetFontSet: , 
+[1751521967.920020] FlocaleGetFontSet: ISO8859-4
+[1751521967.920026] FlocaleGetFontSet: , 
+[1751521967.920033] FlocaleGetFontSet: ISO8859-5
+[1751521967.920039] FlocaleGetFontSet: , 
+[1751521967.920045] FlocaleGetFontSet: KOI8-R
+[1751521967.920051] FlocaleGetFontSet: , 
+[1751521967.920058] FlocaleGetFontSet: ISO8859-7
+[1751521967.920064] FlocaleGetFontSet: , 
+[1751521967.920070] FlocaleGetFontSet: ISO8859-9
+[1751521967.920076] FlocaleGetFontSet: , 
+[1751521967.920082] FlocaleGetFontSet: ISO8859-13
+[1751521967.920088] FlocaleGetFontSet: , 
+[1751521967.920095] FlocaleGetFontSet: ISO8859-14
+[1751521967.920101] FlocaleGetFontSet: , 
+[1751521967.920107] FlocaleGetFontSet: ISO8859-15
+[1751521967.920113] FlocaleGetFontSet: , 
+[1751521967.920119] FlocaleGetFontSet: JISX0208.1983-0
+[1751521967.920126] FlocaleGetFontSet: , 
+[1751521967.920132] FlocaleGetFontSet: KSC5601.1987-0
+[1751521967.920138] FlocaleGetFontSet: , 
+[1751521967.920154] FlocaleGetFontSet: GB2312.1980-0
+[1751521967.920170] FlocaleGetFontSet: , 
+[1751521967.920177] FlocaleGetFontSet: JISX0201.1976-0
+[1751521967.920183] FlocaleGetFontSet: , 
+[1751521967.920190] FlocaleGetFontSet: ISO10646-1
+[1751521967.920196] FlocaleGetFontSet: 
+[1751521967.928390] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751521967.928653] _explain_placement: placed new window 0x1000001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751521967.932030] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751521967.932273] _explain_placement: placed new window 0x60000b 'xeyes':
+  initial size 150x126
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521967.948534] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751521967.948737] _explain_placement: placed new window 0xe0000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 940 5  (used user specified position)
+[1751521967.966653] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751521967.967148] _explain_placement: placed new window 0x120000b 'xclock':
+  initial size 101x56
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751521999.656594] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751521999.656827] _explain_placement: placed new window 0x1e00003 'QuickTerm':
+  initial size 1134x504
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 47, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751522048.032924] is_pan_frame: Window is PanFrame right
+[1751522048.045626] is_pan_frame: Window is PanFrame right
+[1751522048.064703] is_pan_frame: Window is PanFrame right
+[1751522048.076292] is_pan_frame: Window is PanFrame right
+[1751522048.103675] is_pan_frame: Window is PanFrame right
+[1751522048.115046] is_pan_frame: Window is PanFrame right
+[1751522048.413868] is_pan_frame: Window is PanFrame right
+[1751522048.426107] is_pan_frame: Window is PanFrame right
+[1751522048.453900] is_pan_frame: Window is PanFrame right
+[1751522048.465116] is_pan_frame: Window is PanFrame right
+[1751522048.485916] is_pan_frame: Window is PanFrame right
+[1751522048.497047] is_pan_frame: Window is PanFrame right
+[1751522048.517895] is_pan_frame: Window is PanFrame right
+[1751522048.529180] is_pan_frame: Window is PanFrame right
+[1751522048.549747] is_pan_frame: Window is PanFrame right
+[1751522048.561910] is_pan_frame: Window is PanFrame right
+[1751522049.081808] is_pan_frame: Window is PanFrame left
+[1751522049.093874] is_pan_frame: Window is PanFrame left
+[1751522049.113807] is_pan_frame: Window is PanFrame left
+[1751522049.125316] is_pan_frame: Window is PanFrame left
+[1751522049.146283] is_pan_frame: Window is PanFrame left
+[1751522049.157988] is_pan_frame: Window is PanFrame left
+[1751522049.185923] is_pan_frame: Window is PanFrame left
+[1751522049.197496] is_pan_frame: Window is PanFrame left
+[1751522049.504228] is_pan_frame: Window is PanFrame left
+[1751522049.517169] is_pan_frame: Window is PanFrame left
+[1751522049.556964] is_pan_frame: Window is PanFrame left
+[1751522049.568900] is_pan_frame: Window is PanFrame left
+[1751522049.620813] is_pan_frame: Window is PanFrame left
+[1751522049.632498] is_pan_frame: Window is PanFrame left
+[1751522049.677910] is_pan_frame: Window is PanFrame left
+[1751522049.689334] is_pan_frame: Window is PanFrame left
+[1751522142.528687]  log opened (because of SIGUSR2)
+[1751522142.733391] FScreenInit: Using RandR 1.6
+[1751522142.735605] scan_screens: Case 1: Add new monitors
+[1751522142.735658] monitor_mark_new: Added new monitor: DP-2 (0x55664517bbc0)
+[1751522142.757493] main: Loading window states via /home/kreator/.fvwm/.fs-restart-buzzy:0
+[1751522142.770815] FlocaleGetFontSet: [fvwm][FlocaleGetFontSet]: (-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*) Missing font charsets:
+[1751522142.770832] FlocaleGetFontSet: ISO8859-13
+[1751522142.770840] FlocaleGetFontSet: , 
+[1751522142.770847] FlocaleGetFontSet: KSC5601.1987-0
+[1751522142.770853] FlocaleGetFontSet: 
+[1751522142.780103] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=20"
+[1751522142.782834] parse_colorset: bad colorset pixmap specifier not 
+[1751522142.783748] parse_and_set_window_style: Unconsumed argument in HilightColorset 10         # Active window title: # Active window title
+[1751522142.783800] parse_and_set_window_style: Unconsumed argument in Colorset 9               # Inactive window title: # Inactive window title
+[1751522142.783865] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751522142.783871] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751522142.783875] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751522142.783880] ReadDecorFace: unknown button face flag '12' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751522142.783925] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751522142.783930] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751522142.783934] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751522142.783939] ReadDecorFace: unknown button face flag '13' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751522142.814417] ParseBinding: No such key: TAB
+[1751522142.819463] CMD_Echo: "====================="
+[1751522142.819554] CMD_Echo: "= Fvwm3 is starting ="
+[1751522142.819606] CMD_Echo: "====================="
+[1751522143.012997] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751522143.013316] _explain_placement: placed new window 0x400001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751522143.017672] _merge_cr_moveresize: _merge_cr_moveresize: merged 5 cr events
+[1751522143.028768] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751522143.028793] FlocaleGetFontSet: ISO8859-2
+[1751522143.028798] FlocaleGetFontSet: , 
+[1751522143.028803] FlocaleGetFontSet: ISO8859-3
+[1751522143.028807] FlocaleGetFontSet: , 
+[1751522143.028811] FlocaleGetFontSet: ISO8859-4
+[1751522143.028815] FlocaleGetFontSet: , 
+[1751522143.028819] FlocaleGetFontSet: ISO8859-5
+[1751522143.028822] FlocaleGetFontSet: , 
+[1751522143.028827] FlocaleGetFontSet: KOI8-R
+[1751522143.028830] FlocaleGetFontSet: , 
+[1751522143.028834] FlocaleGetFontSet: ISO8859-7
+[1751522143.028838] FlocaleGetFontSet: , 
+[1751522143.028842] FlocaleGetFontSet: ISO8859-9
+[1751522143.028846] FlocaleGetFontSet: , 
+[1751522143.028850] FlocaleGetFontSet: ISO8859-13
+[1751522143.028854] FlocaleGetFontSet: , 
+[1751522143.028858] FlocaleGetFontSet: ISO8859-14
+[1751522143.028868] FlocaleGetFontSet: , 
+[1751522143.028880] FlocaleGetFontSet: ISO8859-15
+[1751522143.028884] FlocaleGetFontSet: , 
+[1751522143.028888] FlocaleGetFontSet: JISX0208.1983-0
+[1751522143.028892] FlocaleGetFontSet: , 
+[1751522143.028896] FlocaleGetFontSet: KSC5601.1987-0
+[1751522143.028900] FlocaleGetFontSet: , 
+[1751522143.028905] FlocaleGetFontSet: GB2312.1980-0
+[1751522143.028909] FlocaleGetFontSet: , 
+[1751522143.028913] FlocaleGetFontSet: JISX0201.1976-0
+[1751522143.028917] FlocaleGetFontSet: , 
+[1751522143.028921] FlocaleGetFontSet: ISO10646-1
+[1751522143.028925] FlocaleGetFontSet: 
+[1751522143.036977] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751522143.037217] _explain_placement: placed new window 0x1400001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751522143.042908] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751522143.043157] _explain_placement: placed new window 0xe0000b 'xeyes':
+  initial size 150x126
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751522143.058536] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751522143.058881] _explain_placement: placed new window 0x120000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 940 5  (used user specified position)
+[1751522143.075976] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751522143.076262] _explain_placement: placed new window 0x200000b 'xclock':
+  initial size 101x56
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751522173.256384] is_pan_frame: Window is PanFrame right
+[1751522173.269169] is_pan_frame: Window is PanFrame right
+[1751522173.296192] is_pan_frame: Window is PanFrame right
+[1751522173.309326] is_pan_frame: Window is PanFrame right
+[1751522173.344971] is_pan_frame: Window is PanFrame right
+[1751522173.358091] is_pan_frame: Window is PanFrame right
+[1751522173.668237] is_pan_frame: Window is PanFrame right
+[1751522173.680545] is_pan_frame: Window is PanFrame right
+[1751522173.709914] is_pan_frame: Window is PanFrame right
+[1751522173.721867] is_pan_frame: Window is PanFrame right
+[1751522173.741783] is_pan_frame: Window is PanFrame right
+[1751522173.754702] is_pan_frame: Window is PanFrame right
+[1751522173.773103] is_pan_frame: Window is PanFrame right
+[1751522173.785662] is_pan_frame: Window is PanFrame right
+[1751522173.810917] is_pan_frame: Window is PanFrame right
+[1751522173.823533] is_pan_frame: Window is PanFrame right
+[1751522174.114961] is_pan_frame: Window is PanFrame right
+[1751522174.127041] is_pan_frame: Window is PanFrame right
+[1751522174.155363] is_pan_frame: Window is PanFrame right
+[1751522174.168127] is_pan_frame: Window is PanFrame right
+[1751522174.187004] is_pan_frame: Window is PanFrame right
+[1751522174.199660] is_pan_frame: Window is PanFrame right
+[1751522174.218866] is_pan_frame: Window is PanFrame right
+[1751522174.230475] is_pan_frame: Window is PanFrame right
+[1751522174.250860] is_pan_frame: Window is PanFrame right
+[1751522174.262468] is_pan_frame: Window is PanFrame right
+[1751522174.290953] is_pan_frame: Window is PanFrame right
+[1751522174.302730] is_pan_frame: Window is PanFrame right
+[1751522174.599882] is_pan_frame: Window is PanFrame right
+[1751522174.612001] is_pan_frame: Window is PanFrame right
+[1751522175.186891] is_pan_frame: Window is PanFrame left
+[1751522175.198494] is_pan_frame: Window is PanFrame left
+[1751522175.226199] is_pan_frame: Window is PanFrame left
+[1751522175.237711] is_pan_frame: Window is PanFrame left
+[1751522175.552966] is_pan_frame: Window is PanFrame left
+[1751522175.564550] is_pan_frame: Window is PanFrame left
+[1751522175.584868] is_pan_frame: Window is PanFrame left
+[1751522175.596869] is_pan_frame: Window is PanFrame left
+[1751522175.608855] is_pan_frame: Window is PanFrame left
+[1751522175.620368] is_pan_frame: Window is PanFrame left
+[1751522175.632852] is_pan_frame: Window is PanFrame left
+[1751522175.644723] is_pan_frame: Window is PanFrame left
+[1751522175.664908] is_pan_frame: Window is PanFrame left
+[1751522175.676624] is_pan_frame: Window is PanFrame left
+[1751522175.704938] is_pan_frame: Window is PanFrame left
+[1751522175.716945] is_pan_frame: Window is PanFrame left
+[1751522175.745060] is_pan_frame: Window is PanFrame left
+[1751522175.757739] is_pan_frame: Window is PanFrame left
+[1751522176.052876] is_pan_frame: Window is PanFrame left
+[1751522176.064654] is_pan_frame: Window is PanFrame left
+[1751522176.093972] is_pan_frame: Window is PanFrame left
+[1751522176.105881] is_pan_frame: Window is PanFrame left
+[1751522176.126159] is_pan_frame: Window is PanFrame left
+[1751522176.137477] is_pan_frame: Window is PanFrame left
+[1751522176.164991] is_pan_frame: Window is PanFrame left
+[1751522176.176105] is_pan_frame: Window is PanFrame left
+[1751522176.205362] is_pan_frame: Window is PanFrame left
+[1751522176.217090] is_pan_frame: Window is PanFrame left
+[1751522176.253360] is_pan_frame: Window is PanFrame left
+[1751522176.264824] is_pan_frame: Window is PanFrame left
+[1751522185.643857] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751522185.644144] _explain_placement: placed new window 0x1000003 'QuickTerm':
+  initial size 1134x504
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 47, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751522203.067202] AddWindow: new window:
+  name:      Fonts
+  icon name: (unknown)
+  resource:  gnome-font-viewer
+  class:     gnome-font-viewer
+[1751522203.067482] _explain_placement: placed new window 0x2c00004 'Fonts':
+  initial size 814x640
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 551, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751522319.312520] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751522319.312871] _explain_placement: placed new window 0x1000003 'QuickTerm':
+  initial size 1054x472
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 47, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751522425.849095] AddWindow: new window:
+  name:      New Tab - Chromium
+  icon name: (unknown)
+  resource:  chromium-browser
+  class:     Chromium-browser
+[1751522425.849373] _explain_placement: placed new window 0x2a00003 'New Tab - Chromium':
+  initial size 1094x963
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position -7 128  (used program specified position)
+[1751522720.603254] AddWindow: new window:
+  name:      New Tab - Chromium
+  icon name: (unknown)
+  resource:  chromium-browser
+  class:     Chromium-browser
+[1751522720.603588] _explain_placement: placed new window 0x2a0001f 'New Tab - Chromium':
+  initial size 1055x868
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 11 542  (used program specified position)
+[1751523982.577346]  log opened (because of SIGUSR2)
+[1751523982.780524] FScreenInit: Using RandR 1.6
+[1751523982.782459] scan_screens: Case 1: Add new monitors
+[1751523982.782500] monitor_mark_new: Added new monitor: DP-2 (0x5612925ebbc0)
+[1751523982.806125] main: Loading window states via /home/kreator/.fvwm/.fs-restart-buzzy:0
+[1751523982.819242] FlocaleGetFontSet: [fvwm][FlocaleGetFontSet]: (-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*,-*-fixed-medium-r-normal-*-14-*-*-*-*-*-*-*,-*-*-medium-r-normal-*-16-*-*-*-*-*-*-*) Missing font charsets:
+[1751523982.819261] FlocaleGetFontSet: ISO8859-13
+[1751523982.819270] FlocaleGetFontSet: , 
+[1751523982.819277] FlocaleGetFontSet: KSC5601.1987-0
+[1751523982.819283] FlocaleGetFontSet: 
+[1751523982.828676] style_parse_icon_fill_style: IconFill must follow an IconBox in same Style command
+[1751523982.828686] parse_and_set_window_style: Unconsumed argument in IconFill Buttom Left: Buttom Left
+[1751523982.829305] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=20"
+[1751523982.832045] parse_colorset: bad colorset pixmap specifier not 
+[1751523982.832968] parse_and_set_window_style: Unconsumed argument in HilightColorset 10         # Active window title: # Active window title
+[1751523982.833017] parse_and_set_window_style: Unconsumed argument in Colorset 9               # Inactive window title: # Inactive window title
+[1751523982.833066] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751523982.833071] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751523982.833076] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751523982.833081] ReadDecorFace: unknown button face flag '12' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751523982.833126] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751523982.833131] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751523982.833136] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751523982.833140] ReadDecorFace: unknown button face flag '13' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751523982.863263] ParseBinding: No such key: TAB
+[1751523982.868415] CMD_Echo: "====================="
+[1751523982.868470] CMD_Echo: "= Fvwm3 is starting ="
+[1751523982.868516] CMD_Echo: "====================="
+[1751523983.056614] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751523983.056917] _explain_placement: placed new window 0x400001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751523983.060951] _merge_cr_moveresize: _merge_cr_moveresize: merged 5 cr events
+[1751523983.072134] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751523983.072159] FlocaleGetFontSet: ISO8859-2
+[1751523983.072167] FlocaleGetFontSet: , 
+[1751523983.072174] FlocaleGetFontSet: ISO8859-3
+[1751523983.072180] FlocaleGetFontSet: , 
+[1751523983.072186] FlocaleGetFontSet: ISO8859-4
+[1751523983.072192] FlocaleGetFontSet: , 
+[1751523983.072198] FlocaleGetFontSet: ISO8859-5
+[1751523983.072204] FlocaleGetFontSet: , 
+[1751523983.072210] FlocaleGetFontSet: KOI8-R
+[1751523983.072215] FlocaleGetFontSet: , 
+[1751523983.072219] FlocaleGetFontSet: ISO8859-7
+[1751523983.072223] FlocaleGetFontSet: , 
+[1751523983.072227] FlocaleGetFontSet: ISO8859-9
+[1751523983.072231] FlocaleGetFontSet: , 
+[1751523983.072235] FlocaleGetFontSet: ISO8859-13
+[1751523983.072239] FlocaleGetFontSet: , 
+[1751523983.072243] FlocaleGetFontSet: ISO8859-14
+[1751523983.072247] FlocaleGetFontSet: , 
+[1751523983.072251] FlocaleGetFontSet: ISO8859-15
+[1751523983.072262] FlocaleGetFontSet: , 
+[1751523983.072273] FlocaleGetFontSet: JISX0208.1983-0
+[1751523983.072277] FlocaleGetFontSet: , 
+[1751523983.072282] FlocaleGetFontSet: KSC5601.1987-0
+[1751523983.072286] FlocaleGetFontSet: , 
+[1751523983.072290] FlocaleGetFontSet: GB2312.1980-0
+[1751523983.072294] FlocaleGetFontSet: , 
+[1751523983.072298] FlocaleGetFontSet: JISX0201.1976-0
+[1751523983.072302] FlocaleGetFontSet: , 
+[1751523983.072306] FlocaleGetFontSet: ISO10646-1
+[1751523983.072311] FlocaleGetFontSet: 
+[1751523983.079980] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751523983.080231] _explain_placement: placed new window 0x1200001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751523983.085253] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751523983.085577] _explain_placement: placed new window 0xc0000b 'xeyes':
+  initial size 150x126
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751523983.101184] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751523983.101372] _explain_placement: placed new window 0x100000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 940 5  (used user specified position)
+[1751523983.121364] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751523983.121620] _explain_placement: placed new window 0x220000b 'xclock':
+  initial size 101x56
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751523993.142514] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751523993.142742] _explain_placement: placed new window 0xe00003 'QuickTerm':
+  initial size 1054x472
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 47, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751524006.854340] AddWindow: new window:
+  name:      Mozilla Firefox
+  icon name: (unknown)
+  resource:  Navigator
+  class:     org.mozilla.firefox
+[1751524006.854582] _explain_placement: placed new window 0x2c0002c 'Mozilla Firefox':
+  initial size 929x1023
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 519, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751524007.153633] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524007.153664] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524007.965531] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524007.965556] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524012.856550] AddWindow: new window:
+  name:      New Tab - Chromium
+  icon name: (unknown)
+  resource:  chromium-browser
+  class:     Chromium-browser
+[1751524012.856762] _explain_placement: placed new window 0x2e00003 'New Tab - Chromium':
+  initial size 1055x868
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 222 60  (used program specified position)
+[1751524020.757446] is_pan_frame: Window is PanFrame right
+[1751524020.769541] is_pan_frame: Window is PanFrame right
+[1751524022.419913] is_pan_frame: Window is PanFrame right
+[1751524022.431736] is_pan_frame: Window is PanFrame right
+[1751524027.402450] is_pan_frame: Window is PanFrame right
+[1751524027.414484] is_pan_frame: Window is PanFrame right
+[1751524031.420690] is_pan_frame: Window is PanFrame right
+[1751524031.433483] is_pan_frame: Window is PanFrame right
+[1751524033.355939] is_pan_frame: Window is PanFrame right
+[1751524033.369390] is_pan_frame: Window is PanFrame right
+[1751524035.223611] is_pan_frame: Window is PanFrame right
+[1751524035.236123] is_pan_frame: Window is PanFrame right
+[1751524049.974233] is_pan_frame: Window is PanFrame right
+[1751524049.986904] is_pan_frame: Window is PanFrame right
+[1751524050.029991] is_pan_frame: Window is PanFrame right
+[1751524050.041631] is_pan_frame: Window is PanFrame right
+[1751524050.126120] is_pan_frame: Window is PanFrame right
+[1751524050.138074] is_pan_frame: Window is PanFrame right
+[1751524050.531050] is_pan_frame: Window is PanFrame right
+[1751524050.542690] is_pan_frame: Window is PanFrame right
+[1751524050.585962] is_pan_frame: Window is PanFrame right
+[1751524050.597926] is_pan_frame: Window is PanFrame right
+[1751524050.642149] is_pan_frame: Window is PanFrame right
+[1751524050.654437] is_pan_frame: Window is PanFrame right
+[1751524050.989067] is_pan_frame: Window is PanFrame right
+[1751524051.000982] is_pan_frame: Window is PanFrame right
+[1751524058.737143] is_pan_frame: Window is PanFrame left
+[1751524058.749251] is_pan_frame: Window is PanFrame left
+[1751524059.082574] is_pan_frame: Window is PanFrame left
+[1751524059.095674] is_pan_frame: Window is PanFrame left
+[1751524059.120927] is_pan_frame: Window is PanFrame left
+[1751524059.133054] is_pan_frame: Window is PanFrame left
+[1751524059.153032] is_pan_frame: Window is PanFrame left
+[1751524059.164785] is_pan_frame: Window is PanFrame left
+[1751524059.193730] is_pan_frame: Window is PanFrame left
+[1751524059.206418] is_pan_frame: Window is PanFrame left
+[1751524059.232070] is_pan_frame: Window is PanFrame left
+[1751524059.243508] is_pan_frame: Window is PanFrame left
+[1751524059.280165] is_pan_frame: Window is PanFrame left
+[1751524059.292442] is_pan_frame: Window is PanFrame left
+[1751524059.677287] is_pan_frame: Window is PanFrame left
+[1751524059.690614] is_pan_frame: Window is PanFrame left
+[1751524059.725092] is_pan_frame: Window is PanFrame left
+[1751524059.736954] is_pan_frame: Window is PanFrame left
+[1751524059.764245] is_pan_frame: Window is PanFrame left
+[1751524059.777198] is_pan_frame: Window is PanFrame left
+[1751524068.074482] is_pan_frame: Window is PanFrame right
+[1751524068.088640] is_pan_frame: Window is PanFrame right
+[1751524068.457398] is_pan_frame: Window is PanFrame right
+[1751524068.470484] is_pan_frame: Window is PanFrame right
+[1751524068.494264] is_pan_frame: Window is PanFrame right
+[1751524068.507305] is_pan_frame: Window is PanFrame right
+[1751524068.526463] is_pan_frame: Window is PanFrame right
+[1751524068.539172] is_pan_frame: Window is PanFrame right
+[1751524068.558338] is_pan_frame: Window is PanFrame right
+[1751524068.570212] is_pan_frame: Window is PanFrame right
+[1751524068.590191] is_pan_frame: Window is PanFrame right
+[1751524068.602418] is_pan_frame: Window is PanFrame right
+[1751524068.631188] is_pan_frame: Window is PanFrame right
+[1751524068.643388] is_pan_frame: Window is PanFrame right
+[1751524068.981608] is_pan_frame: Window is PanFrame right
+[1751524068.994967] is_pan_frame: Window is PanFrame right
+[1751524069.021611] is_pan_frame: Window is PanFrame right
+[1751524069.035328] is_pan_frame: Window is PanFrame right
+[1751524069.053377] is_pan_frame: Window is PanFrame right
+[1751524069.066367] is_pan_frame: Window is PanFrame right
+[1751524072.929278] is_pan_frame: Window is PanFrame left
+[1751524072.941139] is_pan_frame: Window is PanFrame left
+[1751524072.977292] is_pan_frame: Window is PanFrame left
+[1751524072.989638] is_pan_frame: Window is PanFrame left
+[1751524073.029263] is_pan_frame: Window is PanFrame left
+[1751524073.041321] is_pan_frame: Window is PanFrame left
+[1751524073.095363] is_pan_frame: Window is PanFrame left
+[1751524073.107822] is_pan_frame: Window is PanFrame left
+[1751524073.398519] is_pan_frame: Window is PanFrame left
+[1751524073.411785] is_pan_frame: Window is PanFrame left
+[1751524073.437260] is_pan_frame: Window is PanFrame left
+[1751524073.449764] is_pan_frame: Window is PanFrame left
+[1751524073.484391] is_pan_frame: Window is PanFrame left
+[1751524073.497614] is_pan_frame: Window is PanFrame left
+[1751524073.564459] is_pan_frame: Window is PanFrame left
+[1751524073.577265] is_pan_frame: Window is PanFrame left
+[1751524074.239413] is_pan_frame: Window is PanFrame left
+[1751524074.251287] is_pan_frame: Window is PanFrame left
+[1751524074.311386] is_pan_frame: Window is PanFrame left
+[1751524074.323431] is_pan_frame: Window is PanFrame left
+[1751524074.367785] is_pan_frame: Window is PanFrame left
+[1751524074.381234] is_pan_frame: Window is PanFrame left
+[1751524074.439401] is_pan_frame: Window is PanFrame left
+[1751524074.453218] is_pan_frame: Window is PanFrame left
+[1751524074.947437] is_pan_frame: Window is PanFrame left
+[1751524074.960673] is_pan_frame: Window is PanFrame left
+[1751524075.019608] is_pan_frame: Window is PanFrame left
+[1751524075.033252] is_pan_frame: Window is PanFrame left
+[1751524075.423478] is_pan_frame: Window is PanFrame left
+[1751524075.436007] is_pan_frame: Window is PanFrame left
+[1751524183.798728] CMD_Echo: "Thumbnail wid 0xe00003, name 'QuickTerm', dir /dev/shm/fvwmicon."
+[1751524185.735033] CMD_Echo: "DeiconifyAndRearrange 'QuickTerm' - 0xe00003."
+[1751524185.853833] CMD_Echo: "DeThumbnail wid 0xe00003, name 'QuickTerm', dir /dev/shm/fvwmicon."
+[1751524338.772668] is_pan_frame: Window is PanFrame right
+[1751524338.784819] is_pan_frame: Window is PanFrame right
+[1751524338.794510] is_pan_frame: Window is PanFrame right
+[1751524338.806452] is_pan_frame: Window is PanFrame right
+[1751524338.810581] is_pan_frame: Window is PanFrame right
+[1751524338.822411] is_pan_frame: Window is PanFrame right
+[1751524338.842577] is_pan_frame: Window is PanFrame right
+[1751524338.854448] is_pan_frame: Window is PanFrame right
+[1751524338.883625] is_pan_frame: Window is PanFrame right
+[1751524338.896431] is_pan_frame: Window is PanFrame right
+[1751524339.170911] is_pan_frame: Window is PanFrame right
+[1751524339.183753] is_pan_frame: Window is PanFrame right
+[1751524339.209655] is_pan_frame: Window is PanFrame right
+[1751524339.221397] is_pan_frame: Window is PanFrame right
+[1751524339.249686] is_pan_frame: Window is PanFrame right
+[1751524339.263703] is_pan_frame: Window is PanFrame right
+[1751524339.281697] is_pan_frame: Window is PanFrame right
+[1751524339.293661] is_pan_frame: Window is PanFrame right
+[1751524339.321999] is_pan_frame: Window is PanFrame right
+[1751524339.334634] is_pan_frame: Window is PanFrame right
+[1751524339.630763] is_pan_frame: Window is PanFrame right
+[1751524339.644147] is_pan_frame: Window is PanFrame right
+[1751524339.670622] is_pan_frame: Window is PanFrame right
+[1751524339.682441] is_pan_frame: Window is PanFrame right
+[1751524339.702594] is_pan_frame: Window is PanFrame right
+[1751524339.714516] is_pan_frame: Window is PanFrame right
+[1751524339.749566] is_pan_frame: Window is PanFrame right
+[1751524339.761143] is_pan_frame: Window is PanFrame right
+[1751524340.074112] is_pan_frame: Window is PanFrame right
+[1751524340.086708] is_pan_frame: Window is PanFrame right
+[1751524343.553234] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524343.553258] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524346.746298] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524346.746326] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524347.559725] is_pan_frame: Window is PanFrame left
+[1751524347.571914] is_pan_frame: Window is PanFrame left
+[1751524347.612713] is_pan_frame: Window is PanFrame left
+[1751524347.624294] is_pan_frame: Window is PanFrame left
+[1751524347.966074] is_pan_frame: Window is PanFrame left
+[1751524347.977948] is_pan_frame: Window is PanFrame left
+[1751524348.012729] is_pan_frame: Window is PanFrame left
+[1751524348.024555] is_pan_frame: Window is PanFrame left
+[1751524348.044829] is_pan_frame: Window is PanFrame left
+[1751524348.056700] is_pan_frame: Window is PanFrame left
+[1751524348.076741] is_pan_frame: Window is PanFrame left
+[1751524348.088802] is_pan_frame: Window is PanFrame left
+[1751524348.124634] is_pan_frame: Window is PanFrame left
+[1751524348.136694] is_pan_frame: Window is PanFrame left
+[1751524348.375932] is_pan_frame: Window is PanFrame left
+[1751524348.388866] is_pan_frame: Window is PanFrame left
+[1751524348.791890] is_pan_frame: Window is PanFrame right
+[1751524348.804536] is_pan_frame: Window is PanFrame right
+[1751524348.839863] is_pan_frame: Window is PanFrame right
+[1751524348.851756] is_pan_frame: Window is PanFrame right
+[1751524348.887805] is_pan_frame: Window is PanFrame right
+[1751524348.900050] is_pan_frame: Window is PanFrame right
+[1751524349.171053] is_pan_frame: Window is PanFrame right
+[1751524349.183219] is_pan_frame: Window is PanFrame right
+[1751524349.211728] is_pan_frame: Window is PanFrame right
+[1751524349.223420] is_pan_frame: Window is PanFrame right
+[1751524349.243699] is_pan_frame: Window is PanFrame right
+[1751524349.255762] is_pan_frame: Window is PanFrame right
+[1751524349.282655] is_pan_frame: Window is PanFrame right
+[1751524349.294992] is_pan_frame: Window is PanFrame right
+[1751524350.189949] is_pan_frame: Window is PanFrame right
+[1751524350.202332] is_pan_frame: Window is PanFrame right
+[1751524374.312298] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524374.312325] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524379.299664] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524379.299682] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524439.423678] is_pan_frame: Window is PanFrame left
+[1751524439.435891] is_pan_frame: Window is PanFrame left
+[1751524439.815330] is_pan_frame: Window is PanFrame left
+[1751524439.829171] is_pan_frame: Window is PanFrame left
+[1751524439.854901] is_pan_frame: Window is PanFrame left
+[1751524439.867187] is_pan_frame: Window is PanFrame left
+[1751524439.895268] is_pan_frame: Window is PanFrame left
+[1751524439.907631] is_pan_frame: Window is PanFrame left
+[1751524440.275322] is_pan_frame: Window is PanFrame left
+[1751524440.288798] is_pan_frame: Window is PanFrame left
+[1751524440.306637] is_pan_frame: Window is PanFrame left
+[1751524440.318208] is_pan_frame: Window is PanFrame left
+[1751524440.338633] is_pan_frame: Window is PanFrame left
+[1751524440.350380] is_pan_frame: Window is PanFrame left
+[1751524440.370677] is_pan_frame: Window is PanFrame left
+[1751524440.383834] is_pan_frame: Window is PanFrame left
+[1751524440.728746] is_pan_frame: Window is PanFrame left
+[1751524440.740638] is_pan_frame: Window is PanFrame left
+[1751524440.776769] is_pan_frame: Window is PanFrame left
+[1751524440.789492] is_pan_frame: Window is PanFrame left
+[1751524440.808671] is_pan_frame: Window is PanFrame left
+[1751524440.820935] is_pan_frame: Window is PanFrame left
+[1751524440.840692] is_pan_frame: Window is PanFrame left
+[1751524440.852779] is_pan_frame: Window is PanFrame left
+[1751524440.877780] is_pan_frame: Window is PanFrame left
+[1751524440.890074] is_pan_frame: Window is PanFrame left
+[1751524441.198784] is_pan_frame: Window is PanFrame left
+[1751524441.211152] is_pan_frame: Window is PanFrame left
+[1751524441.230793] is_pan_frame: Window is PanFrame left
+[1751524441.244299] is_pan_frame: Window is PanFrame left
+[1751524507.164138] AddWindow: new window:
+  name:      
+  icon name: (unknown)
+  resource:  redshift-gtk
+  class:     Redshift-gtk
+[1751524507.164398] _explain_placement: placed new window 0x4000013 '':
+  initial size 367x237
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 1626, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751524512.982086] AddWindow: new window:
+  name:      
+  icon name: (unknown)
+  resource:  redshift-gtk
+  class:     Redshift-gtk
+[1751524512.982248] _explain_placement: placed new window 0x3c00019 '':
+  initial size 439x237
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1080x1920 (current screen)
+    (screen area modified by EWMH working area)
+  position 367 1626, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751524548.830046] is_pan_frame: Window is PanFrame right
+[1751524548.843728] is_pan_frame: Window is PanFrame right
+[1751524548.860752] is_pan_frame: Window is PanFrame right
+[1751524548.872642] is_pan_frame: Window is PanFrame right
+[1751524548.907838] is_pan_frame: Window is PanFrame right
+[1751524548.920331] is_pan_frame: Window is PanFrame right
+[1751524548.961815] is_pan_frame: Window is PanFrame right
+[1751524548.974392] is_pan_frame: Window is PanFrame right
+[1751524549.002740] is_pan_frame: Window is PanFrame right
+[1751524549.015464] is_pan_frame: Window is PanFrame right
+[1751524549.322228] is_pan_frame: Window is PanFrame right
+[1751524549.335539] is_pan_frame: Window is PanFrame right
+[1751524549.386816] is_pan_frame: Window is PanFrame right
+[1751524549.400068] is_pan_frame: Window is PanFrame right
+[1751524549.478214] is_pan_frame: Window is PanFrame right
+[1751524549.490187] is_pan_frame: Window is PanFrame right
+[1751524549.829070] is_pan_frame: Window is PanFrame right
+[1751524549.841490] is_pan_frame: Window is PanFrame right
+[1751524549.868775] is_pan_frame: Window is PanFrame right
+[1751524549.881724] is_pan_frame: Window is PanFrame right
+[1751524549.908766] is_pan_frame: Window is PanFrame right
+[1751524549.922187] is_pan_frame: Window is PanFrame right
+[1751524549.961449] is_pan_frame: Window is PanFrame right
+[1751524549.973151] is_pan_frame: Window is PanFrame right
+[1751524550.378090] is_pan_frame: Window is PanFrame right
+[1751524550.389809] is_pan_frame: Window is PanFrame right
+[1751524550.418110] is_pan_frame: Window is PanFrame right
+[1751524550.430805] is_pan_frame: Window is PanFrame right
+[1751524550.803837] is_pan_frame: Window is PanFrame right
+[1751524550.816649] is_pan_frame: Window is PanFrame right
+[1751524555.020919] is_pan_frame: Window is PanFrame left
+[1751524555.033925] is_pan_frame: Window is PanFrame left
+[1751524555.083817] is_pan_frame: Window is PanFrame left
+[1751524555.095565] is_pan_frame: Window is PanFrame left
+[1751524555.151797] is_pan_frame: Window is PanFrame left
+[1751524555.165513] is_pan_frame: Window is PanFrame left
+[1751524555.507210] is_pan_frame: Window is PanFrame left
+[1751524555.520353] is_pan_frame: Window is PanFrame left
+[1751524555.546865] is_pan_frame: Window is PanFrame left
+[1751524555.558481] is_pan_frame: Window is PanFrame left
+[1751524555.586830] is_pan_frame: Window is PanFrame left
+[1751524555.598644] is_pan_frame: Window is PanFrame left
+[1751524555.639821] is_pan_frame: Window is PanFrame left
+[1751524555.652804] is_pan_frame: Window is PanFrame left
+[1751524556.078836] is_pan_frame: Window is PanFrame left
+[1751524556.092053] is_pan_frame: Window is PanFrame left
+[1751524556.125737] is_pan_frame: Window is PanFrame left
+[1751524556.137970] is_pan_frame: Window is PanFrame left
+[1751524556.213901] is_pan_frame: Window is PanFrame left
+[1751524556.226139] is_pan_frame: Window is PanFrame left
+[1751524556.626049] is_pan_frame: Window is PanFrame left
+[1751524556.638916] is_pan_frame: Window is PanFrame left
+[1751524556.665879] is_pan_frame: Window is PanFrame left
+[1751524556.678751] is_pan_frame: Window is PanFrame left
+[1751524556.705951] is_pan_frame: Window is PanFrame left
+[1751524556.718666] is_pan_frame: Window is PanFrame left
+[1751524556.745757] is_pan_frame: Window is PanFrame left
+[1751524556.758589] is_pan_frame: Window is PanFrame left
+[1751524556.802103] is_pan_frame: Window is PanFrame left
+[1751524556.815252] is_pan_frame: Window is PanFrame left
+[1751524619.826422] is_pan_frame: Window is PanFrame right
+[1751524619.838797] is_pan_frame: Window is PanFrame right
+[1751524619.863260] is_pan_frame: Window is PanFrame right
+[1751524619.875256] is_pan_frame: Window is PanFrame right
+[1751524619.911312] is_pan_frame: Window is PanFrame right
+[1751524619.923050] is_pan_frame: Window is PanFrame right
+[1751524619.968495] is_pan_frame: Window is PanFrame right
+[1751524619.981577] is_pan_frame: Window is PanFrame right
+[1751524620.007371] is_pan_frame: Window is PanFrame right
+[1751524620.019728] is_pan_frame: Window is PanFrame right
+[1751524620.039300] is_pan_frame: Window is PanFrame right
+[1751524620.051051] is_pan_frame: Window is PanFrame right
+[1751524620.087476] is_pan_frame: Window is PanFrame right
+[1751524620.100487] is_pan_frame: Window is PanFrame right
+[1751524620.947412] is_pan_frame: Window is PanFrame left
+[1751524620.960565] is_pan_frame: Window is PanFrame left
+[1751524620.986315] is_pan_frame: Window is PanFrame left
+[1751524620.998706] is_pan_frame: Window is PanFrame left
+[1751524621.026356] is_pan_frame: Window is PanFrame left
+[1751524621.039006] is_pan_frame: Window is PanFrame left
+[1751524621.082476] is_pan_frame: Window is PanFrame left
+[1751524621.095897] is_pan_frame: Window is PanFrame left
+[1751524621.753502] is_pan_frame: Window is PanFrame right
+[1751524621.766794] is_pan_frame: Window is PanFrame right
+[1751524622.383003] is_pan_frame: Window is PanFrame right
+[1751524622.396699] is_pan_frame: Window is PanFrame right
+[1751524622.468366] is_pan_frame: Window is PanFrame right
+[1751524622.480417] is_pan_frame: Window is PanFrame right
+[1751524623.208655] is_pan_frame: Window is PanFrame right
+[1751524623.220688] is_pan_frame: Window is PanFrame right
+[1751524623.240393] is_pan_frame: Window is PanFrame right
+[1751524623.254463] is_pan_frame: Window is PanFrame right
+[1751524623.272676] is_pan_frame: Window is PanFrame right
+[1751524623.286477] is_pan_frame: Window is PanFrame right
+[1751524623.319493] is_pan_frame: Window is PanFrame right
+[1751524623.331892] is_pan_frame: Window is PanFrame right
+[1751524623.621732] is_pan_frame: Window is PanFrame right
+[1751524623.634709] is_pan_frame: Window is PanFrame right
+[1751524623.653365] is_pan_frame: Window is PanFrame right
+[1751524623.665451] is_pan_frame: Window is PanFrame right
+[1751524623.684373] is_pan_frame: Window is PanFrame right
+[1751524623.696229] is_pan_frame: Window is PanFrame right
+[1751524623.723422] is_pan_frame: Window is PanFrame right
+[1751524623.734825] is_pan_frame: Window is PanFrame right
+[1751524625.117889] is_pan_frame: Window is PanFrame right
+[1751524625.130282] is_pan_frame: Window is PanFrame right
+[1751524632.228209] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524632.228237] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524633.349454] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524633.349486] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524696.263396] is_pan_frame: Window is PanFrame left
+[1751524696.276822] is_pan_frame: Window is PanFrame left
+[1751524696.302980] is_pan_frame: Window is PanFrame left
+[1751524696.315487] is_pan_frame: Window is PanFrame left
+[1751524696.343838] is_pan_frame: Window is PanFrame left
+[1751524696.355899] is_pan_frame: Window is PanFrame left
+[1751524697.414081] is_pan_frame: Window is PanFrame right
+[1751524697.426212] is_pan_frame: Window is PanFrame right
+[1751524697.446101] is_pan_frame: Window is PanFrame right
+[1751524697.457472] is_pan_frame: Window is PanFrame right
+[1751524697.478095] is_pan_frame: Window is PanFrame right
+[1751524697.489389] is_pan_frame: Window is PanFrame right
+[1751524702.556580] is_pan_frame: Window is PanFrame left
+[1751524702.569647] is_pan_frame: Window is PanFrame left
+[1751524702.708048] is_pan_frame: Window is PanFrame left
+[1751524702.720154] is_pan_frame: Window is PanFrame left
+[1751524702.788031] is_pan_frame: Window is PanFrame left
+[1751524702.800279] is_pan_frame: Window is PanFrame left
+[1751524705.310442] is_pan_frame: Window is PanFrame left
+[1751524705.323763] is_pan_frame: Window is PanFrame left
+[1751524705.374088] is_pan_frame: Window is PanFrame left
+[1751524705.386421] is_pan_frame: Window is PanFrame left
+[1751524705.437064] is_pan_frame: Window is PanFrame left
+[1751524705.449593] is_pan_frame: Window is PanFrame left
+[1751524705.501082] is_pan_frame: Window is PanFrame left
+[1751524705.513214] is_pan_frame: Window is PanFrame left
+[1751524708.342183] is_pan_frame: Window is PanFrame left
+[1751524708.354600] is_pan_frame: Window is PanFrame left
+[1751524708.390159] is_pan_frame: Window is PanFrame left
+[1751524708.402676] is_pan_frame: Window is PanFrame left
+[1751524708.446123] is_pan_frame: Window is PanFrame left
+[1751524708.458703] is_pan_frame: Window is PanFrame left
+[1751524717.987248] is_pan_frame: Window is PanFrame left
+[1751524717.999309] is_pan_frame: Window is PanFrame left
+[1751524718.035265] is_pan_frame: Window is PanFrame left
+[1751524718.047516] is_pan_frame: Window is PanFrame left
+[1751524718.075234] is_pan_frame: Window is PanFrame left
+[1751524718.086824] is_pan_frame: Window is PanFrame left
+[1751524718.123250] is_pan_frame: Window is PanFrame left
+[1751524718.135362] is_pan_frame: Window is PanFrame left
+[1751524718.750787] is_pan_frame: Window is PanFrame right
+[1751524718.764407] is_pan_frame: Window is PanFrame right
+[1751524718.782256] is_pan_frame: Window is PanFrame right
+[1751524718.794822] is_pan_frame: Window is PanFrame right
+[1751524718.818216] is_pan_frame: Window is PanFrame right
+[1751524718.831053] is_pan_frame: Window is PanFrame right
+[1751524719.482465] is_pan_frame: Window is PanFrame right
+[1751524719.496065] is_pan_frame: Window is PanFrame right
+[1751524719.554317] is_pan_frame: Window is PanFrame right
+[1751524719.568135] is_pan_frame: Window is PanFrame right
+[1751524720.561825] is_pan_frame: Window is PanFrame left
+[1751524720.575408] is_pan_frame: Window is PanFrame left
+[1751524720.616360] is_pan_frame: Window is PanFrame left
+[1751524720.628812] is_pan_frame: Window is PanFrame left
+[1751524725.685552] is_pan_frame: Window is PanFrame left
+[1751524725.698374] is_pan_frame: Window is PanFrame left
+[1751524725.755453] is_pan_frame: Window is PanFrame left
+[1751524725.767961] is_pan_frame: Window is PanFrame left
+[1751524726.338529] is_pan_frame: Window is PanFrame left
+[1751524726.350426] is_pan_frame: Window is PanFrame left
+[1751524777.429807] is_pan_frame: Window is PanFrame right
+[1751524777.443073] is_pan_frame: Window is PanFrame right
+[1751524777.469825] is_pan_frame: Window is PanFrame right
+[1751524777.482137] is_pan_frame: Window is PanFrame right
+[1751524777.517812] is_pan_frame: Window is PanFrame right
+[1751524777.529941] is_pan_frame: Window is PanFrame right
+[1751524777.906039] is_pan_frame: Window is PanFrame right
+[1751524777.919457] is_pan_frame: Window is PanFrame right
+[1751524777.985805] is_pan_frame: Window is PanFrame right
+[1751524777.998460] is_pan_frame: Window is PanFrame right
+[1751524778.032788] is_pan_frame: Window is PanFrame right
+[1751524778.045094] is_pan_frame: Window is PanFrame right
+[1751524778.080874] is_pan_frame: Window is PanFrame right
+[1751524778.093224] is_pan_frame: Window is PanFrame right
+[1751524778.986234] is_pan_frame: Window is PanFrame left
+[1751524778.999609] is_pan_frame: Window is PanFrame left
+[1751524779.056102] is_pan_frame: Window is PanFrame left
+[1751524779.069577] is_pan_frame: Window is PanFrame left
+[1751524860.675754] is_pan_frame: Window is PanFrame left
+[1751524860.689657] is_pan_frame: Window is PanFrame left
+[1751524860.729538] is_pan_frame: Window is PanFrame left
+[1751524860.741987] is_pan_frame: Window is PanFrame left
+[1751524860.786636] is_pan_frame: Window is PanFrame left
+[1751524860.798830] is_pan_frame: Window is PanFrame left
+[1751524861.061873] is_pan_frame: Window is PanFrame left
+[1751524861.074893] is_pan_frame: Window is PanFrame left
+[1751524861.318714] is_pan_frame: Window is PanFrame left
+[1751524861.332322] is_pan_frame: Window is PanFrame left
+[1751524877.876606] is_pan_frame: Window is PanFrame right
+[1751524877.888723] is_pan_frame: Window is PanFrame right
+[1751524877.908713] is_pan_frame: Window is PanFrame right
+[1751524877.921285] is_pan_frame: Window is PanFrame right
+[1751524877.940758] is_pan_frame: Window is PanFrame right
+[1751524877.953070] is_pan_frame: Window is PanFrame right
+[1751524877.978647] is_pan_frame: Window is PanFrame right
+[1751524877.990246] is_pan_frame: Window is PanFrame right
+[1751524878.026799] is_pan_frame: Window is PanFrame right
+[1751524878.039033] is_pan_frame: Window is PanFrame right
+[1751524878.066720] is_pan_frame: Window is PanFrame right
+[1751524878.079406] is_pan_frame: Window is PanFrame right
+[1751524878.106790] is_pan_frame: Window is PanFrame right
+[1751524878.119010] is_pan_frame: Window is PanFrame right
+[1751524878.886157] is_pan_frame: Window is PanFrame left
+[1751524878.898569] is_pan_frame: Window is PanFrame left
+[1751524879.201715] is_pan_frame: Window is PanFrame left
+[1751524879.214028] is_pan_frame: Window is PanFrame left
+[1751524879.249654] is_pan_frame: Window is PanFrame left
+[1751524879.262172] is_pan_frame: Window is PanFrame left
+[1751524880.196940] is_pan_frame: Window is PanFrame right
+[1751524880.210211] is_pan_frame: Window is PanFrame right
+[1751524880.235752] is_pan_frame: Window is PanFrame right
+[1751524880.248027] is_pan_frame: Window is PanFrame right
+[1751524880.839911] is_pan_frame: Window is PanFrame left
+[1751524880.852801] is_pan_frame: Window is PanFrame left
+[1751524891.449300] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524891.449328] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524895.083676] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524895.083706] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524901.312098] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751524901.312130] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751524910.842575] is_pan_frame: Window is PanFrame left
+[1751524910.856109] is_pan_frame: Window is PanFrame left
+[1751524910.882004] is_pan_frame: Window is PanFrame left
+[1751524910.894556] is_pan_frame: Window is PanFrame left
+[1751524911.201149] is_pan_frame: Window is PanFrame left
+[1751524911.213317] is_pan_frame: Window is PanFrame left
+[1751524911.254090] is_pan_frame: Window is PanFrame left
+[1751524911.265770] is_pan_frame: Window is PanFrame left
+[1751524911.296060] is_pan_frame: Window is PanFrame left
+[1751524911.308192] is_pan_frame: Window is PanFrame left
+[1751525225.125700] is_pan_frame: Window is PanFrame left
+[1751525225.138156] is_pan_frame: Window is PanFrame left
+[1751525225.157684] is_pan_frame: Window is PanFrame left
+[1751525225.169786] is_pan_frame: Window is PanFrame left
+[1751525225.197682] is_pan_frame: Window is PanFrame left
+[1751525225.209575] is_pan_frame: Window is PanFrame left
+[1751525225.553953] is_pan_frame: Window is PanFrame left
+[1751525225.566374] is_pan_frame: Window is PanFrame left
+[1751525225.619082] is_pan_frame: Window is PanFrame left
+[1751525225.630642] is_pan_frame: Window is PanFrame left
+[1751525227.963115] is_pan_frame: Window is PanFrame right
+[1751525227.976769] is_pan_frame: Window is PanFrame right
+[1751525228.002716] is_pan_frame: Window is PanFrame right
+[1751525228.014702] is_pan_frame: Window is PanFrame right
+[1751525228.334802] is_pan_frame: Window is PanFrame right
+[1751525228.348206] is_pan_frame: Window is PanFrame right
+[1751525228.390654] is_pan_frame: Window is PanFrame right
+[1751525228.403135] is_pan_frame: Window is PanFrame right
+[1751525228.438818] is_pan_frame: Window is PanFrame right
+[1751525228.451041] is_pan_frame: Window is PanFrame right
+[1751525228.486763] is_pan_frame: Window is PanFrame right
+[1751525228.498968] is_pan_frame: Window is PanFrame right
+[1751525229.121999] is_pan_frame: Window is PanFrame left
+[1751525229.135745] is_pan_frame: Window is PanFrame left
+[1751525229.201733] is_pan_frame: Window is PanFrame left
+[1751525229.214156] is_pan_frame: Window is PanFrame left
+[1751525229.265942] is_pan_frame: Window is PanFrame left
+[1751525229.279587] is_pan_frame: Window is PanFrame left
+[1751525230.249289] is_pan_frame: Window is PanFrame right
+[1751525230.262393] is_pan_frame: Window is PanFrame right
+[1751525234.875015] is_pan_frame: Window is PanFrame right
+[1751525234.887984] is_pan_frame: Window is PanFrame right
+[1751525325.687415] is_pan_frame: Window is PanFrame left
+[1751525325.701982] is_pan_frame: Window is PanFrame left
+[1751525325.739530] is_pan_frame: Window is PanFrame left
+[1751525325.752760] is_pan_frame: Window is PanFrame left
+[1751525325.802597] is_pan_frame: Window is PanFrame left
+[1751525325.815734] is_pan_frame: Window is PanFrame left
+[1751525326.184875] is_pan_frame: Window is PanFrame left
+[1751525326.199097] is_pan_frame: Window is PanFrame left
+[1751525326.248772] is_pan_frame: Window is PanFrame left
+[1751525326.260812] is_pan_frame: Window is PanFrame left
+[1751525881.107974] is_pan_frame: Window is PanFrame right
+[1751525881.119929] is_pan_frame: Window is PanFrame right
+[1751525881.140136] is_pan_frame: Window is PanFrame right
+[1751525881.152598] is_pan_frame: Window is PanFrame right
+[1751525881.172035] is_pan_frame: Window is PanFrame right
+[1751525881.184764] is_pan_frame: Window is PanFrame right
+[1751525881.210104] is_pan_frame: Window is PanFrame right
+[1751525881.222989] is_pan_frame: Window is PanFrame right
+[1751525881.514224] is_pan_frame: Window is PanFrame right
+[1751525881.527094] is_pan_frame: Window is PanFrame right
+[1751525881.562092] is_pan_frame: Window is PanFrame right
+[1751525881.574471] is_pan_frame: Window is PanFrame right
+[1751525881.625974] is_pan_frame: Window is PanFrame right
+[1751525881.637938] is_pan_frame: Window is PanFrame right
+[1751525882.133315] is_pan_frame: Window is PanFrame left
+[1751525882.146815] is_pan_frame: Window is PanFrame left
+[1751525882.477108] is_pan_frame: Window is PanFrame left
+[1751525882.490046] is_pan_frame: Window is PanFrame left
+[1751525882.549029] is_pan_frame: Window is PanFrame left
+[1751525882.561099] is_pan_frame: Window is PanFrame left
+[1751525882.601368] is_pan_frame: Window is PanFrame left
+[1751525882.614849] is_pan_frame: Window is PanFrame left
+[1751525883.061143] is_pan_frame: Window is PanFrame right
+[1751525883.074918] is_pan_frame: Window is PanFrame right
+[1751525883.100181] is_pan_frame: Window is PanFrame right
+[1751525883.112517] is_pan_frame: Window is PanFrame right
+[1751525883.140009] is_pan_frame: Window is PanFrame right
+[1751525883.152472] is_pan_frame: Window is PanFrame right
+[1751525905.671395] is_pan_frame: Window is PanFrame left
+[1751525905.684370] is_pan_frame: Window is PanFrame left
+[1751525905.727223] is_pan_frame: Window is PanFrame left
+[1751525905.740862] is_pan_frame: Window is PanFrame left
+[1751525908.564296] is_pan_frame: Window is PanFrame right
+[1751525908.576632] is_pan_frame: Window is PanFrame right
+[1751525910.414179] CMD_Echo: "UrgencyFunc [before name]: 'QuickTerm'"
+[1751525924.987099] is_pan_frame: Window is PanFrame right
+[1751525925.001336] is_pan_frame: Window is PanFrame right
+[1751525930.577179] is_pan_frame: Window is PanFrame left
+[1751525930.589998] is_pan_frame: Window is PanFrame left
+[1751525930.644537] is_pan_frame: Window is PanFrame left
+[1751525930.657466] is_pan_frame: Window is PanFrame left
+[1751525930.667656] CMD_Echo: "UrgencyDoneFunc 0xe00003, name: 'QuickTerm'."
+[1751525930.735559] is_pan_frame: Window is PanFrame left
+[1751525930.748278] is_pan_frame: Window is PanFrame left
+[1751525932.382529] is_pan_frame: Window is PanFrame right
+[1751525932.396287] is_pan_frame: Window is PanFrame right
+[1751525932.438570] is_pan_frame: Window is PanFrame right
+[1751525932.451131] is_pan_frame: Window is PanFrame right
+[1751525933.006687] is_pan_frame: Window is PanFrame right
+[1751525933.019756] is_pan_frame: Window is PanFrame right
+[1751525933.513641] is_pan_frame: Window is PanFrame left
+[1751525933.527157] is_pan_frame: Window is PanFrame left
+[1751525947.432073] is_pan_frame: Window is PanFrame right
+[1751525947.446897] is_pan_frame: Window is PanFrame right
+[1751525958.419896] is_pan_frame: Window is PanFrame left
+[1751525958.432425] is_pan_frame: Window is PanFrame left
+[1751525958.482770] is_pan_frame: Window is PanFrame left
+[1751525958.496113] is_pan_frame: Window is PanFrame left
+[1751525958.818080] is_pan_frame: Window is PanFrame left
+[1751525958.830358] is_pan_frame: Window is PanFrame left
+[1751525958.856745] is_pan_frame: Window is PanFrame left
+[1751525958.869265] is_pan_frame: Window is PanFrame left
+[1751525958.904642] is_pan_frame: Window is PanFrame left
+[1751525958.916761] is_pan_frame: Window is PanFrame left
+[1751525959.329260] is_pan_frame: Window is PanFrame left
+[1751525959.342628] is_pan_frame: Window is PanFrame left
+[1751526070.265813] _execute_command_line: No such command 'MenuClose'
+[1751526110.366690] _execute_command_line: No such command 'MenuClose'
+[1751526385.284969] is_pan_frame: Window is PanFrame right
+[1751526385.298297] is_pan_frame: Window is PanFrame right
+[1751526385.316925] is_pan_frame: Window is PanFrame right
+[1751526385.328955] is_pan_frame: Window is PanFrame right
+[1751526385.367141] is_pan_frame: Window is PanFrame right
+[1751526385.380309] is_pan_frame: Window is PanFrame right
+[1751526385.956272] is_pan_frame: Window is PanFrame left
+[1751526385.968546] is_pan_frame: Window is PanFrame left
+[1751526385.987960] is_pan_frame: Window is PanFrame left
+[1751526386.000543] is_pan_frame: Window is PanFrame left
+[1751526386.028041] is_pan_frame: Window is PanFrame left
+[1751526386.040509] is_pan_frame: Window is PanFrame left
+[1751675209.973154]  log opened (because of SIGUSR2)
+[1751675210.293517] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751675210.293947] _explain_placement: placed new window 0x400001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 3840x2160 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751675210.388374] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751675210.388396] FlocaleGetFontSet: ISO8859-2
+[1751675210.388402] FlocaleGetFontSet: , 
+[1751675210.388407] FlocaleGetFontSet: ISO8859-3
+[1751675210.388412] FlocaleGetFontSet: , 
+[1751675210.388417] FlocaleGetFontSet: ISO8859-4
+[1751675210.388422] FlocaleGetFontSet: , 
+[1751675210.388427] FlocaleGetFontSet: ISO8859-5
+[1751675210.388431] FlocaleGetFontSet: , 
+[1751675210.388436] FlocaleGetFontSet: KOI8-R
+[1751675210.388441] FlocaleGetFontSet: , 
+[1751675210.388446] FlocaleGetFontSet: ISO8859-7
+[1751675210.388450] FlocaleGetFontSet: , 
+[1751675210.388454] FlocaleGetFontSet: ISO8859-9
+[1751675210.388459] FlocaleGetFontSet: , 
+[1751675210.388463] FlocaleGetFontSet: ISO8859-13
+[1751675210.388467] FlocaleGetFontSet: , 
+[1751675210.388471] FlocaleGetFontSet: ISO8859-14
+[1751675210.388476] FlocaleGetFontSet: , 
+[1751675210.388480] FlocaleGetFontSet: ISO8859-15
+[1751675210.388484] FlocaleGetFontSet: , 
+[1751675210.388488] FlocaleGetFontSet: JISX0208.1983-0
+[1751675210.388493] FlocaleGetFontSet: , 
+[1751675210.388498] FlocaleGetFontSet: KSC5601.1987-0
+[1751675210.388502] FlocaleGetFontSet: , 
+[1751675210.388507] FlocaleGetFontSet: GB2312.1980-0
+[1751675210.388511] FlocaleGetFontSet: , 
+[1751675210.388515] FlocaleGetFontSet: JISX0201.1976-0
+[1751675210.388520] FlocaleGetFontSet: , 
+[1751675210.388524] FlocaleGetFontSet: ISO10646-1
+[1751675210.388528] FlocaleGetFontSet: 
+[1751675210.399838] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751675210.400143] _explain_placement: placed new window 0x1000001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 3840x2160 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751675210.415263] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751675210.415737] _explain_placement: placed new window 0xc0000b 'xeyes':
+  initial size 150x126
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 3840x2160 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751675210.486902] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751675210.487209] _explain_placement: placed new window 0xe0000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 3840x2160 (current screen)
+    (screen area modified by EWMH working area)
+  position 3700 5  (used user specified position)
+[1751675210.958580] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751675210.960138] _explain_placement: placed new window 0x180000b 'xclock':
+  initial size 98x53
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 3840x2160 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751675225.214950] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751675225.215124] _explain_placement: placed new window 0x2400003 'QuickTerm':
+  initial size 1134x536
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 3840x2160 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751675433.085470] scan_screens: Case 2: processing 1 monitors
+[1751675433.085804] monitor_mark_changed: HDMI-1: x: 0, y: 0, w: 3840, h: 2160 comp: x: 0, y: 0, w: 1280, h: 720
+[1751675433.085833] scan_screens: Case 2.2: HDMI-1 changed
+[1751675433.088912] monitor_emit_broadcast: HDMI-1: emit: 256
+[1751675433.088922] monitor_emit_broadcast: HDMI-1: emit monitor changed
+[1751675433.089027] _execute_command_line: No such command 'RandRFunc'
+[1751675433.089034] monitor_emit_broadcast: HDMI-1: emit monitor primary change
+[1751675433.089079] _execute_command_line: No such command 'RandRFunc'
+[1751675433.089115] scan_screens: Case 2: processing 1 monitors
+[1751675433.090601] monitor_emit_broadcast: HDMI-1: emit monitor primary change
+[1751675433.090722] _execute_command_line: No such command 'RandRFunc'
+[1751675433.090734] dispatch_event: Ignoring duplicate event 24474
+[1751675433.090795] scan_screens: Case 2: processing 1 monitors
+[1751675433.092041] monitor_emit_broadcast: HDMI-1: emit monitor primary change
+[1751675433.092136] _execute_command_line: No such command 'RandRFunc'
+[1751675433.092143] dispatch_event: Ignoring duplicate event 24474
+[1751682262.752053]  log opened (because of SIGUSR2)
+[1751682263.069208] scan_screens: Case 2: processing 1 monitors
+[1751682263.069275] monitor_mark_changed: HDMI-1: x: 0, y: 0, w: 3840, h: 2160 comp: x: 0, y: 0, w: 1280, h: 720
+[1751682263.069284] scan_screens: Case 2.2: HDMI-1 changed
+[1751682263.071135] monitor_emit_broadcast: HDMI-1: emit: 256
+[1751682263.071149] monitor_emit_broadcast: HDMI-1: emit monitor changed
+[1751682263.072970] _execute_command_line: No such command 'RandRFunc'
+[1751682263.072986] monitor_emit_broadcast: HDMI-1: emit monitor primary change
+[1751682263.073039] _execute_command_line: No such command 'RandRFunc'
+[1751682263.073103] scan_screens: Case 2: processing 1 monitors
+[1751682263.075949] monitor_emit_broadcast: HDMI-1: emit monitor primary change
+[1751682263.076114] _execute_command_line: No such command 'RandRFunc'
+[1751682263.076126] dispatch_event: Ignoring duplicate event 2949
+[1751682263.077280] scan_screens: Case 2: processing 1 monitors
+[1751682263.082125] monitor_emit_broadcast: HDMI-1: emit monitor primary change
+[1751682263.082772] _execute_command_line: No such command 'RandRFunc'
+[1751682263.083203] dispatch_event: Ignoring duplicate event 2949
+[1751682263.101558] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751682263.102053] _explain_placement: placed new window 0x800001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751682263.135347] is_pan_frame: Window is PanFrame right
+[1751682263.149224] is_pan_frame: Window is PanFrame right
+[1751682263.262324] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751682263.262350] FlocaleGetFontSet: ISO8859-2
+[1751682263.262355] FlocaleGetFontSet: , 
+[1751682263.262360] FlocaleGetFontSet: ISO8859-3
+[1751682263.262365] FlocaleGetFontSet: , 
+[1751682263.262369] FlocaleGetFontSet: ISO8859-4
+[1751682263.262374] FlocaleGetFontSet: , 
+[1751682263.262379] FlocaleGetFontSet: ISO8859-5
+[1751682263.262383] FlocaleGetFontSet: , 
+[1751682263.262388] FlocaleGetFontSet: KOI8-R
+[1751682263.262393] FlocaleGetFontSet: , 
+[1751682263.262398] FlocaleGetFontSet: ISO8859-7
+[1751682263.262403] FlocaleGetFontSet: , 
+[1751682263.262408] FlocaleGetFontSet: ISO8859-9
+[1751682263.262413] FlocaleGetFontSet: , 
+[1751682263.262418] FlocaleGetFontSet: ISO8859-13
+[1751682263.262422] FlocaleGetFontSet: , 
+[1751682263.262427] FlocaleGetFontSet: ISO8859-14
+[1751682263.262432] FlocaleGetFontSet: , 
+[1751682263.262437] FlocaleGetFontSet: ISO8859-15
+[1751682263.262442] FlocaleGetFontSet: , 
+[1751682263.262447] FlocaleGetFontSet: JISX0208.1983-0
+[1751682263.262452] FlocaleGetFontSet: , 
+[1751682263.262457] FlocaleGetFontSet: KSC5601.1987-0
+[1751682263.262462] FlocaleGetFontSet: , 
+[1751682263.262467] FlocaleGetFontSet: GB2312.1980-0
+[1751682263.262471] FlocaleGetFontSet: , 
+[1751682263.262476] FlocaleGetFontSet: JISX0201.1976-0
+[1751682263.262481] FlocaleGetFontSet: , 
+[1751682263.262486] FlocaleGetFontSet: ISO10646-1
+[1751682263.262491] FlocaleGetFontSet: 
+[1751682263.279601] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751682263.279936] _explain_placement: placed new window 0xe00001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751682263.287119] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751682263.288090] _explain_placement: placed new window 0x160000b 'xeyes':
+  initial size 150x126
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751682263.358212] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751682263.358528] _explain_placement: placed new window 0x100000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 1140 5  (used user specified position)
+[1751682263.540739] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751682263.541331] _explain_placement: placed new window 0x180000b 'xclock':
+  initial size 98x53
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751682269.093555] is_pan_frame: Window is PanFrame left
+[1751682269.104893] is_pan_frame: Window is PanFrame left
+[1751682285.035908] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751682285.036177] _explain_placement: placed new window 0x2400003 'QuickTerm':
+  initial size 1134x536
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 0 21, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751682291.313103] AddWindow: new window:
+  name:      Mozilla Firefox
+  icon name: (unknown)
+  resource:  Navigator
+  class:     org.mozilla.firefox
+[1751682291.313279] _explain_placement: placed new window 0x300002c 'Mozilla Firefox':
+  initial size 1256x644
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 20 40, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751682291.708254] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682291.708285] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682293.964370] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682293.964405] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682297.156293] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682297.156312] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682297.315670] is_pan_frame: Window is PanFrame right
+[1751682297.327494] is_pan_frame: Window is PanFrame right
+[1751682297.700037] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682297.700075] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682298.087123] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682298.087145] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682298.227680] is_pan_frame: Window is PanFrame left
+[1751682298.239290] is_pan_frame: Window is PanFrame left
+[1751682299.191609] is_pan_frame: Window is PanFrame right
+[1751682299.203416] is_pan_frame: Window is PanFrame right
+[1751682300.128782] is_pan_frame: Window is PanFrame left
+[1751682300.140168] is_pan_frame: Window is PanFrame left
+[1751682301.988956] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682301.988978] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682301.995805] CMD_Echo: "Thumbnail wid 0x300002c, name '(20+) Facebook Marketplace | Facebook — Mozilla Firefox', dir /home/kreator/.fvwm."
+[1751682324.534052] CMD_Echo: "DeiconifyAndRearrange '(20+) Facebook Marketplace | Facebook — Mozilla Firefox' - 0x300002c."
+[1751682324.676692] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682324.676724] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682324.680647] CMD_Echo: "DeThumbnail wid 0x300002c, name '(20+) Facebook Marketplace | Facebook — Mozilla Firefox', dir /home/kreator/.fvwm."
+[1751682326.895570] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682326.895602] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682328.815004] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682328.815034] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682331.822743] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751682331.822760] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751682336.322757] AddWindow: new window:
+  name:      Picture-in-Picture
+  icon name: (unknown)
+  resource:  Toolkit
+  class:     org.mozilla.firefox
+[1751682336.323146] _explain_placement: placed new window 0x30000b0 'Picture-in-Picture':
+  initial size 867x520
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 247 21  (used program specified position)
+[1751682352.588560] AddWindow: new window:
+  name:      Volume Control
+  icon name: (unknown)
+  resource:  pavucontrol
+  class:     pavucontrol
+[1751682352.588826] _explain_placement: placed new window 0x2e00004 'Volume Control':
+  initial size 928x546
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 46 92, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751682368.450087] is_pan_frame: Window is PanFrame right
+[1751682368.463214] is_pan_frame: Window is PanFrame right
+[1751682368.790060] is_pan_frame: Window is PanFrame left
+[1751682368.801951] is_pan_frame: Window is PanFrame left
+[1751682369.284047] is_pan_frame: Window is PanFrame right
+[1751682369.295705] is_pan_frame: Window is PanFrame right
+[1751682375.078020] is_pan_frame: Window is PanFrame left
+[1751682375.089225] is_pan_frame: Window is PanFrame left
+[1751682375.970961] is_pan_frame: Window is PanFrame right
+[1751682375.988920] is_pan_frame: Window is PanFrame right
+[1751682378.740018] is_pan_frame: Window is PanFrame left
+[1751682378.751368] is_pan_frame: Window is PanFrame left
+[1751682384.936148] is_pan_frame: Window is PanFrame right
+[1751682384.948211] is_pan_frame: Window is PanFrame right
+[1751682385.492108] is_pan_frame: Window is PanFrame left
+[1751682385.503891] is_pan_frame: Window is PanFrame left
+[1751682386.388158] is_pan_frame: Window is PanFrame right
+[1751682386.400361] is_pan_frame: Window is PanFrame right
+[1751682392.382225] is_pan_frame: Window is PanFrame left
+[1751682392.393877] is_pan_frame: Window is PanFrame left
+[1751682423.666328] is_pan_frame: Window is PanFrame right
+[1751682423.679144] is_pan_frame: Window is PanFrame right
+[1751682427.832205] is_pan_frame: Window is PanFrame left
+[1751682427.843532] is_pan_frame: Window is PanFrame left
+[1751682433.397544] CMD_Echo: "UrgencyFunc [before name]: 'QuickTerm'"
+[1751682450.506993] CMD_Echo: "UrgencyDoneFunc 0x2400003, name: 'QuickTerm'."
+[1751682511.488501] CMD_Echo: "Thumbnail wid 0x2400003, name 'QuickTerm', dir /home/kreator/.fvwm."
+[1751682629.053767] CMD_Echo: "UrgencyFunc [before name]: 'QuickTerm'"
+[1751682658.870333] CMD_Echo: "Thumbnail wid 0x2e00004, name 'Volume Control', dir /home/kreator/.fvwm."
+[1751683196.652878] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751683196.652898] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751683207.739331] is_pan_frame: Window is PanFrame right
+[1751683207.751433] is_pan_frame: Window is PanFrame right
+[1751683208.697427] is_pan_frame: Window is PanFrame left
+[1751683208.709718] is_pan_frame: Window is PanFrame left
+[1751683492.368512] AddWindow: new window:
+  name:      Picture-in-Picture
+  icon name: (unknown)
+  resource:  Toolkit
+  class:     org.mozilla.firefox
+[1751683492.368698] _explain_placement: placed new window 0x30001bf 'Picture-in-Picture':
+  initial size 494x310
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 659 2  (used program specified position)
+[1751683662.574954] AddWindow: new window:
+  name:      Picture-in-Picture
+  icon name: (unknown)
+  resource:  Toolkit
+  class:     org.mozilla.firefox
+[1751683662.575179] _explain_placement: placed new window 0x300022b 'Picture-in-Picture':
+  initial size 566x350
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 646 15  (used program specified position)
+[1751684026.834411] AddWindow: new window:
+  name:      Picture-in-Picture
+  icon name: (unknown)
+  resource:  Toolkit
+  class:     org.mozilla.firefox
+[1751684026.834627] _explain_placement: placed new window 0x3000269 'Picture-in-Picture':
+  initial size 637x390
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 646 15  (used program specified position)
+[1751684150.126909] is_pan_frame: Window is PanFrame right
+[1751684150.138719] is_pan_frame: Window is PanFrame right
+[1751684150.998913] is_pan_frame: Window is PanFrame left
+[1751684151.010918] is_pan_frame: Window is PanFrame left
+[1751684380.722951] is_pan_frame: Window is PanFrame right
+[1751684380.735020] is_pan_frame: Window is PanFrame right
+[1751684381.570992] is_pan_frame: Window is PanFrame left
+[1751684381.583756] is_pan_frame: Window is PanFrame left
+[1751684413.299396] AddWindow: new window:
+  name:      Picture-in-Picture
+  icon name: (unknown)
+  resource:  Toolkit
+  class:     org.mozilla.firefox
+[1751684413.299655] _explain_placement: placed new window 0x30002b9 'Picture-in-Picture':
+  initial size 396x255
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 898 15  (used program specified position)
+[1751684458.795478] is_pan_frame: Window is PanFrame right
+[1751684458.807310] is_pan_frame: Window is PanFrame right
+[1751684460.045645] is_pan_frame: Window is PanFrame left
+[1751684460.057901] is_pan_frame: Window is PanFrame left
+[1751684498.597807] is_pan_frame: Window is PanFrame right
+[1751684498.609800] is_pan_frame: Window is PanFrame right
+[1751684498.868511] CMD_Echo: "DeiconifyAndRearrange 'QuickTerm' - 0x2400003."
+[1751684498.995669] CMD_Echo: "UrgencyDoneFunc 0x2400003, name: 'QuickTerm'."
+[1751684499.011945] CMD_Echo: "DeThumbnail wid 0x2400003, name 'QuickTerm', dir /home/kreator/.fvwm."
+[1751684501.659127] CMD_Echo: "Thumbnail wid 0x2400003, name 'QuickTerm', dir /home/kreator/.fvwm."
+[1751684514.004073] is_pan_frame: Window is PanFrame right
+[1751684514.016925] is_pan_frame: Window is PanFrame right
+[1751684514.614062] is_pan_frame: Window is PanFrame left
+[1751684514.626406] is_pan_frame: Window is PanFrame left
+[1751684515.402025] is_pan_frame: Window is PanFrame right
+[1751684515.414376] is_pan_frame: Window is PanFrame right
+[1751684519.972070] is_pan_frame: Window is PanFrame right
+[1751684519.984171] is_pan_frame: Window is PanFrame right
+[1751684523.432090] is_pan_frame: Window is PanFrame left
+[1751684523.443996] is_pan_frame: Window is PanFrame left
+[1751684523.702230] is_pan_frame: Window is PanFrame left
+[1751684523.714458] is_pan_frame: Window is PanFrame left
+[1751684524.004148] is_pan_frame: Window is PanFrame left
+[1751684524.015886] is_pan_frame: Window is PanFrame left
+[1751684524.228086] is_pan_frame: Window is PanFrame left
+[1751684524.240482] is_pan_frame: Window is PanFrame left
+[1751684524.474400] is_pan_frame: Window is PanFrame left
+[1751684524.486136] is_pan_frame: Window is PanFrame left
+[1751684526.730967] CMD_Echo: "DeiconifyAndRearrange 'Volume Control' - 0x2e00004."
+[1751684526.870756] CMD_Echo: "DeThumbnail wid 0x2e00004, name 'Volume Control', dir /home/kreator/.fvwm."
+[1751684530.174065] is_pan_frame: Window is PanFrame right
+[1751684530.186384] is_pan_frame: Window is PanFrame right
+[1751684535.354066] is_pan_frame: Window is PanFrame left
+[1751684535.365462] is_pan_frame: Window is PanFrame left
+[1751684535.886153] is_pan_frame: Window is PanFrame left
+[1751684535.897860] is_pan_frame: Window is PanFrame left
+[1751684537.292663] CMD_Echo: "DeiconifyAndRearrange 'QuickTerm' - 0x2400003."
+[1751684537.418566] CMD_Echo: "DeThumbnail wid 0x2400003, name 'QuickTerm', dir /home/kreator/.fvwm."
+[1751684542.002148] is_pan_frame: Window is PanFrame right
+[1751684542.013985] is_pan_frame: Window is PanFrame right
+[1751684542.536217] is_pan_frame: Window is PanFrame right
+[1751684542.547980] is_pan_frame: Window is PanFrame right
+[1751684542.990177] is_pan_frame: Window is PanFrame right
+[1751684543.001919] is_pan_frame: Window is PanFrame right
+[1751684543.764158] is_pan_frame: Window is PanFrame right
+[1751684543.775646] is_pan_frame: Window is PanFrame right
+[1751684544.164202] is_pan_frame: Window is PanFrame right
+[1751684544.175761] is_pan_frame: Window is PanFrame right
+[1751684550.208057] CMD_Echo: "UrgencyFunc [before name]: 'QuickTerm'"
+[1751684668.032933] CMD_Echo: "Thumbnail wid 0x30002b9, name 'Picture-in-Picture', dir /home/kreator/.fvwm."
+[1751684669.437769] CMD_Echo: "DeiconifyAndRearrange 'Picture-in-Picture' - 0x30002b9."
+[1751684669.595275] CMD_Echo: "DeThumbnail wid 0x30002b9, name 'Picture-in-Picture', dir /home/kreator/.fvwm."
+[1751684698.096011] is_pan_frame: Window is PanFrame left
+[1751684698.107973] is_pan_frame: Window is PanFrame left
+[1751684698.697480] is_pan_frame: Window is PanFrame left
+[1751684698.708815] is_pan_frame: Window is PanFrame left
+[1751684699.563537] is_pan_frame: Window is PanFrame left
+[1751684699.576077] is_pan_frame: Window is PanFrame left
+[1751684701.423463] is_pan_frame: Window is PanFrame left
+[1751684701.434745] is_pan_frame: Window is PanFrame left
+[1751684701.878251] CMD_Echo: "UrgencyDoneFunc 0x2400003, name: 'QuickTerm'."
+[1751684701.911452] is_pan_frame: Window is PanFrame left
+[1751684701.922953] is_pan_frame: Window is PanFrame left
+[1751684744.887840] is_pan_frame: Window is PanFrame right
+[1751684744.899759] is_pan_frame: Window is PanFrame right
+[1751684745.397938] is_pan_frame: Window is PanFrame right
+[1751684745.410440] is_pan_frame: Window is PanFrame right
+[1751684745.583836] is_pan_frame: Window is PanFrame right
+[1751684745.595497] is_pan_frame: Window is PanFrame right
+[1751684746.155898] is_pan_frame: Window is PanFrame right
+[1751684746.167615] is_pan_frame: Window is PanFrame right
+[1751684746.293889] is_pan_frame: Window is PanFrame right
+[1751684746.305325] is_pan_frame: Window is PanFrame right
+[1751684756.833983] is_pan_frame: Window is PanFrame left
+[1751684756.845704] is_pan_frame: Window is PanFrame left
+[1751684757.082037] is_pan_frame: Window is PanFrame left
+[1751684757.093648] is_pan_frame: Window is PanFrame left
+[1751684757.298044] is_pan_frame: Window is PanFrame left
+[1751684757.310015] is_pan_frame: Window is PanFrame left
+[1751684758.255984] is_pan_frame: Window is PanFrame right
+[1751684758.267793] is_pan_frame: Window is PanFrame right
+[1751684758.945921] is_pan_frame: Window is PanFrame right
+[1751684758.957210] is_pan_frame: Window is PanFrame right
+[1751684759.799962] is_pan_frame: Window is PanFrame right
+[1751684759.811941] is_pan_frame: Window is PanFrame right
+[1751684760.023985] is_pan_frame: Window is PanFrame left
+[1751684760.035511] is_pan_frame: Window is PanFrame left
+[1751684782.560853] AddWindow: new window:
+  name:      urxvt
+  icon name: (unknown)
+  resource:  urxvt
+  class:     URxvt
+[1751684782.561246] _explain_placement: placed new window 0x320000a 'urxvt':
+  initial size 738x644
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+  position 0 0, placed by fvwm (normal placement)
+    placement method: Position args: m-50w m-50w
+[1751684802.724318] is_pan_frame: Window is PanFrame left
+[1751684802.735799] is_pan_frame: Window is PanFrame left
+[1751684802.932628] is_pan_frame: Window is PanFrame left
+[1751684802.944069] is_pan_frame: Window is PanFrame left
+[1751684803.280281] is_pan_frame: Window is PanFrame left
+[1751684803.292109] is_pan_frame: Window is PanFrame left
+[1751684803.960351] is_pan_frame: Window is PanFrame left
+[1751684803.971971] is_pan_frame: Window is PanFrame left
+[1751691049.523078]  log opened (because of SIGUSR2)
+[1751691049.542787] main: Loading window states via /home/kreator/.fvwm/.fs-restart-buzzy:0
+[1751691049.572569] style_parse_icon_fill_style: IconFill must follow an IconBox in same Style command
+[1751691049.572589] parse_and_set_window_style: Unconsumed argument in IconFill Buttom Left: Buttom Left
+[1751691049.573123] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Sans Serif:Medium:size=6"
+[1751691049.573170] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=6"
+[1751691049.573344] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=20"
+[1751691049.576167] parse_colorset: bad colorset pixmap specifier not 
+[1751691049.577308] parse_and_set_window_style: Unconsumed argument in HilightColorset 10         # Active window title: # Active window title
+[1751691049.577368] parse_and_set_window_style: Unconsumed argument in Colorset 9               # Inactive window title: # Inactive window title
+[1751691049.577425] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751691049.577431] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751691049.577436] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751691049.577440] ReadDecorFace: unknown button face flag '12' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751691049.577486] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751691049.577491] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751691049.577495] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751691049.577500] ReadDecorFace: unknown button face flag '13' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751691049.577566] ReadDecorFace: couldn't load pixmap gradient:vertical
+[1751691049.577627] ReadDecorFace: couldn't load pixmap gradient:vertical
+[1751691049.732485] menustyle_parse_style: unknown option 'ItemHeight'
+[1751691049.732551] menustyle_parse_style: unknown option 'MiniIconSize'
+[1751691049.732599] menustyle_parse_style: unknown option 'UseDecorations'
+[1751691049.732645] menustyle_parse_style: unknown option 'MiniIconSize'
+[1751691049.732690] menustyle_parse_style: unknown option 'ItemHeight'
+[1751691049.740576] ParseBinding: No such key: TAB
+[1751691049.757844] AddWindow: new window:
+  name:      Volume Control
+  icon name: (unknown)
+  resource:  pavucontrol
+  class:     pavucontrol
+[1751691049.766386] AddWindow: new window:
+  name:      FVWM3 double click unshade — Mozilla Firefox
+  icon name: (unknown)
+  resource:  Navigator
+  class:     org.mozilla.firefox
+[1751691049.767441] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751691049.767456] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751691049.772747] AddWindow: new window:
+  name:      kreator@buzzy: ~/.fvwm
+  icon name: (unknown)
+  resource:  urxvt
+  class:     URxvt
+[1751691049.775177] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751691049.781730] CMD_Echo: "====================="
+[1751691049.781808] CMD_Echo: "= Fvwm3 is starting ="
+[1751691049.781858] CMD_Echo: "====================="
+[1751691050.008957] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751691050.009278] _explain_placement: placed new window 0x400001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751691050.012754] _merge_cr_moveresize: _merge_cr_moveresize: merged 5 cr events
+[1751691050.045230] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751691050.045566] _explain_placement: placed new window 0xe0000b 'xeyes':
+  initial size 150x118
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 20 40, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751691050.054370] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751691050.054394] FlocaleGetFontSet: ISO8859-2
+[1751691050.054402] FlocaleGetFontSet: , 
+[1751691050.054408] FlocaleGetFontSet: ISO8859-3
+[1751691050.054415] FlocaleGetFontSet: , 
+[1751691050.054421] FlocaleGetFontSet: ISO8859-4
+[1751691050.054427] FlocaleGetFontSet: , 
+[1751691050.054433] FlocaleGetFontSet: ISO8859-5
+[1751691050.054439] FlocaleGetFontSet: , 
+[1751691050.054445] FlocaleGetFontSet: KOI8-R
+[1751691050.054461] FlocaleGetFontSet: , 
+[1751691050.054478] FlocaleGetFontSet: ISO8859-7
+[1751691050.054485] FlocaleGetFontSet: , 
+[1751691050.054491] FlocaleGetFontSet: ISO8859-9
+[1751691050.054498] FlocaleGetFontSet: , 
+[1751691050.054504] FlocaleGetFontSet: ISO8859-13
+[1751691050.054510] FlocaleGetFontSet: , 
+[1751691050.054516] FlocaleGetFontSet: ISO8859-14
+[1751691050.054523] FlocaleGetFontSet: , 
+[1751691050.054529] FlocaleGetFontSet: ISO8859-15
+[1751691050.054535] FlocaleGetFontSet: , 
+[1751691050.054541] FlocaleGetFontSet: JISX0208.1983-0
+[1751691050.054548] FlocaleGetFontSet: , 
+[1751691050.054554] FlocaleGetFontSet: KSC5601.1987-0
+[1751691050.054560] FlocaleGetFontSet: , 
+[1751691050.054567] FlocaleGetFontSet: GB2312.1980-0
+[1751691050.054573] FlocaleGetFontSet: , 
+[1751691050.054579] FlocaleGetFontSet: JISX0201.1976-0
+[1751691050.054585] FlocaleGetFontSet: , 
+[1751691050.054592] FlocaleGetFontSet: ISO10646-1
+[1751691050.054598] FlocaleGetFontSet: 
+[1751691050.058540] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751691050.058771] _explain_placement: placed new window 0x1600001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751691050.072820] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751691050.073027] _explain_placement: placed new window 0x140000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 1140 5  (used user specified position)
+[1751691050.208700] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751691050.208993] _explain_placement: placed new window 0x100000b 'xclock':
+  initial size 98x45
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751691058.244532] CMD_Echo: "Rotating Monitor normal"
+[1751691058.278439]  log opened (because of SIGUSR2)
+[1751691058.294962] main: Loading window states via /home/kreator/.fvwm/.fs-restart-buzzy:0
+[1751691058.325264] style_parse_icon_fill_style: IconFill must follow an IconBox in same Style command
+[1751691058.325290] parse_and_set_window_style: Unconsumed argument in IconFill Buttom Left: Buttom Left
+[1751691058.326106] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Sans Serif:Medium:size=6"
+[1751691058.326166] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=6"
+[1751691058.326358] parse_and_set_window_style: Bad style option: IconTitleFont "xft:Luxi Mono:Medium:size=20"
+[1751691058.329399] parse_colorset: bad colorset pixmap specifier not 
+[1751691058.330335] parse_and_set_window_style: Unconsumed argument in HilightColorset 10         # Active window title: # Active window title
+[1751691058.330387] parse_and_set_window_style: Unconsumed argument in Colorset 9               # Inactive window title: # Inactive window title
+[1751691058.330438] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751691058.330445] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751691058.330450] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751691058.330454] ReadDecorFace: unknown button face flag '12' -- line: -- Flat Raised BorderWidth 2 Colorset 12
+[1751691058.330502] ReadDecorFace: unknown button face flag 'BorderWidth' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751691058.330507] ReadDecorFace: unknown button face flag '2' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751691058.330520] ReadDecorFace: unknown button face flag 'Colorset' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751691058.330534] ReadDecorFace: unknown button face flag '13' -- line: -- Flat Raised BorderWidth 2 Colorset 13
+[1751691058.330608] ReadDecorFace: couldn't load pixmap gradient:vertical
+[1751691058.330673] ReadDecorFace: couldn't load pixmap gradient:vertical
+[1751691058.487376] menustyle_parse_style: unknown option 'ItemHeight'
+[1751691058.487454] menustyle_parse_style: unknown option 'MiniIconSize'
+[1751691058.487555] menustyle_parse_style: unknown option 'UseDecorations'
+[1751691058.487628] menustyle_parse_style: unknown option 'MiniIconSize'
+[1751691058.487708] menustyle_parse_style: unknown option 'ItemHeight'
+[1751691058.495752] ParseBinding: No such key: TAB
+[1751691058.511941] AddWindow: new window:
+  name:      Volume Control
+  icon name: (unknown)
+  resource:  pavucontrol
+  class:     pavucontrol
+[1751691058.521012] AddWindow: new window:
+  name:      FVWM3 double click unshade — Mozilla Firefox
+  icon name: (unknown)
+  resource:  Navigator
+  class:     org.mozilla.firefox
+[1751691058.522082] convert_charsets: [fvwm][convert_charsets]: WARNING -
+	
+[1751691058.522099] convert_charsets: Invalid byte sequence during conversion from UTF-8 to ISO-8859-1
+[1751691058.527440] AddWindow: new window:
+  name:      kreator@buzzy: ~/.fvwm
+  icon name: (unknown)
+  resource:  urxvt
+  class:     URxvt
+[1751691058.529658] AddWindow: new window:
+  name:      QuickTerm
+  icon name: (unknown)
+  resource:  Alacritty
+  class:     Alacritty
+[1751691058.536832] CMD_Echo: "====================="
+[1751691058.536987] CMD_Echo: "= Fvwm3 is starting ="
+[1751691058.537106] CMD_Echo: "====================="
+[1751691058.763078] AddWindow: new window:
+  name:      stalonetray
+  icon name: (unknown)
+  resource:  stalonetray
+  class:     stalonetray
+[1751691058.763355] _explain_placement: placed new window 0x400001 'stalonetray':
+  initial size 496x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 128 5  (used user specified position)
+[1751691058.767073] _merge_cr_moveresize: _merge_cr_moveresize: merged 5 cr events
+[1751691058.803456] AddWindow: new window:
+  name:      xeyes
+  icon name: (unknown)
+  resource:  xeyes
+  class:     XEyes
+[1751691058.803792] _explain_placement: placed new window 0xe0000b 'xeyes':
+  initial size 150x118
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 20 40, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751691058.819672] FlocaleGetFontSet: [ButtonBox][FlocaleGetFontSet]: (fixed) Missing font charsets:
+[1751691058.819699] FlocaleGetFontSet: ISO8859-2
+[1751691058.819707] FlocaleGetFontSet: , 
+[1751691058.819713] FlocaleGetFontSet: ISO8859-3
+[1751691058.819720] FlocaleGetFontSet: , 
+[1751691058.819726] FlocaleGetFontSet: ISO8859-4
+[1751691058.819732] FlocaleGetFontSet: , 
+[1751691058.819738] FlocaleGetFontSet: ISO8859-5
+[1751691058.819745] FlocaleGetFontSet: , 
+[1751691058.819751] FlocaleGetFontSet: KOI8-R
+[1751691058.819757] FlocaleGetFontSet: , 
+[1751691058.819763] FlocaleGetFontSet: ISO8859-7
+[1751691058.819770] FlocaleGetFontSet: , 
+[1751691058.819776] FlocaleGetFontSet: ISO8859-9
+[1751691058.819782] FlocaleGetFontSet: , 
+[1751691058.819788] FlocaleGetFontSet: ISO8859-13
+[1751691058.819795] FlocaleGetFontSet: , 
+[1751691058.819801] FlocaleGetFontSet: ISO8859-14
+[1751691058.819807] FlocaleGetFontSet: , 
+[1751691058.819813] FlocaleGetFontSet: ISO8859-15
+[1751691058.819820] FlocaleGetFontSet: , 
+[1751691058.819826] FlocaleGetFontSet: JISX0208.1983-0
+[1751691058.819832] FlocaleGetFontSet: , 
+[1751691058.819838] FlocaleGetFontSet: KSC5601.1987-0
+[1751691058.819845] FlocaleGetFontSet: , 
+[1751691058.819851] FlocaleGetFontSet: GB2312.1980-0
+[1751691058.819857] FlocaleGetFontSet: , 
+[1751691058.819871] FlocaleGetFontSet: JISX0201.1976-0
+[1751691058.819924] FlocaleGetFontSet: , 
+[1751691058.819941] FlocaleGetFontSet: ISO10646-1
+[1751691058.819948] FlocaleGetFontSet: 
+[1751691058.821947] AddWindow: new window:
+  name:      ButtonBox
+  icon name: (unknown)
+  resource:  ButtonBox
+  class:     FvwmButtons
+[1751691058.822139] _explain_placement: placed new window 0x1600001 'ButtonBox':
+  initial size 112x16
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 8 5  (used user specified position)
+[1751691058.829229] AddWindow: new window:
+  name:      Desk 0
+  icon name: (unknown)
+  resource:  FvwmPager
+  class:     FvwmPager
+[1751691058.829460] _explain_placement: placed new window 0x140000c 'Desk 0':
+  initial size 132x42
+  desk 0 (window is sticky)
+  current page (window is sticky)
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 1140 5  (used user specified position)
+[1751691058.947298] AddWindow: new window:
+  name:      xclock
+  icon name: (unknown)
+  resource:  xclock
+  class:     XClock
+[1751691058.947807] _explain_placement: placed new window 0x340000b 'xclock':
+  initial size 98x45
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 624 0, placed by fvwm (normal placement)
+    placement method: TileCascade
+[1751691077.020490] CMD_Echo: "Tiggered -firefox window-"
+[1751691077.021876] CMD_Echo: "Raising firefox.. window id of $[w.id]"
+[1751691077.022076] CMD_Echo: "Starting firefox.. window id of $[w.id]"
+[1751691080.072118] CMD_Echo: "Tiggered -firefox window-"
+[1751691080.072708] CMD_Echo: "Raising firefox.. window id of $[w.id]"
+[1751691080.072925] CMD_Echo: "Starting firefox.. window id of $[w.id]"
+[1751691086.601107] AddWindow: new window:
+  name:      FvwmLogView
+  icon name: (unknown)
+  resource:  xterm
+  class:     XTerm
+[1751691086.601466] _explain_placement: placed new window 0x100000c 'FvwmLogView':
+  initial size 645x156
+  desk 0 (current desk)
+  current page
+  screen: current: 0 0 1280x720 (current screen)
+    (screen area modified by EWMH working area)
+  position 304 554  (used user specified position)
+[1751691086.641800]  log closed (because of SIGUSR2)
