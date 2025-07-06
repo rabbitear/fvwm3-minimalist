@@ -34,14 +34,15 @@ Style * EdgeMoveDelay 10
 Style * EdgeMoveResistance 200 200
 Style * SnapAttraction 16
 
-Style * Font "xft:Luxi Mono:Medium:Roman:size=14:encoding=iso8859-1;-adobe-courier-bold-r-normal--14-*"
+Style * Font "xft:Luxi Mono:Medium:Roman:size=18:encoding=iso8859-1;-adobe-courier-bold-r-normal--18-*"
 Style * IconTitleFormat %n
 Style "Alacritty" IconTitleFont "xft:Sans Serif:Medium:size=6"
 Style "org.mozilla.firefox" IconTitleFont "xft:Luxi Mono:Medium:size=6"
 Style "jetbrains-studio" IconTitleFormat Android-Studio
 Style "URxvt" IconTitleFormat QuickTerm (%t)
 Style "Spotify" IconTitleFormat %n
-Style * IconTitleFont "xft:Luxi Mono:Medium:size=20"
+Style "XClock" BorderWidth 7, HandleWidth 0, NoTItle
+Style * IconTitleFont "xft:Luxi Mono:Medium:size=28"
 Style * IconBackgroundRelief 4
 Style * IconBackgroundPadding 1
 
@@ -78,7 +79,8 @@ Colorset 13 bg rgb:DD/C9/B4                         # Border color (unfocused)
 
 # Font and title style
 Style * Font "xft:DejaVu Sans:bold:size=10"
-TitleStyle LeftJustified Height 18
+TitleStyle LeftJustified Height 22
+Style CallTerm Font "xft:DejaVu Sans:size=24"
 
 # Apply Colorsets to window decorations
 Style * HilightColorset 10         # Active window title
@@ -178,25 +180,29 @@ DestroyModuleConfig FvwmEvent: *
 Mouse 1 I A DeiconifyAndRearrange
 
 
-MenuStyle * Font "xft:DejaVu Sans:size=14"
+MenuStyle * TitleFont "xft:DejaVu Sans:size=18"
 MenuStyle * MenuColorset 10
 MenuStyle * Win
+MenuStyle * Font "xft:Noto:size=16"
 
 DestroyMenu MainMenu
 AddToMenu MainMenu
 + "Main Menu" Title
-+ "Restart" restart
++ " === Restart === " restart
 + "" Nop
-+ "Firefox" Function ToggleFirefox
-+ "Gimp" Function ToggleGimp
-+ "QuickTerm" Function ToggleQuickTerm
++ " [[ Plex TV ]] " Exec exec $[HOME]/.xfiles/bin/firefox-kiosk-xephyr.sh
 + "" Nop
-+ "Console" Function ToggleConsole
++ "    - QuickTerm" Function ToggleQuickTerm
++ "    - Firefox" Function ToggleFirefox
++ "" Nop
++ "FvwmConsole" Function ToggleFvwmConsole
++ "screenshot note" Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
 + "LogView" Function ToggleLogView
++ " -> uLauncher <- " Exec exec ulauncher
 + "" Nop
 + "Rotate screen" Popup MonitorMenu
 + "" Nop
-+ "Quit" quit
++ " !! Quit !! " quit
 
 DestroyFunc RotateMonitorRight
 AddToFunc RotateMonitorRight
@@ -237,7 +243,7 @@ AddToMenu Window-Ops
 + "(Un)Stick "    Stick
 + "Thumbnail "    Thumbnail 
 + ""
-+ "Resize 80x16"  Resize 80c 15c
++ "Resize 80x10"  Resize 80c 10c
 + "Move "         Move
 + "Raise"         Raise 
 + "Lower "        Lower 
@@ -247,6 +253,17 @@ AddToMenu Window-Ops
 + "Screenshot"    Function ScreenShotWindow
 + ""                Nop
 + "Close"         Close
+
+  Mouse  2 T A  Function MoveOrLower
+
+DestroyFunc MoveOrLower
+AddToFunc MoveOrLower
++ C   Lower
++ M   Lower
++ M   Move
++ D   Lower
+
+
 
 #######################
 # Thumbnail Functions #
@@ -475,14 +492,14 @@ MenuStyle WindowList \
 
 
 # Set default icon size (e.g. 64x64)
-MenuStyle * ItemHeight 72
-MenuStyle * MiniIconSize 64 64
+#MenuStyle * ItemHeight 72
+#MenuStyle * MiniIconSize 64 64
 
 # Apply a unique style for the WindowList menu
 MenuStyle WindowList UseDecorations True
 MenuStyle WindowList MiniIconSize 64 64
 MenuStyle WindowList ItemHeight 72
-MenuStyle WindowList Font "xft:Sans:size=12"
+MenuStyle WindowList Font "xft:Sans:size=18"
 
 # Bind the window list to a key (if needed)
 Mouse 2 R A WindowList
@@ -497,6 +514,21 @@ AddToFunc   TitleClick
 + H Echo "Held click"
 
 
+DestroyMenuStyle CallTerm
+MenuStyle        CallTerm Font "-adobe-courier-bold-r-normal--24-*"
+MenuStyle        CallTerm MenuColorset 10
+MenuStyle        CallTerm Win
+
+DestroyMenu CallTerm
+AddToMenu   CallTerm ">> op <<" Title
++ " )o)  note  (o( "  Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
++ "term" Function ToggleQuickTerm
++ "firefox" Function ToggleFirefox
+
+#+ C Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
+#+ D Function ToggleQuickTerm
+#+ H Function ToggleFirefox
+
 ################
 # Key Bindings #
 ################
@@ -504,7 +536,8 @@ AddToFunc   TitleClick
 Key I WFS 	4  Function Thumbnail
 Key I I		4  DeiconifyAndRearrange
 Key I I		M  DeiconifyAndRearrange
-Key Space A 	M  Function Thumbnail
+#Key Space A 	M  Function Thumbnail
+Key Space A 	M  Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
 Key Space I 	M  DeiconifyAndRearrange
 Key Return I 	N  DeiconifyAndRearrange
 Key M WFS  	4  Maximize 0 100
@@ -512,10 +545,11 @@ Key M WFS  	4S Maximize 100 0
 Key M WFS	4C Maximize 100 100
 Key Q WFSI 	4  Close
 
-Key Space A 4M Exec exec $HOME/.fvwm/bin/zoomer.sh
+Key Space A CM Exec exec $HOME/.xfiles/bin/screenshot-note.sh
+#Key Space A 4M Exec exec $HOME/.fvwm/bin/zoomer.sh
 Key Space I 	4  DeiconifyAndRearrange
 
-Key Space A 4  Function ToggleConsole
+Key C A 4  Function ToggleFvwmConsole
 
 Key (st) R A 4  Resize 80c 24c
 Key (urxvt) R W 4  Resize 80c 24c
@@ -552,12 +586,12 @@ Key S A 4M Exec exec rofi \
 #Key F      A 4  Function ToggleFirefox
 #Key F      A 4S Function ToggleFirefox
 #Key G      A 4  Function ToggleGimp
-Key D      A 4  Exec exec rofi -show drun
+Key D      A 4  Exec exec ulauncher
+Key U      A 4  Exec exec ulauncher
 Key C      A 4  Exec exec rofi -show drun
 # Toggle keys across the bottom of the screen
 
 #Key X      A 4  Function ToggleLogView
-#Key C      A 4  Function ToggleQuickTerm
 
 # Globalish keybindings
 Key R A    4S Restart
@@ -577,24 +611,62 @@ Key Return A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
 Key Return A   M   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
 Key Space  A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
 
-Key C      A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program qutebrowser
-Key C      A   M   Exec exec $[HOME]/.xfiles/bin/toggle_program qutebrowser
+#Key C      A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program qutebrowser
+Key C      A   M   Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
 
 
 ##################
 # Mouse bindings #
 ##################
 Mouse 1 1   N Menu Window-Ops Close
-Mouse 3 R   A Function ToggleQuickTerm
+Mouse 3 R   A Popup CallTerm
 Mouse 1 FS  A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
-Mouse 1 T   A RaiseLowerFunc
-Mouse 3 TFS A Function ResizeOrRaiseOrIconifyFunc
+Mouse 1 T   A Function MoveOrRaiseOrLowerFunc
+Mouse 3 T   A Function MoveOrRaiseOrLowerFunc
+Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I   A DeiconifyAndRearrange
 Mouse 1 R   A -
 Mouse 1 T   A Function TitleClick
 Mouse 4 TFS A WindowShade $$[func.context] 
 Mouse 5 TFS A WindowShade $$[func.context] 
+Mouse 2 TFS A Function MoveOrLower
+
+Key Super_L A A Exec xmessage -name "SmallBlob" -bg red \
+     	-fg white -nearmouse -timeout 1 'I am here!'
+Style SmallBlob UsePPosition, NoTitle, NoHandles, BorderWidth 10
+
+## FvwmButtons icon launcher:
+#   DestroyFunc Launcher
+#   AddToFunc Launcher
+#   + I DestroyModuleConfig $0Launch: *
+#   + I *$0Launch: Geometry 64x68
+#   + I *$0Launch: Columns 1
+#   + I *$0Launch: Rows    4
+#   + I *$0Launch: Frame   0
+#   + I *$0Launch: (1x3+0+0, Icon $1, Action (Mouse 1) `Exec $2`)
+#   + I *$0Launch: Pixmap none
+#   + I *$0Launch: (1x1+0+3, Font 9x15, Fore White, Back DarkBlue, \
+#                  Title $0, Action (Mouse 1) `Exec $2`)
+#   + I Style $0Launch HandleWidth 0, NoTitle
+#   + I Module FvwmButtons $3 $0Launch
+#   # Examples:
+#   Launcher RXVT xterm.xpm "rxvt -bg black" "-g +0+0"
+#   Launcher XV   xv.xpm    "xv"   "-g +0+100"
+
+ DestroyFunc ToggleFvwmConsole
+   AddToFunc ToggleFvwmConsole
+   + I None (FvwmConsole, CirculateHit) FvwmConsole
+   + I Next (FvwmConsole, CirculateHit, CurrentPage, Visible) Close
+   + I Next (FvwmConsole, CirculateHit) MoveToDesk
+   + I Next (FvwmConsole, CirculateHit) MoveToPage
+   + I Next (FvwmConsole, CirculateHit) Raise
+
+   DestroyFunc ToggleXMessages
+   AddToFunc ToggleXMessages
+   + I None (XMessages, CirculateHit) Exec exec \
+     xterm -T XMessages -n XMessages -e tail -f /var/adm/?* ~/.X.err
+   + I Next (XMessages, CirculateHit) Close
 
 # End of Fvwm3 config
