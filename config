@@ -152,23 +152,67 @@ DestroyModuleConfig FvwmEvent: *
 Mouse 1 I A DeiconifyAndRearrange
 
 
+MenuStyle * Win
 MenuStyle * Font "xft:DejaVu Sans:size=14"
 MenuStyle * MenuColorset 10
+
+MenuStyle * TitleFont "xft:DejaVu Sans:size=18"
+MenuStyle * MenuColorset 10
+MenuStyle * Font "xft:Noto:size=16"
 
 DestroyMenu MainMenu
 AddToMenu MainMenu
 + "Main Menu" Title
-+ "Restart" restart
++ " === Restart === " restart
 + "" Nop
-+ "Firefox" Function ToggleFirefox
-+ "Gimp" Function ToggleGimp
-+ "QuickTerm" Function ToggleQuickTerm
-+ "Notes" Function ToggleNotes
++ " [[ Plex TV ]] " Exec exec $[HOME]/.xfiles/bin/firefox-kiosk-xephyr.sh
 + "" Nop
-+ "Console" Function ToggleConsole
++ "    - QuickTerm" Function ToggleQuickTerm
++ "    - Firefox" Function ToggleFirefox
++ "" Nop
++ "FvwmConsole" Function ToggleFvwmConsole
++ "screenshot note" Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
 + "LogView" Function ToggleLogView
++ " -> uLauncher <- " Exec exec ulauncher
 + "" Nop
-+ "Quit" quit
++ "Rotate screen" Popup MonitorMenu
++ "" Nop
++ " !! Quit !! " quit
+
+DestroyFunc RotateMonitorRight
+AddToFunc RotateMonitorRight
++ I Exec exec pkill --signal USR2 fvwm3
++ I Exec exec notify-send "Rotateing Monitor $0"
++ I Exec exec xrandr --output DP-2 --rotate right
++ I Echo "Rotating Monitor right"
++ I Restart
+
+DestroyFunc RotateMonitorNormal
+AddToFunc RotateMonitorNormal
++ I Exec exec pkill --signal USR2 fvwm3
++ I Exec exec notify-send "Rotateing Monitor Normal"
++ I Exec exec xrandr --output DP-2 --rotate normal
++ I Echo "Rotating Monitor normal"
++ I Restart
+
+
+DestroyMenu MonitorMenu
+AddToMenu MonitorMenu
++ "Rotate NORMAL" Function RotateMonitorNormal
++ "Rotate RIGHT" Function RotateMonitorRight
+
+
+
+DestroyMenuStyle CallTerm
+MenuStyle        CallTerm Font "-adobe-courier-bold-r-normal--24-*"
+MenuStyle        CallTerm MenuColorset 10
+MenuStyle        CallTerm Win
+
+DestroyMenu CallTerm
+AddToMenu   CallTerm ">> op <<" Title
++ " )o)  note  (o( "  Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
++ "term" Function ToggleQuickTerm
++ "firefox" Function ToggleFirefox
 
 
 #######################
@@ -382,7 +426,7 @@ Style "WindowList" StaysOnTop, !Iconifiable, !Maximizable, \
     !Title, BorderWidth 5, HandleWidth 0, NeverFocus, WindowListSkip
 DestroyFunc WindowListFunc
 AddToFunc WindowListFunc
-+ I Iconfy off
++ I Iconify off
 + I FlipFocus
 + I Raise
 + I WarpToWindow 20p 25p
@@ -395,11 +439,13 @@ AddToFunc SwitchToWindow
 # Q: How to hilight boomerly
 # Q: Icons bigger!
 DestroyMenuStyle WindowList
-MenuStyle WindowList SelectOnRelease Meta_L, \
+MenuStyle WindowList Win, SelectOnRelease Meta_L, \
     Font "xft:DejaVu Sans:size=24", \
     MenuColorset 10
 
 Key TAB A M WindowList Root c c NoGeometry, NoDeskNum, NoIcons "Prev SwitchToWindow"
+Key J A M WindowList Root c c NoGeometry, NoDeskNum, NoIcons "Prev SwitchToWindow"
+Key K A M WindowList Root c c NoGeometry, NoDeskNum, NoIcons "Prev SwitchToWindow"
 
 # End of WindowList #
 
@@ -412,7 +458,6 @@ Key TAB A M WindowList Root c c NoGeometry, NoDeskNum, NoIcons "Prev SwitchToWin
 Key I WFS 	4  Function Thumbnail
 Key I I		4  DeiconifyAndRearrange
 Key I I		M  DeiconifyAndRearrange
-Key Space A 	M  Function Thumbnail
 Key Space I 	M  DeiconifyAndRearrange
 Key Return I 	N  DeiconifyAndRearrange
 Key M WFS  	4  Maximize 0 100
@@ -429,9 +474,9 @@ Key (st) R A 4  Resize 80c 24c
 Key (urxvt) R A 4  Resize 80c 24c
 
 # Move from window to window with keys
-#Key P A 4S   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
+Key P A 4S   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
                UseIconName, SelectOnRelease Super_L
-#Key N A 4S   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
+Key N A 4S   WindowList Root c c CurrentDesk, IconifiedAtEnd, NoGeometry, \
                UseIconName, SelectOnRelease Super_L
 Key K A 4   Prev (AcceptsFocus, CurrentPage) Function WindowUp
 Key J A 4   Next (AcceptsFocus, CurrentPage) Function WindowUp 
@@ -470,12 +515,24 @@ Key C      A 4  Exec exec rofi -show drun
 Key R A    4S Restart
 Key L A    4S Exec xscreensaver-command -lock
 Key I A    4S FvwmIdent
-Key Y A    4  Exec exec $[FVWM_USERDIR]/bin/screenshot.sh
+Key Y A    4  Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
 Key Y A	   4S Exec exec flameshot full -p $HOME/Pictures/Screenshots
 
 Key XF86AudioRaiseVolume A N Exec exec amixer -q sset Master 5%+
 Key XF86AudioLowerVolume A N Exec exec amixer -q sset Master 5%-
 Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
+
+Key Z A 4 Exec exec $HOME/.xfiles/bin/zoomer.sh
+Key Z A M Exec exec $HOME/.xfiles/bin/zoomer.sh
+
+Key X A 4 Exec exec $HOME/.xfiles/bin/toggle_program.sh Alacritty
+Key X A M Exec exec $HOME/.xfiles/bin/toggle_program.sh Alacritty
+
+Key C A 4 Exec exec $HOME/.xfiles/bin/toggle_program.sh qutebrowser
+Key C A M Exec exec $HOME/.xfiles/bin/toggle_program.sh qutebrowser
+
+
+
 
 
 
@@ -483,7 +540,7 @@ Key XF86AudioMute        A N Exec exec amixer -q sset Master toggle
 # Mouse bindings #
 ##################
 Mouse 1 R  A Nop
-Mouse 3 R  A Function ToggleQuickTerm
+Mouse 3 R  A Popup CallTerm
 Mouse 1 FS A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
