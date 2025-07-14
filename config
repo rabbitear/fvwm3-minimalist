@@ -21,8 +21,8 @@
 # - xscreensaver
 # - alacritty
 # 1x1 1x1 is for dual monitors
-#DesktopSize 1x1 1x1
-DesktopSize 4x1 
+DesktopSize 1x1 1x1
+#DesktopSize 4x1 
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
 Style * IconBox 0 -40 -1 -1, IconGrid 32 32
 Style * IconFill Buttom Left
@@ -50,7 +50,7 @@ Style * IconBackgroundPadding 1
 Style "stalonetray" NoTitle, BorderWidth 0, HandleWidth 0, !Maximizable, \
     !Iconifiable, NeverFocus, WindowListSkip, StaysOnBottom, Sticky
 Style "WikiJournal" Sticky, !Closable, !Iconifiable, !Title, !Maximizable
-Style "Picture-in-Picture" Sticky, StaysOnTop
+Style "Picture-in-Picture" Sticky, StaysOnTop, NoTitle
 Style "FvwmLogView" !Maximizable, !Iconifiable, WindowListSkip, NeverFocus
 Style "FvwmConsole" !Maximizable, !Iconifiable
 Style "QuickXterm" !Maximizable, !Iconifiable
@@ -190,6 +190,7 @@ AddToMenu MainMenu
 + "Main Menu" Title
 + " === Restart === " restart
 + "" Nop
++ "" Nop
 + " [[ Plex TV ]] " Exec exec $[HOME]/.xfiles/bin/firefox-kiosk-xephyr.sh
 + "" Nop
 + "    - QuickTerm" Function ToggleQuickTerm
@@ -201,6 +202,7 @@ AddToMenu MainMenu
 + " -> uLauncher <- " Exec exec ulauncher
 + "" Nop
 + "Rotate screen" Popup MonitorMenu
++ "" Nop
 + "" Nop
 + " !! Quit !! " quit
 
@@ -254,7 +256,6 @@ AddToMenu Window-Ops
 + ""                Nop
 + "Close"         Close
 
-  Mouse  2 T A  Function MoveOrLower
 
 DestroyFunc MoveOrLower
 AddToFunc MoveOrLower
@@ -522,6 +523,8 @@ MenuStyle        CallTerm Win
 DestroyMenu CallTerm
 AddToMenu   CallTerm ">> op <<" Title
 + " )o)  note  (o( "  Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
++ "" Nop
++ "" Nop
 + "term" Function ToggleQuickTerm
 + "firefox" Function ToggleFirefox
 
@@ -537,7 +540,7 @@ Key I WFS 	4  Function Thumbnail
 Key I I		4  DeiconifyAndRearrange
 Key I I		M  DeiconifyAndRearrange
 #Key Space A 	M  Function Thumbnail
-Key Space A 	M  Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
+#Key Space A 	M  Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
 Key Space I 	M  DeiconifyAndRearrange
 Key Return I 	N  DeiconifyAndRearrange
 Key M WFS  	4  Maximize 0 100
@@ -614,6 +617,7 @@ Key Space  A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
 #Key C      A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program qutebrowser
 Key C      A   M   Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
 
+Key Space WFTS M WindowShade toggle
 
 ##################
 # Mouse bindings #
@@ -632,6 +636,7 @@ Mouse 1 T   A Function TitleClick
 Mouse 4 TFS A WindowShade $$[func.context] 
 Mouse 5 TFS A WindowShade $$[func.context] 
 Mouse 2 TFS A Function MoveOrLower
+#Mouse  2 T A  Function MoveOrLower
 
 Key Super_L A A Exec xmessage -name "SmallBlob" -bg red \
      	-fg white -nearmouse -timeout 1 'I am here!'
@@ -663,10 +668,11 @@ Style SmallBlob UsePPosition, NoTitle, NoHandles, BorderWidth 10
    + I Next (FvwmConsole, CirculateHit) MoveToPage
    + I Next (FvwmConsole, CirculateHit) Raise
 
-   DestroyFunc ToggleXMessages
-   AddToFunc ToggleXMessages
-   + I None (XMessages, CirculateHit) Exec exec \
-     xterm -T XMessages -n XMessages -e tail -f /var/adm/?* ~/.X.err
-   + I Next (XMessages, CirculateHit) Close
+Style XMessages" NoTItle, NeverFocus, HandleWidth 0, BorderWdith 3
+DestroyFunc ToggleXMessages
+AddToFunc ToggleXMessages
++ I None (XMessages, CirculateHit) Exec exec \
+  xterm -T XMessages -n XMessages -e tail -f /var/adm/?* ~/.X.err
++ I Next (XMessages, CirculateHit) Close
 
 # End of Fvwm3 config

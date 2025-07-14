@@ -1,9 +1,6 @@
 #!/usr/bin/bash
+
 # buzzy's USB-C port seems to come up as DP-2
-
-
-# If HDMI is plugged in make it 1280x720 for myself with glasses
-# created a dangling elif, but I'll sort this out soon.
 if [[ $(hostname) == "buzzy" ]]
 then
     if xrandr | grep "DP-2 connected"
@@ -12,17 +9,24 @@ then
     fi
 fi
 
+# For the 42 inch on the way, this is a good resolution size.
 if xrandr | grep "HDMI-1 connected"
 then
     xrandr --output HDMI-1 --mode 1280x720
 fi 
 
+if xrandr | grep "DP-1 connected"
+then
+    xrandr --output DP-1 --mode 1280x1024 --below HDMI-1
+fi
+
+# Take out a lot of the blue color.
 xgamma -bgamma 0.3
+# Don't blank out the screen after time.
+#xset s noblank
+#xset s off
+#xset dpms 600 900 0
 
 # another machine
 #xrandr --output DSI-1 --off --output DP-1 --mode 1600x900 --primary
-
-## For the trackpoint
-#xinput set-prop 13 299 0, 0, 1
-
 
