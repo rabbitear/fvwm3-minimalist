@@ -345,6 +345,11 @@ AddToFunc RaiseLowerFunc
 + M Move
 + D Lower
 
+DestroyFunc MoveRaiseOrThumbnail
+AddToFunc MoveRaiseOrThumbnail
++ I Raise
++ M Move
++ D Thumbnail
 
 DestroyFunc WindowUp
 AddToFunc WindowUp
@@ -627,12 +632,12 @@ Mouse 3 R   A Popup CallTerm
 Mouse 1 FS  A Function RaiseOrMoveOrResizeFunc
 Mouse 1 WFS 4 Move
 Mouse 1 WFS M Move
-Mouse 1 T   A Function MoveOrRaiseOrLowerFunc
+Mouse 1 T   A Function MoveRaiseOrThumbnail
 Mouse 3 T   A Function MoveOrRaiseOrLowerFunc
 Mouse 3 FS A Function ResizeOrRaiseOrIconifyFunc
 Mouse 3 I   A DeiconifyAndRearrange
 Mouse 1 R   A -
-Mouse 1 T   A Function TitleClick
+#Mouse 1 T   A Function TitleClick
 Mouse 4 TFS A WindowShade $$[func.context] 
 Mouse 5 TFS A WindowShade $$[func.context] 
 Mouse 2 TFS A Function MoveOrLower
