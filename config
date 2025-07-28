@@ -489,27 +489,18 @@ Key F3 A N   Next (AcceptsFocus, CurrentPage) Function WindowUp
 # Start programs
 Key W A 4  Exec exec surf -z 1.8 -s "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
 Key W A 4S Exec exec surf -z 1.0 -s -i "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
-Key S A 4  StartSurf
-Key S A 4S Exec exec surf -z 1.3 "https://duckduckgo.com/?kae=t&k1=-1&km=l&kt=e&q=$(xclip -o -selection primary)"
 # rofi ddgr search, see ~/.fvwm/bin/ddgr_search.py
 # and https://github.com/gmagno/rofi-ddgr
-Key S A 4M Exec exec rofi \
-            -show ddgrsearch \
-            -lines 5 \
-            -eh 3 \
-            -modi "ddgrsearch:$HOME/.fvwm/bin/ddgr_search.py" \
-            -theme-str 'window {height: 80%; width: 80%;}' 
-
-# Toggle Functions
-#Key F      A 4  Function ToggleFirefox
-#Key F      A 4S Function ToggleFirefox
-#Key G      A 4  Function ToggleGimp
-Key D      A 4  Exec exec rofi -show drun
+#
+# Run commands
 Key C      A 4  Exec exec rofi -show drun
-# Toggle keys across the bottom of the screen
 
-#Key X      A 4  Function ToggleLogView
-#Key C      A 4  Function ToggleQuickTerm
+# Search the web
+Key S      A 4  Exec exec $[HOME]/.vim/share/xorg/dmenu-firefox-search
+Key Space  A 4  Exec exec $[HOME]/.vim/share/xorg/dmenu-firefox-search
+Key Space  WFST M  Thumbnail
+Key Space  I    M  DeiconifyAndRearrange
+Key Space  R    M  ToggleQuickTerm
 
 # Globalish keybindings
 Key R A    4S Restart
@@ -531,7 +522,7 @@ Key X A M Exec exec $HOME/.xfiles/bin/toggle_program.sh Alacritty
 Key C A 4 Exec exec $HOME/.xfiles/bin/toggle_program.sh qutebrowser
 Key C A M Exec exec $HOME/.xfiles/bin/toggle_program.sh qutebrowser
 
-
+Key B A 4 Exec exec qutebrowser
 
 
 
