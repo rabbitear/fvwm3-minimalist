@@ -21,18 +21,20 @@
 # - xscreensaver
 # - alacritty
 # 1x1 1x1 is for dual monitors
-DesktopSize 1x1 1x1
-#DesktopSize 4x1 
+#DesktopSize 1x1 1x1
+DesktopSize 4x1 
+
+EdgeScroll 100 100
+EdgeScroll 20 20
+EdgeThickness 2
+Style * EdgeMoveDelay 10
+Style * EdgeMoveResistance 200 200
+Style * SnapAttraction 16
+
 BugOpts ExplainWindowPlacement True, DisplayNewWindowNames True
 Style * IconBox 0 -40 -1 -1, IconGrid 32 32
 Style * IconFill Buttom Left
 Style * ResizeOutline
-
-EdgeScroll 20 20
-EdgeThickness 1
-Style * EdgeMoveDelay 10
-Style * EdgeMoveResistance 200 200
-Style * SnapAttraction 16
 
 Style * Font "xft:Luxi Mono:Medium:Roman:size=18:encoding=iso8859-1;-adobe-courier-bold-r-normal--18-*"
 Style * IconTitleFormat %n
@@ -195,6 +197,7 @@ AddToMenu MainMenu
 + "" Nop
 + "    - QuickTerm" Function ToggleQuickTerm
 + "    - Firefox" Function ToggleFirefox
++ "    * qutebrowser *" Exec exec qutebrowser
 + "" Nop
 + "FvwmConsole" Function ToggleFvwmConsole
 + "screenshot note" Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
@@ -533,9 +536,6 @@ AddToMenu   CallTerm ">> op <<" Title
 + "term" Function ToggleQuickTerm
 + "firefox" Function ToggleFirefox
 
-#+ C Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
-#+ D Function ToggleQuickTerm
-#+ H Function ToggleFirefox
 
 ################
 # Key Bindings #
@@ -544,18 +544,11 @@ AddToMenu   CallTerm ">> op <<" Title
 Key I WFS 	4  Function Thumbnail
 Key I I		4  DeiconifyAndRearrange
 Key I I		M  DeiconifyAndRearrange
-#Key Space A 	M  Function Thumbnail
-#Key Space A 	M  Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
-Key Space I 	M  DeiconifyAndRearrange
 Key Return I 	N  DeiconifyAndRearrange
 Key M WFS  	4  Maximize 0 100
 Key M WFS  	4S Maximize 100 0
 Key M WFS	4C Maximize 100 100
 Key Q WFSI 	4  Close
-
-Key Space A CM Exec exec $HOME/.xfiles/bin/screenshot-note.sh
-#Key Space A 4M Exec exec $HOME/.fvwm/bin/zoomer.sh
-Key Space I 	4  DeiconifyAndRearrange
 
 Key C A 4  Function ToggleFvwmConsole
 
@@ -576,19 +569,17 @@ Key F2 A N   Prev (AcceptsFocus, CurrentPage) Function WindowUp
 Key F3 A N   Next (AcceptsFocus, CurrentPage) Function WindowUp 
 
 
+Key Space WSF 	M  Function Thumbnail
+#Key Space I 	4  DeiconifyAndRearrange
+Key Space I 	M  DeiconifyAndRearrange
+Key Space R 	M  Function ToggleQuickTerm
+Key Space A     4  Exec exec $[HOME]/.vim/share/xorg/dmenu-firefox-search
+Key Space A     4S  Exec exec $[HOME]/.vim/share/xorg/dmenu-ai-web-search
+
+Key S A 4  Exec exec $[HOME]/.vim/share/xorg/dmenu-firefox-search 
 # Start programs
 Key W A 4  Exec exec surf -z 1.8 -s "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
 Key W A 4S Exec exec surf -z 1.0 -s -i "https://en.wikipedia.org/wiki/Special:Search?search=$(xclip -o -selection primary)"
-Key S A 4  StartSurf
-Key S A 4S Exec exec surf -z 1.3 "https://duckduckgo.com/?kae=t&k1=-1&km=l&kt=e&q=$(xclip -o -selection primary)"
-# rofi ddgr search, see ~/.fvwm/bin/ddgr_search.py
-# and https://github.com/gmagno/rofi-ddgr
-Key S A 4M Exec exec rofi \
-            -show ddgrsearch \
-            -lines 5 \
-            -eh 3 \
-            -modi "ddgrsearch:$HOME/.fvwm/bin/ddgr_search.py" \
-            -theme-str 'window {height: 80%; width: 80%;}' 
 
 # Toggle Functions
 #Key F      A 4  Function ToggleFirefox
@@ -617,12 +608,12 @@ Key X      A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
 Key X      A   M   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
 Key Return A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
 Key Return A   M   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
-Key Space  A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program Alacritty
 
 #Key C      A   4   Exec exec $[HOME]/.xfiles/bin/toggle_program qutebrowser
 Key C      A   M   Exec exec $[HOME]/.xfiles/bin/screenshot-note.sh
 
-Key Space WFTS M WindowShade toggle
+Key V       A  4  Function ToggleQuickTerm
+Key B       A  4  Exec exec qutebrowser
 
 ##################
 # Mouse bindings #
@@ -643,9 +634,9 @@ Mouse 5 TFS A WindowShade $$[func.context]
 Mouse 2 TFS A Function MoveOrLower
 #Mouse  2 T A  Function MoveOrLower
 
-Key Super_L A A Exec xmessage -name "SmallBlob" -bg red \
-     	-fg white -nearmouse -timeout 1 'I am here!'
-Style SmallBlob UsePPosition, NoTitle, NoHandles, BorderWidth 10
+#Key Super_L A A Exec xmessage -name "SmallBlob" -bg red \
+#     	-fg white -nearmouse -timeout 1 'I am here!'
+#Style SmallBlob UsePPosition, NoTitle, NoHandles, BorderWidth 10
 
 ## FvwmButtons icon launcher:
 #   DestroyFunc Launcher
